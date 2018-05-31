@@ -1,0 +1,94 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css?family=Tajawal');
+
+$grey: rgb(165, 165, 165);
+$orange: rgb(237, 125, 49);
+$yellow: rgb(255, 192, 0);
+
+.btn {
+  background-color: $yellow !important;
+  color: black !important;
+  font-variant: small-caps;
+  font-weight: bold;
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+h4 {
+  font-size: 12px;
+}
+
+.table a {
+  color: $orange;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+
+  header {
+    background: url('http://localhost/_ECOLE/ProjetIntegration/dist/images/temp.jpg');
+    background-position: center top;
+    background-size: cover;
+    height: 240px;
+
+    nav {
+      background-color: rgba(255, 255, 255, 0.8);
+      font-variant: small-caps;
+      font-size: x-large;
+    }
+  }
+
+  footer {
+    background-color: $grey;
+    color: black;
+
+    a {
+      color: $yellow;
+    }
+
+    h3 {
+      font-weight: bold;
+    }
+  }
+}
+
+#breadcrumb, #breadcrumb a {
+  color: black;
+  font-variant: small-caps;
+}
+
+.dashboard a {
+  color: black;
+  font-variant: all-small-caps;
+}
+
+.jumbotron {
+  background-color: rgba(165, 165, 165, 0.8);
+  color: black;
+}
+
+.jumbotron a {
+  color: black;
+}
+
+#disponibilites a {
+  color: grey;
+}
+
+#publicPages a {
+  color: black;
+}
