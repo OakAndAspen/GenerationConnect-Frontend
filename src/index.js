@@ -33,6 +33,7 @@ let app = new App({
 cartProducts.fetch();*/
 
 // test comment
+//kikou test
 
 // Fuck Yeah !
 
