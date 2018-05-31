@@ -32,6 +32,7 @@ let app = new App({
 /*let shopProducts = new Products();
 cartProducts.fetch();*/
 
+// test comment
 
 
 
