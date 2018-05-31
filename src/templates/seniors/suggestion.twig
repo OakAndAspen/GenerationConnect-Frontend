@@ -1,0 +1,17 @@
+{% extends "base.twig" %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="{{ path('sen-dashboard') }}">Tableau de bord</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Faire une suggestion</li>
+{% endblock %}
+
+{% block content %}
+
+    <h1>Faire une suggestion</h1>
+
+    <form>
+        <textarea class="form-control mb-2" placeholder="Description de votre demande"></textarea>
+        <button type="submit" class="form-control btn mb-3">Envoyer la suggestion</button>
+    </form>
+
+{% endblock %}

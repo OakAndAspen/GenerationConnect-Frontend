@@ -1,0 +1,33 @@
+{% extends "base.twig" %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="{{ path('adm-dashboard') }}">Tableau de bord</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Pages publiques</li>
+{% endblock %}
+
+{% block content %}
+
+    <ul class="nav nav-tabs" id="publicPages">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Juniors</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Seniors</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Schéma d'intervention</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Aide</a>
+        </li>
+    </ul>
+
+    <textarea class="form-control my-3">Mon contenu WYSIWYG</textarea>
+
+{% endblock %}

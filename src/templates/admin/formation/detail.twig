@@ -1,0 +1,21 @@
+{% extends "base.twig" %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="{{ path('adm-dashboard') }}">Tableau de bord</a></li>
+    <li class="breadcrumb-item"><a href="{{ path('adm-formations') }}">Formations</a></li>
+    <li class="breadcrumb-item active" aria-current="page">N°</li>
+{% endblock %}
+
+{% block content %}
+
+    <h1>Fiche de la formation</h1>
+
+    <ul>
+        <li>Titre</li>
+        <li>Description</li>
+        <li>Lieu</li>
+        <li>Date</li>
+        <li>Participants avec statut (en attente de confirmation, confirmé, etc.)</li>
+    </ul>
+
+{% endblock %}

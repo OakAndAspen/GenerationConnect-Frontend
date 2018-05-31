@@ -1,0 +1,38 @@
+{% extends "base.twig" %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="{{ path('adm-dashboard') }}">Tableau de bord</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Postulations</li>
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Prénom & Nom</th>
+                    <th>Adresse</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><a href="#">28374</a></td>
+                    <td>Yann Gourdin</td>
+                    <td>Rue du Gard 10, Leysin</td>
+                    <td><a href="#" title="Envoyer un email"><i class="fas fa-envelope"></i></a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">28374</a></td>
+                    <td>Hugo Bert</td>
+                    <td>Rue du Gard 10, Leysin</td>
+                    <td><a href="#" title="Envoyer un email"><i class="fas fa-envelope"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

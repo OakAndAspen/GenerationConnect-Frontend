@@ -13,7 +13,8 @@ module.exports = {
         rules: [
             { test: /\.html$/, use: 'handlebars-loader' },
             { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
-            {test: /\.(png|svg|jpg|gif)$/, use: ['file-loader']}
+            { test: /\.(png|svg|jpg|gif)$/, use: ['file-loader']},
+            { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
         ]
     },
     resolve: {
