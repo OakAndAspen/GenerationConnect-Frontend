@@ -1,5 +1,5 @@
 import Backbone from "backbone";
-import loginFormTmpl from "templates/public/loginForm.html";
+import loginFormTmpl from "templates/pages/public/loginForm.handlebars";
 
 export default Backbone.View.extend({
 

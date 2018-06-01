@@ -15,8 +15,6 @@ export default Backbone.View.extend({
 
     redirect: function (event) {
         let page = $(event.target).attr('data-target');
-        console.log(page);
-        console.log(this.routers);
         for (let router in this.routers) {
             for (let route in this.routers[router]) {
                 if (route == page) {

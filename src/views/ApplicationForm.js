@@ -1,5 +1,5 @@
 import Backbone from "backbone";
-import applFormTmpl from "templates/public/applicationForm.html";
+import applFormTmpl from "templates/pages/public/applicationForm.handlebars";
 
 export default Backbone.View.extend({
 

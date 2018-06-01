@@ -1,7 +1,7 @@
 import Backbone from "backbone";
 
 // Templates
-//import accueilTmpl from "templates/public/accueil.html";
+import dashboardTmpl from "templates/components/dashboard.handlebars";
 
 // Views
 //import ContactForm from "views/ContactForm";
@@ -16,23 +16,25 @@ export default Backbone.Router.extend({
         "admin/formations": "formations"
     },
 
-    dashboard: function() {
-        $('#pageContent').html("<h1>Dashboard</h1>");
-    },
+    dashboard: function () {
 
-    juniors: function() {
         $('#pageContent').html();
     },
 
-    seniors: function() {
+    juniors: function () {
         $('#pageContent').html();
     },
 
-    interventions: function() {
+    seniors: function () {
         $('#pageContent').html();
     },
 
-    formations: function() {
+    interventions: function () {
+        $('#pageContent').html();
+    }
+    ,
+
+    formations: function () {
         $('#pageContent').html();
     }
 });

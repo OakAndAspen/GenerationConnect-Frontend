@@ -1,5 +1,5 @@
 import Backbone from "backbone";
-import subFormTmpl from "templates/public/subscriptionForm.html";
+import subFormTmpl from "templates/pages/public/subscriptionForm.handlebars";
 
 export default Backbone.View.extend({
 

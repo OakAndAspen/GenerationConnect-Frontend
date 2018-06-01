@@ -1,5 +1,5 @@
 import Backbone from "backbone";
-import contactFormTmpl from "templates/public/contactForm.html";
+import contactFormTmpl from "templates/pages/public/contactForm.handlebars";
 
 export default Backbone.View.extend({
 

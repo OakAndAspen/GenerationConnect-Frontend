@@ -29,17 +29,4 @@ let app = new App({
     }
 });
 
-/*let shopProducts = new Products();
-cartProducts.fetch();*/
-
-// test comment
-//kikou test
-
-// Fuck Yeah !
-
-// test juan
-
-
-
-
 

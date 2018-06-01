@@ -1,4 +1,5 @@
 import Backbone from "backbone";
+import Dashboard from "../views/Dashboard";
 
 export default Backbone.Router.extend({
 
@@ -9,7 +10,26 @@ export default Backbone.Router.extend({
     },
 
     dashboard: function() {
-        $('#pageContent').html("<h1>Dashboard</h1>");
+        let links = [
+            {
+                'title': 'Mes interventions',
+                'path': 'junior/interventions',
+                'icon': 'fas fa-hands-helping'
+            },
+            {
+                'title': 'Mon profil',
+                'path': 'junior/profil',
+                'icon': 'fas fa-user'
+            },
+            {
+                'title': 'Schéma d\'intervention',
+                'path': 'junior/schema',
+                'icon': 'fas fa-exchange-alt'
+            }];
+        let dashboard = new Dashboard({
+            links: links
+        });
+        $('#pageContent').html(dashboard.render());
     },
 
     profil: function() {

@@ -1,0 +1,14 @@
+<li class="breadcrumb-item active" aria-current="page">Tableau de bord</li>
+
+<div class="row dashboard">
+    {{#each links}}
+    <div class="col-md-4 p-md-2">
+        <div class="jumbotron text-center">
+            <span data-target="{{path}}">
+                <h1 class="display-3"><i class="{{icon}}"></i></h1>
+                <h1>{{ title }}</h1>
+            </span>
+        </div>
+    </div>
+    {{/each}}
+</div>

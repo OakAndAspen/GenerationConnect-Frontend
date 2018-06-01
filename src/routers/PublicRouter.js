@@ -1,16 +1,19 @@
 import Backbone from "backbone";
 
 // Templates
-import accueilTmpl from "templates/public/accueil.html";
-import juniorsTmpl from "templates/public/juniors.html";
-import seniorsTmpl from "templates/public/seniors.html";
-import aideTmpl from "templates/public/aide.html";
+import accueilTmpl from "templates/pages/public/accueil.handlebars";
+import juniorsTmpl from "templates/pages/public/juniors.handlebars";
+import seniorsTmpl from "templates/pages/public/seniors.handlebars";
+import aideTmpl from "templates/pages/public/aide.handlebars";
 
 // Views
 import ContactForm from "views/ContactForm";
 import ApplicationForm from "views/ApplicationForm";
 import SubscriptionForm from "views/SubscriptionForm";
 import LoginForm from "views/LoginForm";
+
+// Images
+import imgOffres from "images/offres.png";
 
 export default Backbone.Router.extend({
 
@@ -34,6 +37,8 @@ export default Backbone.Router.extend({
     },
 
     infosSeniors: function() {
+        let imgOffres = new Image();
+        imgOffres.src = imgOffres;
         $('#pageContent').html(seniorsTmpl);
     },
 
