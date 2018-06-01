@@ -71,18 +71,22 @@ body {
   font-variant: small-caps;
 }
 
-.dashboard a {
-  color: black;
-  font-variant: all-small-caps;
+.dashboard {
+  :hover {
+    cursor: pointer;
+  }
+  a {
+    color: black;
+    font-variant: all-small-caps;
+  }
 }
 
 .jumbotron {
   background-color: rgba(165, 165, 165, 0.8);
   color: black;
-}
-
-.jumbotron a {
-  color: black;
+  a {
+    color: black;
+  }
 }
 
 #disponibilites a {

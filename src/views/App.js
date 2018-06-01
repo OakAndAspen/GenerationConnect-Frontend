@@ -10,15 +10,18 @@ export default Backbone.View.extend({
     },
 
     events: {
-        'click span[data-target]': 'redirect'
+        'click [data-target]': 'redirect'
     },
 
     redirect: function (event) {
         let page = $(event.target).attr('data-target');
+        console.log("Looking for: "+ page);
+
         for (let router in this.routers) {
-            for (let route in this.routers[router]) {
-                if (route == page) {
+            for (let route in this.routers[router].routes) {
+                if (route.localeCompare(page) == 0) {
                     this.routers[router].navigate(page, true);
+                    console.log('Found it in: ' + router);
                     break;
                 }
             }

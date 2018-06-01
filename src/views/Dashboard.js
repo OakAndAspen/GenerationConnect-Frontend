@@ -14,13 +14,4 @@ export default Backbone.View.extend({
         }));
         return this.$el;
     }
-
-    /*events: {
-        'click .nav-link': 'redirect'
-    },
-    
-    redirect: function (event) {
-        let page = $(event.target).attr('data-target');
-        this.router.navigate(page, true);
-    }*/
 });
