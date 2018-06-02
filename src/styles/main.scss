@@ -12,7 +12,7 @@ $yellow: rgb(255, 192, 0);
   font-weight: bold;
 }
 
-.nav-link {
+[data-target] {
   cursor: pointer;
 }
 
@@ -72,21 +72,12 @@ body {
 }
 
 .dashboard {
-  :hover {
-    cursor: pointer;
-  }
-  a {
-    color: black;
-    font-variant: all-small-caps;
-  }
+  font-variant: all-small-caps;
 }
 
 .jumbotron {
   background-color: rgba(165, 165, 165, 0.8);
   color: black;
-  a {
-    color: black;
-  }
 }
 
 #disponibilites a {
