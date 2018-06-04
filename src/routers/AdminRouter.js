@@ -82,8 +82,7 @@ export default Backbone.Router.extend({
 
     interventions: function () {
         $('#pageContent').html();
-    }
-    ,
+    },
 
     formations: function () {
         $('#pageContent').html();

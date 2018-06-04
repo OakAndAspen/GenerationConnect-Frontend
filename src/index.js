@@ -13,12 +13,10 @@ import SeniorRouter from "routers/SeniorRouter";
 import App from "views/App";
 
 // -------------- Page load -------------------
+let hash = location.hash;
 
 // Routing
-Backbone.history.start({
-    pushState: true,
-    root: "/GenerationConnect/GC/public"
-});
+Backbone.history.start();
 
 let app = new App({
     routers: {
@@ -29,4 +27,4 @@ let app = new App({
     }
 });
 
-
+//app.redirect()
