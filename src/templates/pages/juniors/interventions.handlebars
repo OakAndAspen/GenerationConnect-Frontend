@@ -1,95 +1,37 @@
-{% extends "base.twig" %}
-
-{% block breadcrumbs %}
-    <li class="breadcrumb-item"><a href="{{ path('jun-dashboard') }}">Tableau de bord</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Mes interventions</li>
-{% endblock %}
-
-{% block content %}
-
-    <div class="row">
-        <div class="col-12">
-
-            <h2>Demandes d'interventions</h2>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>N°</th>
-                    <th>Date</th>
-                    <th>Senior</th>
-                    <th>Adresse</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><a href="{{ path('jun-intervention') }}">36457</a></td>
-                    <td>24.03.2018</td>
-                    <td>Jeanne Barblan</td>
-                    <td>Rue du Léman 33 1800 Vevey</td>
-                </tr>
-                <tr>
-                    <td><a href="{{ path('jun-intervention') }}">36457</a></td>
-                    <td>24.03.2018</td>
-                    <td>Jeanne Barblan</td>
-                    <td>Rue du Léman 33 1800 Vevey</td>
-                </tr>
-                </tbody>
-            </table>
-
-            <h2>Interventions futures</h2>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>N°</th>
-                    <th>Date</th>
-                    <th>Senior</th>
-                    <th>Adresse</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><a href="{{ path('jun-intervention') }}">36457</a></td>
-                    <td>24.03.2018</td>
-                    <td>Jeanne Barblan</td>
-                    <td>Rue du Léman 33 1800 Vevey</td>
-                </tr>
-                <tr>
-                    <td><a href="{{ path('jun-intervention') }}">36457</a></td>
-                    <td>24.03.2018</td>
-                    <td>Jeanne Barblan</td>
-                    <td>Rue du Léman 33 1800 Vevey</td>
-                </tr>
-                </tbody>
-            </table>
-
-            <h2>Interventions passées</h2>
-            <p class="text-danger">Merci de remplir le rapport d'intervention pour ces prestations</p>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>N°</th>
-                    <th>Date</th>
-                    <th>Senior</th>
-                    <th>Adresse</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><a href="{{ path('jun-intervention') }}">36457</a></td>
-                    <td>24.03.2018</td>
-                    <td>Jeanne Barblan</td>
-                    <td>Rue du Léman 33 1800 Vevey</td>
-                </tr>
-                <tr>
-                    <td><a href="{{ path('jun-intervention') }}">36457</a></td>
-                    <td>24.03.2018</td>
-                    <td>Jeanne Barblan</td>
-                    <td>Rue du Léman 33 1800 Vevey</td>
-                </tr>
-                </tbody>
-            </table>
-
-        </div>
+<div class="row mb-3">
+    <div class="col-12 form-inline">
+        <select class="form-control">
+            <option>- Statut -</option>
+            <option>Demandes</option>
+            <option>Futurs</option>
+            <option>Passées</option>
+        </select>
     </div>
+</div>
 
-{% endblock %}
+<div class="row">
+    <div class="col-12">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>N°</th>
+                <th>Date</th>
+                <th>Senior</th>
+                <th>Adresse</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each interventions}}
+                <tr>
+                    <td><a href="">{{id}}</a></td>
+                    <td>{{date}}</td>
+                    <td>{{senior}}</td>
+                    <td>{{adresse}}</td>
+                    <td><a href="#" title="Envoyer un email"><i class="fas fa-envelope"></i></a></td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
