@@ -7,13 +7,20 @@ module.exports = {
     watch: true,
     output: {
         filename: 'app.js',
-        path: path.resolve(__dirname, 'public/build')
+        path: path.resolve(__dirname, 'public')
     },
     module: {
         rules: [
             {test: /\.handlebars$/, loader: 'handlebars-loader', query: {inlineRequires: '\/images\/'}},
             { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
-            {test: /\.(png|svg|jpg|gif)$/, use: ['file-loader']},
+            {test: /\.(png|svg|jpg|gif)$/, use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 100000
+                        }
+                    }
+                ]},
             {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
         ]
     },
