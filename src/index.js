@@ -17,7 +17,7 @@ import App from "views/App";
 // Routing
 Backbone.history.start({
     pushState: true,
-    root: "/_ECOLE/ProjetIntegration/public"
+    root: "/GenerationConnect/GC/public"
 });
 
 let app = new App({
