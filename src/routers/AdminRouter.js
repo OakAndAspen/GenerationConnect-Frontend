@@ -1,7 +1,12 @@
 import Backbone from "backbone";
 
+// Collections
+import Juniors from "collections/Juniors";
+import Seniors from "collections/Seniors";
+
 // Views
 import Dashboard from "../views/Dashboard";
+import JuniorsList from "../views/JuniorsList";
 
 export default Backbone.Router.extend({
 
@@ -63,7 +68,12 @@ export default Backbone.Router.extend({
     },
 
     juniors: function () {
-        $('#pageContent').html();
+        let juniors = new Juniors();
+        juniors.fetch();
+        let list = new JuniorsList({
+            collection: juniors
+        });
+        $('#pageContent').html(list.render());
     },
 
     seniors: function () {

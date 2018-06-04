@@ -3,10 +3,10 @@
 <div class="row dashboard">
     {{#each links}}
     <div class="col-md-4 p-md-2">
-        <div class="jumbotron text-center" data-target="{{path}}">
+        <div class="jumbotron text-center">
             <span>
                 <h1 class="display-3"><i class="{{icon}}"></i></h1>
-                <h1>{{ title }}</h1>
+                <h1 data-target="{{path}}">{{ title }}</h1>
             </span>
         </div>
     </div>

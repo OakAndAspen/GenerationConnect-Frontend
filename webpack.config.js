@@ -7,14 +7,14 @@ module.exports = {
     watch: true,
     output: {
         filename: 'app.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'public/build')
     },
     module: {
         rules: [
-            { test: /\.handlebars$/, loader: 'handlebars-loader', query: { inlineRequires: '\/images\/' }},
+            {test: /\.handlebars$/, loader: 'handlebars-loader', query: {inlineRequires: '\/images\/'}},
             { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
-            { test: /\.(png|svg|jpg|gif)$/, use: ['file-loader']},
-            { test: /\.js$/, exclude: /node_modules/, loader:'babel-loader'}
+            {test: /\.(png|svg|jpg|gif)$/, use: ['file-loader']},
+            {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
         ]
     },
     resolve: {

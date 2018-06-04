@@ -12,9 +12,6 @@ import ApplicationForm from "views/ApplicationForm";
 import SubscriptionForm from "views/SubscriptionForm";
 import LoginForm from "views/LoginForm";
 
-// Images
-import imgOffres from "images/offres.png";
-
 export default Backbone.Router.extend({
 
     routes: {
@@ -37,8 +34,6 @@ export default Backbone.Router.extend({
     },
 
     infosSeniors: function() {
-        let imgOffres = new Image();
-        imgOffres.src = imgOffres;
         $('#pageContent').html(seniorsTmpl);
     },
 
