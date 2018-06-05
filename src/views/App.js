@@ -22,7 +22,7 @@ export default Backbone.View.extend({
         for (let router in this.routers) {
             for (let route in this.routers[router].routes) {
                 if (route.localeCompare(page) == 0) {
-                    console.log(router + " : " + page);
+                    //console.log(router + " : " + page);
                     this.routers[router].navigate(page, true);
                     break;
                 }

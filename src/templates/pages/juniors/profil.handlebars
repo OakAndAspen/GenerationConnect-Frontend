@@ -1,58 +1,59 @@
-    <h1>Mes coordonnées</h1>
-    <div class="row">
-        <div class="col-12">
-            <input type="text" class="form-control mb-2" placeholder="N° de portable">
-        </div>
-        <div class="col-md-6">
-            <b>Adresse de facturation</b>
-            <input type="text" class="form-control mb-2" placeholder="Adresse">
-            <input type="text" class="form-control mb-2" placeholder="NPA">
-            <input type="text" class="form-control mb-2" placeholder="Localité">
-        </div>
-        <div class="col-md-6">
-            <b>Adresse d'habitation courante (pour la localisation)</b>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox">
-                <label class="form-check-label">Même adresse que pour la facturation</label>
-            </div>
-            <input type="text" class="form-control mb-2" placeholder="Adresse">
-            <input type="text" class="form-control mb-2" placeholder="NPA">
-            <input type="text" class="form-control mb-2" placeholder="Localité">
-        </div>
+<h1>Mes coordonnées</h1>
+<div class="row">
+    <div class="col-12">
+        <input type="text" class="form-control mb-2" placeholder="N° de portable">
     </div>
+    <div class="col-md-6">
+        <b>Adresse de facturation</b>
+        <input type="text" class="form-control mb-2" placeholder="Adresse">
+        <input type="text" class="form-control mb-2" placeholder="NPA">
+        <input type="text" class="form-control mb-2" placeholder="Localité">
+    </div>
+    <div class="col-md-6">
+        <b>Adresse d'habitation courante (pour la localisation)</b>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox">
+            <label class="form-check-label">Même adresse que pour la facturation</label>
+        </div>
+        <input type="text" class="form-control mb-2" placeholder="Adresse">
+        <input type="text" class="form-control mb-2" placeholder="NPA">
+        <input type="text" class="form-control mb-2" placeholder="Localité">
+    </div>
+</div>
 
-    <hr/>
+<hr/>
 
-    <h1>Mes disponibilités</h1>
-    <table id="disponibilites" class="table table-striped">
-        <tbody>
-            <tr>
-                <th></th>
-                <td>
+<h1>Mes disponibilités</h1>
+<table id="disponibilites" class="table table-striped">
+    <tbody>
+    {% for d in ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'] %}
+    <tr>
+        <th></th>
+        <td>
                 <span class="badge badge-warning">
                     8:00 - 10:00
                     <a href="#" title="Supprimer"><i class="fas fa-times"></i></a>
                 </span>
-                    <a href="#" title="Ajouter une plage horaire"><i class="fas fa-plus"></i></a>
-                </td>
-            </tr>
+            <a href="#" title="Ajouter une plage horaire"><i class="fas fa-plus"></i></a>
+        </td>
+    </tr>
 
-        </tbody>
-    </table>
+    </tbody>
+</table>
 
-    <hr/>
+<hr/>
 
-    <h1>Mes compétences</h1>
+<h1>Mes compétences</h1>
 
-    <div class="row my-3">
-        <div class="col-12">
+<div class="row my-3">
+    <div class="col-12">
 
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label"></label>
-                </div>
-
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox">
+            <label class="form-check-label"></label>
         </div>
+
     </div>
+</div>
 
 
