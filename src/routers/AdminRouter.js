@@ -3,11 +3,21 @@ import Backbone from "backbone";
 // Collections
 import Juniors from "collections/Juniors";
 import Seniors from "collections/Seniors";
+import Interventions from "collections/Interventions";
+import Formations from "collections/Formations";
+import Comptes from "collections/Comptes";
 
 // Views
 import Dashboard from "views/Dashboard";
 import JuniorsList from "views/JuniorsList";
 import SeniorsList from "views/SeniorsList";
+import InterventionsList from "views/InterventionsList";
+import FormationsList from "views/FormationsList";
+import ComptesList from "views/ComptesList";
+
+// Template
+import juniorTmpl from "templates/pages/admin/junior/detail.handlebars";
+import seniorTmpl from "templates/pages/admin/senior/detail.handlebars";
 
 export default Backbone.Router.extend({
 
@@ -87,8 +97,8 @@ export default Backbone.Router.extend({
         $('#pageContent').html(list.render());
     },
 
-    junior: function () {
-        $('#pageContent').html("<h1>Junior</h1>");
+    junior: function (id) {
+        $('#pageContent').html(juniorTmpl);
     },
 
     seniors: function () {
@@ -101,11 +111,16 @@ export default Backbone.Router.extend({
     },
 
     senior: function () {
-        $('#pageContent').html("<h1>Senior</h1>");
+        $('#pageContent').html(seniorTmpl);
     },
 
     interventions: function () {
-        $('#pageContent').html("<h1>Interventions</h1>");
+        let interventions = new Interventions("interventions");
+        interventions.fetch();
+        let list = new InterventionsList({
+            collection: interventions
+        });
+        $('#pageContent').html(list.render());
     },
 
     intervention: function () {
@@ -113,7 +128,12 @@ export default Backbone.Router.extend({
     },
 
     formations: function () {
-        $('#pageContent').html("<h1>Formations</h1>");
+        let formations = new Formations("formations");
+        formations.fetch();
+        let list = new FormationsList({
+            collection: formations
+        });
+        $('#pageContent').html(list.render());
     },
 
     formation: function () {
