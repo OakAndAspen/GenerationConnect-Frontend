@@ -4,8 +4,8 @@ export default Backbone.Model.extend({
 
     initialize: function (attrs, options) {
         this.coordonnees = {
-            prenom: this.prenom,
-            nom: this.nom,
+            prenom: attrs.prenom,
+            nom: attrs.nom,
             noMobile: attrs.noMobile,
         };
         this.plagesHoraire = attrs.plagesHoraire;

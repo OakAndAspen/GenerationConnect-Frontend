@@ -89,7 +89,7 @@ export default Backbone.Router.extend({
         }).render());
 
         let plagesHoraire = new PlagesHoraire({
-            localStorage: "plagesHoraire"
+            localStorage: 'plagesHoraire'
         });
 
         plagesHoraire.create({
@@ -102,7 +102,7 @@ export default Backbone.Router.extend({
             heureDebut: "10:00",
             heureFin: "12:00"
         });
-
+        plagesHoraire.fetch();
         let junior = new Junior({
             prenom: "Juan",
             nom: "Moreno",

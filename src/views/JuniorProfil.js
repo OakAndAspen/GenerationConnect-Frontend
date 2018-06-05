@@ -18,6 +18,8 @@ export default Backbone.View.extend({
         console.log(this.model.plagesHoraire.toJSON());
         console.log("Compétences :");
         console.log(this.model.competences);
+        console.log("Coordonnees");
+        console.log(this.model.coordonnees);
         return this.$el;
     }
 });
