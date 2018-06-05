@@ -1,7 +1,8 @@
+<h1>{{prenom}} {{nom}}</h1>
 <h1>Mes coordonnées</h1>
 <div class="row">
     <div class="col-12">
-        <input type="text" class="form-control mb-2" placeholder="N° de portable">
+        <input type="text" class="form-control mb-2" placeholder="N° de téléphone" value="{{noMobile}}">
     </div>
     <div class="col-md-6">
         <b>Adresse de facturation</b>
@@ -26,9 +27,9 @@
 <h1>Mes disponibilités</h1>
 <table id="disponibilites" class="table table-striped">
     <tbody>
-    {% for d in ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'] %}
+    {{#each days}}
     <tr>
-        <th></th>
+        <th>{{this}}</th>
         <td>
                 <span class="badge badge-warning">
                     8:00 - 10:00
@@ -37,7 +38,7 @@
             <a href="#" title="Ajouter une plage horaire"><i class="fas fa-plus"></i></a>
         </td>
     </tr>
-
+    {{/each}}
     </tbody>
 </table>
 
@@ -47,13 +48,14 @@
 
 <div class="row my-3">
     <div class="col-12">
-
+        {{#each competences}}
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox">
-            <label class="form-check-label"></label>
+            <label class="form-check-label">{{this}}</label>
         </div>
-
+        {{/each}}
     </div>
 </div>
+
 
 

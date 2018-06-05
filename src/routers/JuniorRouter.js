@@ -2,6 +2,8 @@ import Backbone from "backbone";
 import Dashboard from "../views/Dashboard";
 import Interventions from "../collections/Interventions";
 import InterventionsList from "../views/InterventionsList";
+import JuniorProfil from "../views/JuniorProfil";
+import Junior from "../models/Junior";
 
 export default Backbone.Router.extend({
 
@@ -40,7 +42,10 @@ export default Backbone.Router.extend({
     },
 
     profil: function() {
-        $('#pageContent').html("<h1>Profil</h1>");
+        let junior = new Junior({prenom: "Juan",nom: "Moreno",noMobile: "0786488797"});
+        let juniorProfil = new JuniorProfil({model: junior});
+
+        $('#pageContent').html(juniorProfil.render());
     },
 
     interventions: function() {
