@@ -10,6 +10,8 @@ import InterventionsList from "views/InterventionsList";
 import JuniorProfil from "views/JuniorProfil";
 import JuniorSchema from "views/JuniorSchema";
 import Breadcrumbs from "views/Breadcrumbs";
+import JuniorSchema from "../views/JuniorSchema";
+import PlagesHoraire from "../collections/PlagesHoraire";
 
 export default Backbone.Router.extend({
 
@@ -87,6 +89,39 @@ export default Backbone.Router.extend({
         }).render());
 
         let junior = new Junior({prenom: "Juan",nom: "Moreno",noMobile: "0786488797"});
+
+        let plagesHoraire = new PlagesHoraire({
+            localStorage: "plagesHoraire"
+        });
+        let tabPlages = [
+                    {
+                        jour: "Lundi",
+                        heureDebut: "10:00",
+                        heureFin: "12:00"
+                    },
+                    {
+                        jour: "Lundi",
+                        heureDebut: "15:00",
+                        heureFin: "17:00"
+                    },
+                    {
+                        jour: "Mardi",
+                        heureDebut: "10:00",
+                        heureFin: "12:00"
+                    },
+                    {
+                        jour: "Jeudi",
+                        heureDebut: "10:00",
+                        heureFin: "12:00"
+                    }
+                    ];
+        plagesHoraire.add(tabPlages);
+        let junior = new Junior({
+            prenom: "Juan",
+            nom: "Moreno",
+            noMobile: "0786488797",
+            plagesHoraire: plagesHoraire});
+        console.log(junior.toJSON());
         let juniorProfil = new JuniorProfil({model: junior});
 
         $('#pageContent').html(juniorProfil.render());

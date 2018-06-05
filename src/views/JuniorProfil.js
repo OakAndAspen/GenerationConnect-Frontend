@@ -9,7 +9,16 @@ export default Backbone.View.extend({
     },
 
     render: function () {
-        this.$el.html(this.template(this.model.attributes));
+        this.$el.html(this.template({
+            plagesHoraire: this.model.plagesHoraire,
+            coordonnees: {
+                prenom: this.model.prenom,
+                nom: this.model.nom,
+                noMobile: this.model.noMobile
+            },
+            competences: this.model.competences
+        }));
+        console.log(this.model.attributes);
         return this.$el;
     }
 });
