@@ -4,6 +4,7 @@ import Interventions from "../collections/Interventions";
 import InterventionsList from "../views/InterventionsList";
 import JuniorProfil from "../views/JuniorProfil";
 import Junior from "../models/Junior";
+import JuniorSchema from "../views/JuniorSchema";
 
 export default Backbone.Router.extend({
 
@@ -38,7 +39,10 @@ export default Backbone.Router.extend({
     },
 
     schema: function() {
-        $('#pageContent').html("<h1>schema</h1>");
+        let junior = new Junior({prenom: "Juan",nom: "Moreno",noMobile: "0786488797"});
+        let juniorSchema = new JuniorSchema({model: junior});
+
+        $('#pageContent').html(juniorSchema.render());
     },
 
     profil: function() {

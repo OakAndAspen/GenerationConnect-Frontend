@@ -4,6 +4,7 @@ import JuniorProfil from "../views/JuniorProfil";
 import Junior from "../models/Junior";
 import Senior from "../models/Senior";
 import SeniorProfil from "../views/SeniorProfil";
+import SeniorSuggestion from "../views/SeniorSuggestion";
 
 export default Backbone.Router.extend({
 
@@ -38,7 +39,10 @@ export default Backbone.Router.extend({
     },
 
     suggestion: function(){
-        $('#pageContent').html("<h1>suggestion</h1>");
+        let senior = new Senior({prenom: "Juan",nom: "Moreno",noMTel: "0786488797"});
+        let seniorSuggestion = new SeniorSuggestion({model: senior});
+
+        $('#pageContent').html(seniorSuggestion.render());
     },
 
     profil: function() {
