@@ -1,6 +1,6 @@
 import Backbone from "backbone";
 import {LocalStorage} from "backbone.localstorage";
-import PlageHoraire from "../models/PlageHoraire";
+import PlageHoraire from "models/PlageHoraire";
 
 export default Backbone.Collection.extend({
     model: PlageHoraire,

@@ -10,15 +10,14 @@ export default Backbone.View.extend({
 
     render: function () {
         this.$el.html(this.template({
-            plagesHoraire: this.model.plagesHoraire,
-            coordonnees: {
-                prenom: this.model.prenom,
-                nom: this.model.nom,
-                noMobile: this.model.noMobile
-            },
+            plagesHoraire: this.model.plagesHoraire.toJSON(),
+            coordonnees: this.model.coordonnees,
             competences: this.model.competences
         }));
-        console.log(this.model.attributes);
+        console.log("Plages horaires :");
+        console.log(this.model.plagesHoraire.toJSON());
+        console.log("Compétences :");
+        console.log(this.model.competences);
         return this.$el;
     }
 });

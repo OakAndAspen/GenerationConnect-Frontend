@@ -91,35 +91,25 @@ export default Backbone.Router.extend({
         let plagesHoraire = new PlagesHoraire({
             localStorage: "plagesHoraire"
         });
-        let tabPlages = [
-                    {
-                        jour: "Lundi",
-                        heureDebut: "10:00",
-                        heureFin: "12:00"
-                    },
-                    {
-                        jour: "Lundi",
-                        heureDebut: "15:00",
-                        heureFin: "17:00"
-                    },
-                    {
-                        jour: "Mardi",
-                        heureDebut: "10:00",
-                        heureFin: "12:00"
-                    },
-                    {
-                        jour: "Jeudi",
-                        heureDebut: "10:00",
-                        heureFin: "12:00"
-                    }
-                    ];
-        plagesHoraire.add(tabPlages);
+
+        plagesHoraire.create({
+            jour: "Lundi",
+            heureDebut: "15:00",
+            heureFin: "17:00"
+        });
+        plagesHoraire.create({
+            jour: "Mardi",
+            heureDebut: "10:00",
+            heureFin: "12:00"
+        });
+
         let junior = new Junior({
             prenom: "Juan",
             nom: "Moreno",
             noMobile: "0786488797",
-            plagesHoraire: plagesHoraire});
-        console.log(junior.toJSON());
+            plagesHoraire: plagesHoraire
+        });
+
         let juniorProfil = new JuniorProfil({model: junior});
 
         $('#pageContent').html(juniorProfil.render());
