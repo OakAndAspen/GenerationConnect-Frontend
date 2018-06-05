@@ -1,10 +1,15 @@
 import Backbone from "backbone";
-import Dashboard from "../views/Dashboard";
-import JuniorProfil from "../views/JuniorProfil";
-import Junior from "../models/Junior";
-import Senior from "../models/Senior";
-import SeniorProfil from "../views/SeniorProfil";
-import SeniorSuggestion from "../views/SeniorSuggestion";
+
+// Models
+import Junior from "models/Junior";
+import Senior from "models/Senior";
+
+// Views
+import Dashboard from "views/Dashboard";
+import JuniorProfil from "views/JuniorProfil";
+import SeniorProfil from "views/SeniorProfil";
+import SeniorSuggestion from "views/SeniorSuggestion";
+import Breadcrumbs from "views/Breadcrumbs";
 
 export default Backbone.Router.extend({
 
@@ -16,6 +21,15 @@ export default Backbone.Router.extend({
     },
 
     dashboard: function() {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "seniors",
+                    title: "Tableau de bord"
+                }
+            ]
+        }).render());
+
         let links = [
             {
                 'title': 'Mes interventions',
@@ -39,6 +53,18 @@ export default Backbone.Router.extend({
     },
 
     suggestion: function(){
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "seniors",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "seniors/suggestion",
+                    title: "Faire une suggestion"
+                }
+            ]
+        }).render());
         let senior = new Senior({prenom: "Juan",nom: "Moreno",noMTel: "0786488797"});
         let seniorSuggestion = new SeniorSuggestion({model: senior});
 
@@ -46,6 +72,19 @@ export default Backbone.Router.extend({
     },
 
     profil: function() {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "seniors",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "seniors/profil",
+                    title: "Profil"
+                }
+            ]
+        }).render());
+
         let senior = new Senior({prenom: "Juan",nom: "Moreno",noMTel: "0786488797"});
         let seniorProfil = new SeniorProfil({model: senior});
 
@@ -53,6 +92,18 @@ export default Backbone.Router.extend({
     },
 
     interventions: function() {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "seniors",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "seniors/interventions",
+                    title: "Interventions"
+                }
+            ]
+        }).render());
         $('#pageContent').html("<h1>Interventions</h1>");
     }
 });

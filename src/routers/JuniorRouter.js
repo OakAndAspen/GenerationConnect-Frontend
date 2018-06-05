@@ -1,10 +1,15 @@
 import Backbone from "backbone";
-import Dashboard from "../views/Dashboard";
-import Interventions from "../collections/Interventions";
-import InterventionsList from "../views/InterventionsList";
-import JuniorProfil from "../views/JuniorProfil";
+
+// Models
 import Junior from "../models/Junior";
-import JuniorSchema from "../views/JuniorSchema";
+import Interventions from "collections/Interventions";
+
+// Views
+import Dashboard from "views/Dashboard";
+import InterventionsList from "views/InterventionsList";
+import JuniorProfil from "views/JuniorProfil";
+import JuniorSchema from "views/JuniorSchema";
+import Breadcrumbs from "views/Breadcrumbs";
 
 export default Backbone.Router.extend({
 
@@ -16,6 +21,15 @@ export default Backbone.Router.extend({
     },
 
     dashboard: function() {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "juniors",
+                    title: "Tableau de bord"
+                }
+            ]
+        }).render());
+
         let links = [
             {
                 'title': 'Mes interventions',
@@ -39,6 +53,19 @@ export default Backbone.Router.extend({
     },
 
     schema: function() {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "juniors",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "juniors/schema",
+                    title: "Schéma d'intervention"
+                }
+            ]
+        }).render());
+
         let junior = new Junior({prenom: "Juan",nom: "Moreno",noMobile: "0786488797"});
         let juniorSchema = new JuniorSchema({model: junior});
 
@@ -46,6 +73,19 @@ export default Backbone.Router.extend({
     },
 
     profil: function() {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "juniors",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "juniors/profil",
+                    title: "Profil"
+                }
+            ]
+        }).render());
+
         let junior = new Junior({prenom: "Juan",nom: "Moreno",noMobile: "0786488797"});
         let juniorProfil = new JuniorProfil({model: junior});
 
@@ -53,6 +93,19 @@ export default Backbone.Router.extend({
     },
 
     interventions: function() {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "juniors",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "juniors/interventions",
+                    title: "Interventions"
+                }
+            ]
+        }).render());
+
         let interventions = new Interventions();
         interventions.fetch();
         let list = new InterventionsList({
