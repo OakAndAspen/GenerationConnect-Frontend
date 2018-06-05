@@ -3,15 +3,15 @@ import Backbone from "backbone";
 // Models
 import Junior from "../models/Junior";
 import Interventions from "collections/Interventions";
+import PlagesHoraire from "collections/PlagesHoraire";
 
 // Views
 import Dashboard from "views/Dashboard";
 import InterventionsList from "views/InterventionsList";
 import JuniorProfil from "views/JuniorProfil";
-import JuniorSchema from "views/JuniorSchema";
 import Breadcrumbs from "views/Breadcrumbs";
-import JuniorSchema from "../views/JuniorSchema";
-import PlagesHoraire from "../collections/PlagesHoraire";
+import JuniorSchema from "views/JuniorSchema";
+
 
 export default Backbone.Router.extend({
 
@@ -87,8 +87,6 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-
-        let junior = new Junior({prenom: "Juan",nom: "Moreno",noMobile: "0786488797"});
 
         let plagesHoraire = new PlagesHoraire({
             localStorage: "plagesHoraire"
