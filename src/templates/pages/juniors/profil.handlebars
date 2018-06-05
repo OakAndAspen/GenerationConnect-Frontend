@@ -1,8 +1,8 @@
-<h1>{{prenom}} {{nom}}</h1>
+<h1>{{coordonnees.prenom}} {{coordonnees.nom}}</h1>
 <h1>Mes coordonnées</h1>
 <div class="row">
     <div class="col-12">
-        <input type="text" class="form-control mb-2" placeholder="N° de téléphone" value="{{noMobile}}">
+        <input type="text" class="form-control mb-2" placeholder="N° de téléphone" value="{{coordonnees.noMobile}}">
     </div>
     <div class="col-md-6">
         <b>Adresse de facturation</b>
@@ -27,12 +27,12 @@
 <h1>Mes disponibilités</h1>
 <table id="disponibilites" class="table table-striped">
     <tbody>
-    {{#each days}}
+    {{#each plagesHoraire}}
     <tr>
-        <th>{{this}}</th>
+        <th>{{jour}}</th>
         <td>
                 <span class="badge badge-warning">
-                    8:00 - 10:00
+                    {{heureDebut}} - {{heureFin}}
                     <a href="#" title="Supprimer"><i class="fas fa-times"></i></a>
                 </span>
             <a href="#" title="Ajouter une plage horaire"><i class="fas fa-plus"></i></a>
