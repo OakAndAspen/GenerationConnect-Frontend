@@ -1,4 +1,5 @@
 import Backbone from "backbone";
+import NavBar from "views/NavBar";
 
 export default Backbone.View.extend({
 
@@ -7,6 +8,10 @@ export default Backbone.View.extend({
     initialize: function (attrs, options) {
         this.routers = attrs.routers;
         this.redirect(attrs.landingPage);
+
+        // Affichage de la barre de navigation
+        let navBar = new NavBar();
+        $('#pageHeader').html(navBar.render());
     },
 
     events: {

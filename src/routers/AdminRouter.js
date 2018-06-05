@@ -9,6 +9,8 @@ import Comptes from "collections/Comptes";
 
 // Views
 import Dashboard from "views/Dashboard";
+import Breadcrumbs from "views/Breadcrumbs";
+
 import JuniorsList from "views/JuniorsList";
 import SeniorsList from "views/SeniorsList";
 import InterventionsList from "views/InterventionsList";
@@ -18,6 +20,7 @@ import ComptesList from "views/ComptesList";
 // Template
 import juniorTmpl from "templates/pages/admin/junior/detail.handlebars";
 import seniorTmpl from "templates/pages/admin/senior/detail.handlebars";
+
 
 export default Backbone.Router.extend({
 
@@ -40,6 +43,16 @@ export default Backbone.Router.extend({
     },
 
     dashboard: function () {
+
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                }
+            ]
+        }).render());
+
         let links = [
             {
                 'title': 'Juniors',
@@ -89,19 +102,63 @@ export default Backbone.Router.extend({
     },
 
     juniors: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/juniors",
+                    title: "Juniors"
+                }
+            ]
+        }).render());
+
         let juniors = new Juniors("juniors");
         juniors.fetch();
         let list = new JuniorsList({
-            collection: juniors
+            collection: juniors,
         });
         $('#pageContent').html(list.render());
+
     },
 
     junior: function (id) {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/juniors",
+                    title: "Juniors"
+                },
+                {
+                    target: "admin/juniors/1",
+                    title: "Jean Martin"
+                }
+            ]
+        }).render());
+
         $('#pageContent').html(juniorTmpl);
     },
 
     seniors: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/seniors",
+                    title: "Seniors"
+                }
+            ]
+        }).render());
+
         let seniors = new Seniors("seniors");
         seniors.fetch();
         let list = new SeniorsList({
@@ -111,10 +168,40 @@ export default Backbone.Router.extend({
     },
 
     senior: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/seniors",
+                    title: "Seniors"
+                },
+                {
+                    target: "admin/seniors/1",
+                    title: "Jean Martin"
+                }
+            ]
+        }).render());
+
         $('#pageContent').html(seniorTmpl);
     },
 
     interventions: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/interventions",
+                    title: "Interventions"
+                }
+            ]
+        }).render());
+
         let interventions = new Interventions("interventions");
         interventions.fetch();
         let list = new InterventionsList({
@@ -124,10 +211,40 @@ export default Backbone.Router.extend({
     },
 
     intervention: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/interventions",
+                    title: "Interventions"
+                },
+                {
+                    target: "admin/interventions/1",
+                    title: "N° 237668"
+                }
+            ]
+        }).render());
+
         $('#pageContent').html("<h1>Intervention</h1>");
     },
 
     formations: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/formations",
+                    title: "Formations"
+                }
+            ]
+        }).render());
+
         let formations = new Formations("formations");
         formations.fetch();
         let list = new FormationsList({
@@ -137,30 +254,126 @@ export default Backbone.Router.extend({
     },
 
     formation: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/formations",
+                    title: "Formations"
+                },
+                {
+                    target: "admin/formations/1",
+                    title: "N°272859"
+                }
+            ]
+        }).render());
         $('#pageContent').html("<h1>Formation</h1>");
     },
 
     pages: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/pages",
+                    title: "Pages"
+                }
+            ]
+        }).render());
         $('#pageContent').html("<h1>Pages</h1>");
     },
 
     suggestions: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/suggestions",
+                    title: "Suggestions"
+                }
+            ]
+        }).render());
         $('#pageContent').html("<h1>Suggestions</h1>");
     },
 
     postulations: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/postulations",
+                    title: "Postulations"
+                }
+            ]
+        }).render());
         $('#pageContent').html("<h1>Postulations</h1>");
     },
 
     postulation: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/postulations",
+                    title: "Postulations"
+                },
+                {
+                    target: "admin/postulations/1",
+                    title: "Jean Martin"
+                }
+            ]
+        }).render());
         $('#pageContent').html("<h1>Postulation</h1>");
     },
 
     comptes: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/comptes",
+                    title: "Comptes admin"
+                }
+            ]
+        }).render());
         $('#pageContent').html("<h1>Comptes</h1>");
     },
 
     compte: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/comptes",
+                    title: "Comptes admin"
+                },
+                {
+                    target: "admin/comptes/1",
+                    title: "Jean Martin"
+                }
+            ]
+        }).render());
         $('#pageContent').html("<h1>Compte</h1>");
     }
 });

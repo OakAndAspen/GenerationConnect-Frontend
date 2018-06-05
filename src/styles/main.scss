@@ -66,9 +66,18 @@ body {
   }
 }
 
-#breadcrumb, #breadcrumb a {
+#pageBreadcrumbs {
   color: black;
   font-variant: small-caps;
+
+  li:not(:last-child):hover span {
+    text-decoration: underline;
+  }
+
+  li:last-child span {
+    color: $grey;
+    cursor: default;
+  }
 }
 
 .dashboard {
