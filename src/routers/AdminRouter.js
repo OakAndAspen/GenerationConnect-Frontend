@@ -17,7 +17,7 @@ import InterventionsList from "views/InterventionsList";
 import FormationsList from "views/FormationsList";
 import ComptesList from "views/ComptesList";
 
-// Template
+// Templates
 import juniorTmpl from "templates/pages/admin/junior/detail.handlebars";
 import seniorTmpl from "templates/pages/admin/senior/detail.handlebars";
 

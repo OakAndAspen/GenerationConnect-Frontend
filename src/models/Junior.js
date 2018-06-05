@@ -1,21 +1,23 @@
 import Backbone from "backbone";
 
 export default Backbone.Model.extend({
-    defaults: {
-            competences: ["Informatique hardware",
-            "Informatique soft",
-            "Téléphonie hardware",
-            "Téléphonie soft",
-            "Appels vidéos",
-            "Mise à jour programmes",
-            "Services en ligne"]
-    },
+
     initialize: function (attrs, options) {
-        this.prenom = attrs.prenom;
-        this.nom = attrs.nom;
-        this.noMobile = attrs.noMobile;
-        this.plagesHoraire = attrs.plagesHoraire.toJSON();
-        console.log(this.plagesHoraire);
+        this.coordonnees = {
+            prenom: this.prenom,
+            nom: this.nom,
+            noMobile: attrs.noMobile,
+        };
+        this.plagesHoraire = attrs.plagesHoraire;
+        this.competences = [
+            {titre: "Informatique hardware"},
+            {titre: "Informatique soft"},
+            {titre: "Téléphonie hardware"},
+            {titre: "Téléphonie soft"},
+            {titre: "Appels vidéos"},
+            {titre: "Mise à jour programmes"},
+            {titre: "Services en ligne"}
+        ];
     },
     validate: function (attrs, options) {
 
