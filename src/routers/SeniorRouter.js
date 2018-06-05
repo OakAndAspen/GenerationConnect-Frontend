@@ -6,30 +6,35 @@ export default Backbone.Router.extend({
     routes: {
         "seniors": "dashboard",
         "seniors/profil": "profil",
-        "seniors/interventions": "interventions"
+        "seniors/interventions": "interventions",
+        "seniors/suggestion": "suggestion"
     },
 
     dashboard: function() {
         let links = [
             {
                 'title': 'Mes interventions',
-                'path':'senior/interventions',
+                'path':'seniors/interventions',
                 'icon': 'fas fa-hands-helping'
             },
             {
                 'title': 'Mon profil',
-                'path': 'senior/profil',
+                'path': 'seniors/profil',
                 'icon': 'fas fa-user'
             },
             {
                 'title': 'Faire une suggestion',
-                'path': 'senior/suggestion',
+                'path': 'seniors/suggestion',
                 'icon': 'fas fa-lightbulb'
             }];
         let dashboard = new Dashboard({
             links: links
         });
         $('#pageContent').html(dashboard.render());
+    },
+
+    suggestion: function(){
+        $('#pageContent').html("<h1>suggestion</h1>");
     },
 
     profil: function() {
