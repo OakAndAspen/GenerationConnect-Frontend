@@ -1,12 +1,3 @@
-{% extends "base.twig" %}
-
-{% block breadcrumbs %}
-    <li class="breadcrumb-item"><a href="{{ path('adm-dashboard') }}">Tableau de bord</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Seniors</li>
-{% endblock %}
-
-{% block content %}
-
     <div class="row mb-3">
         <div class="col-12 form-inline">
             <select class="form-control">
@@ -25,29 +16,18 @@
                 <tr>
                     <th>N°</th>
                     <th>Prénom & Nom</th>
-                    <th>Adresse</th>
-                    <th>Localité</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
+                {{#each seniors}}
                 <tr>
-                    <td><a href="{{ path('adm-senior') }}">28374</a></td>
-                    <td>Yann Gourdin</td>
-                    <td>Rue Bleue 3</td>
-                    <td>1034 Romont</td>
+                    <td><a href="">{{id}}</a></td>
+                    <td>{{prenom}} {{nom}}</td>
                     <td><a href="#" title="Envoyer un email"><i class="fas fa-envelope"></i></a></td>
                 </tr>
-                <tr>
-                    <td><a href="{{ path('adm-senior') }}">28374</a></td>
-                    <td>Hugo Bert</td>
-                    <td>Rue Verte 6</td>
-                    <td>1034 Chardonne</td>
-                    <td><a href="#" title="Envoyer un email"><i class="fas fa-envelope"></i></a></td>
-                </tr>
+                {{/each}}
                 </tbody>
             </table>
         </div>
     </div>
-
-{% endblock %}

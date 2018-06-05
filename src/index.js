@@ -13,18 +13,24 @@ import SeniorRouter from "routers/SeniorRouter";
 import App from "views/App";
 
 // -------------- Page load -------------------
-let hash = location.hash;
 
 // Routing
 Backbone.history.start();
 
+// Redirection vers la bonne page
+/* TODO: Ne fonctionne pas. Passe par la fonction redirect et trouve la route,
+mais ne passe pas par la fonction dans le router */
+
+let hash = location.hash.substring(1);
+if(!hash) hash = 'accueil';
+
+// Création de la vue "App"
 let app = new App({
     routers: {
         publicRouter: new PublicRouter(),
         adminRouter: new AdminRouter(),
         juniorRouter: new JuniorRouter(),
         seniorRouter: new SeniorRouter()
-    }
+    },
+    landingPage: hash
 });
-
-//app.redirect()

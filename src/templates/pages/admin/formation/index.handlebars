@@ -1,11 +1,13 @@
-{% extends "base.twig" %}
-
-{% block breadcrumbs %}
-    <li class="breadcrumb-item"><a href="{{ path('adm-dashboard') }}">Tableau de bord</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Formations</li>
-{% endblock %}
-
-{% block content %}
+    <div class="row mb-3">
+        <div class="col-12 form-inline">
+            <select class="form-control">
+                <option>- Statut -</option>
+                <option>Actif</option>
+                <option>Postulation en cours</option>
+                <option>Archivé</option>
+            </select>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-12">
@@ -13,27 +15,19 @@
                 <thead>
                 <tr>
                     <th>N°</th>
-                    <th>Titre</th>
-                    <th>Date</th>
-                    <th>Heure</th>
+                    <th>Prénom & Nom</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
+                {{#each formations}}
                 <tr>
-                    <td><a href="{{ path('adm-formation') }}">28374</a></td>
-                    <th>Premiers secours</th>
-                    <th>24.07.2018</th>
-                    <th>14:00-17:00</th>
+                    <td><a href="">{{id}}</a></td>
+                    <td>{{prenom}} {{nom}}</td>
+                    <td><a href="#" title="Envoyer un email"><i class="fas fa-envelope"></i></a></td>
                 </tr>
-                <tr>
-                    <td><a href="{{ path('adm-formation') }}">28374</a></td>
-                    <th>Premiers secours</th>
-                    <th>24.07.2018</th>
-                    <th>14:00-17:00</th>
-                </tr>
+                {{/each}}
                 </tbody>
             </table>
         </div>
     </div>
-
-{% endblock %}

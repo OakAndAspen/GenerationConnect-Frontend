@@ -6,22 +6,24 @@ export default Backbone.View.extend({
 
     initialize: function (attrs, options) {
         this.routers = attrs.routers;
-        this.routers.publicRouter.navigate("accueil", true); // TEMP -> gérer le rechargement de la page
+        this.redirect(attrs.landingPage);
     },
 
     events: {
-        'click [data-target]': 'redirect'
+        'click [data-target]': 'linkTo'
     },
 
-    redirect: function (event) {
+    linkTo: function (event) {
         let page = $(event.target).attr('data-target');
-        console.log("Looking for: "+ page);
+        this.redirect(page);
+    },
 
+    redirect: function (page) {
         for (let router in this.routers) {
             for (let route in this.routers[router].routes) {
                 if (route.localeCompare(page) == 0) {
+                    console.log(router + " : " + page);
                     this.routers[router].navigate(page, true);
-                    console.log('Found it in: ' + router);
                     break;
                 }
             }

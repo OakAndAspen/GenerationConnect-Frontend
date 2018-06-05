@@ -4,5 +4,7 @@ import {LocalStorage} from "backbone.localstorage";
 
 export default Backbone.Collection.extend({
     model: Senior,
-    localStorage: new LocalStorage('seniors')
+    initialize: function(attrs, options) {
+        this.localStorage =  new LocalStorage(attrs.localStorage)
+    }
 });
