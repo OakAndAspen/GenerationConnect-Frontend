@@ -88,6 +88,8 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
+        //--------------------------------------
+
         let plagesHoraire = new PlagesHoraire({
             localStorage: 'plagesHoraire'
         });

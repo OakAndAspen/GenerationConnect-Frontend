@@ -10,16 +10,24 @@ export default Backbone.View.extend({
 
     render: function () {
         this.$el.html(this.template({
-            plagesHoraire: this.model.plagesHoraire.toJSON(),
-            coordonnees: this.model.coordonnees,
-            competences: this.model.competences
+            id: this.model.id,
+            prenom: this.model.prenom,
+            nom: this.model.nom,
+            telephone: this.model.telephone,
+            email: this.model.email,
+            adresseHabitation: this.model.adresseHabitation.toJSON(),
+            limitetempstransport: this.model.limitetempstransport,
+            status: this.model.status,
+            adresseDepart: this.model.adresseDepart,
+            adresseFacturation: this.model.adresseFacturation,
+            noAVS: this.model.noAVS,
+            banqueNom: this.model.banqueNom,
+            banqueBIC: this.model.banqueBIC,
+            banqueIBAN: this.model.banqueIBAN,
+            matieres: this.model.matieres.toJSON(),
+            plagesHoraire: this.model.plagesHoraire.toJSON()
         }));
-        console.log("Plages horaires :");
-        console.log(this.model.plagesHoraire.toJSON());
-        console.log("Compétences :");
-        console.log(this.model.competences);
-        console.log("Coordonnees");
-        console.log(this.model.coordonnees);
+
         return this.$el;
     }
 });

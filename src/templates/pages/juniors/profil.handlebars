@@ -1,25 +1,64 @@
-<h1>{{coordonnees.prenom}} {{coordonnees.nom}}</h1>
+<h1>{{prenom}} {{nom}}</h1>
 <h1>Mes coordonnées</h1>
-<div class="row">
+<div class="row" data-id="{{id}}">
     <div class="col-12">
-        <input type="text" class="form-control mb-2" placeholder="N° de téléphone" value="{{coordonnees.noMobile}}">
+        <input type="text" class="form-control mb-2" placeholder="N° de téléphone" value="{{telephone}}">
     </div>
-    <div class="col-md-6">
+    <div class="col-10">
+        <input type="text" class="form-control mb-2" placeholder="Adresse mail" value="{{mail}}">
+    </div>
+    <div class="col-2">
+        <input type="text" class="form-control mb-2" placeholder="Status" value="{{status}}">
+    </div>
+    <div class="col-md-12" data-id="{{id}}">
+        <input type="text" class="form-control mb-2" placeholder="N° AVS" value="{{noAVS}}">
+        <b>Informations bancaires</b>
+        <input type="text" class="form-control mb-2" placeholder="Nom" value="{{banqueNom}}">
+        <input type="text" class="form-control mb-2" placeholder="BIC" value="{{banqueBIC}}">
+        <input type="text" class="form-control mb-2" placeholder="IBAN" value="{{banqueIBAN}}">
+    </div>
+    {{#with adresseFacturation}}
+    <div class="col-md-4" data-id="{{id}}">
         <b>Adresse de facturation</b>
-        <input type="text" class="form-control mb-2" placeholder="Adresse">
-        <input type="text" class="form-control mb-2" placeholder="NPA">
-        <input type="text" class="form-control mb-2" placeholder="Localité">
+        <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
+        <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
+        <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
+        <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
+        <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
+        <input type="text" class="form-control mb-2" placeholder="Pays" value="{{pays}}">
     </div>
-    <div class="col-md-6">
-        <b>Adresse d'habitation courante (pour la localisation)</b>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox">
-            <label class="form-check-label">Même adresse que pour la facturation</label>
+    {{/with}}
+    {{#with adresseDepart}}
+        <div class="col-md-4" data-id="{{id}}">
+            <b>Adresse de départ (pour la localisation)</b>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="depart">
+                <label class="form-check-label" for="depart">Même adresse d'habitation courante</label>
+            </div>
+            <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
+            <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
+            <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
+            <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
+            <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
+            <input type="text" class="form-control mb-2" placeholder="Pays" value="{{pays}}">
         </div>
-        <input type="text" class="form-control mb-2" placeholder="Adresse">
-        <input type="text" class="form-control mb-2" placeholder="NPA">
-        <input type="text" class="form-control mb-2" placeholder="Localité">
+    {{/with}}
+    {{#with adresseHabitation}}
+    <div class="col-md-4" data-id="{{id}}">
+        <b>Adresse d'habitation courante</b>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="habitation">
+            <label class="form-check-label" for="habitation">Même adresse que pour la facturation</label>
+        </div>
+        <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
+        <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
+        <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
+        <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
+        <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
+        <input type="text" class="form-control mb-2" placeholder="Pays" value="{{pays}}">
     </div>
+    {{/with}}
+
 </div>
 
 <hr/>
@@ -48,12 +87,19 @@
 
 <div class="row my-3">
     <div class="col-12">
-        {{#each competences}}
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox">
-            <label class="form-check-label">{{titre}}</label>
-        </div>
+    <ul class="list-group">
+        {{#each matieres}}
+            <li class="list-group-item" data-id="{{id}}">{{nom}}</li>
+            {{#each sujets}}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="{{selected}}" data-id="{{id}}" id="sujet">
+                    <label class="form-check-label" for="sujet">
+                        {{nom}}
+                    </label>
+                </div>
+            {{/each}}
         {{/each}}
+    </ul>
     </div>
 </div>
 
