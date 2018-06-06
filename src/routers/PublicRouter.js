@@ -1,16 +1,16 @@
 import Backbone from "backbone";
 
 // Templates
-import accueilTmpl from "templates/pages/public/accueil.handlebars";
-import juniorsTmpl from "templates/pages/public/juniors.handlebars";
-import seniorsTmpl from "templates/pages/public/seniors.handlebars";
-import aideTmpl from "templates/pages/public/aide.handlebars";
+import accueilTmpl from "templates/pages/accueil.handlebars";
+import juniorsTmpl from "templates/pages/infosJuniors.handlebars";
+import seniorsTmpl from "templates/pages/infosSeniors.handlebars";
+import aideTmpl from "templates/pages/aide.handlebars";
 
 // Views
-import ContactForm from "views/ContactForm";
-import ApplicationForm from "views/ApplicationForm";
-import SubscriptionForm from "views/SubscriptionForm";
-import LoginForm from "views/LoginForm";
+import ContactForm from "views/forms/FormContact";
+import ApplicationForm from "views/forms/FormPostulation";
+import SubscriptionForm from "views/forms/FormSenior";
+import LoginForm from "views/forms/FormLogin";
 
 export default Backbone.Router.extend({
 
