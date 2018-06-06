@@ -115,7 +115,7 @@ export default Backbone.Router.extend({
         }).render());
 
         let collection = new Juniors({
-            localStorage: "juniors"
+
         });
         collection.fetch();
         let list = new ListJuniors({
