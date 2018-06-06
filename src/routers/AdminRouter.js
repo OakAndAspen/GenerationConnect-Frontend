@@ -8,18 +8,18 @@ import Formations from "collections/Formations";
 import Comptes from "collections/Comptes";
 
 // Views
-import Dashboard from "views/Dashboard";
-import Breadcrumbs from "views/Breadcrumbs";
+import Dashboard from "views/components/Dashboard";
+import Breadcrumbs from "views/components/Breadcrumbs";
 
-import JuniorsList from "views/JuniorsList";
-import SeniorsList from "views/SeniorsList";
-import InterventionsList from "views/InterventionsList";
-import FormationsList from "views/FormationsList";
-import ComptesList from "views/ComptesList";
+import JuniorsList from "views/lists/ListJuniors";
+import SeniorsList from "views/lists/ListSeniors";
+import InterventionsList from "views/lists/ListInterventions";
+import FormationsList from "views/lists/ListFormations";
+import ComptesList from "views/lists/ListComptes";
 
 // Templates
-import juniorTmpl from "templates/pages/admin/junior/detail.handlebars";
-import seniorTmpl from "templates/pages/admin/senior/detail.handlebars";
+import juniorTmpl from "templates/details/DetailJunior.handlebars";
+import seniorTmpl from "templates/details/DetailSenior.handlebars";
 
 
 export default Backbone.Router.extend({

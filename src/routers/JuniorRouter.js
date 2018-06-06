@@ -6,11 +6,11 @@ import Interventions from "collections/Interventions";
 import PlagesHoraire from "collections/PlagesHoraire";
 
 // Views
-import Dashboard from "views/Dashboard";
-import InterventionsList from "views/InterventionsList";
-import JuniorProfil from "views/JuniorProfil";
-import Breadcrumbs from "views/Breadcrumbs";
-import JuniorSchema from "views/JuniorSchema";
+import Dashboard from "views/components/Dashboard";
+import InterventionsList from "views/lists/ListInterventions";
+import JuniorProfil from "views/special/JuniorProfil";
+import Breadcrumbs from "views/components/Breadcrumbs";
+import JuniorSchema from "views/components/Page";
 
 
 export default Backbone.Router.extend({

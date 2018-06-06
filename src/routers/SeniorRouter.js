@@ -5,11 +5,11 @@ import Junior from "models/Junior";
 import Senior from "models/Senior";
 
 // Views
-import Dashboard from "views/Dashboard";
-import JuniorProfil from "views/JuniorProfil";
-import SeniorProfil from "views/SeniorProfil";
-import SeniorSuggestion from "views/SeniorSuggestion";
-import Breadcrumbs from "views/Breadcrumbs";
+import Dashboard from "views/components/Dashboard";
+import JuniorProfil from "views/special/JuniorProfil";
+import SeniorProfil from "views/special/SeniorProfil";
+import SeniorSuggestion from "views/forms/FormSuggestion";
+import Breadcrumbs from "views/components/Breadcrumbs";
 
 export default Backbone.Router.extend({
 

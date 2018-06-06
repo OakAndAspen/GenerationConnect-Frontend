@@ -1,5 +1,5 @@
 import Backbone from "backbone";
-import NavBar from "views/NavBar";
+import NavBar from "views/components/NavBar";
 
 export default Backbone.View.extend({
 
