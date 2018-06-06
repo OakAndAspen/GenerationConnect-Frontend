@@ -1,7 +1,7 @@
 import Backbone from "backbone";
 
 //test
-import junior from "/testsUnitaires";
+
 
 // Models
 import Junior from "../models/Junior";
@@ -14,6 +14,8 @@ import InterventionsList from "views/lists/ListInterventions";
 import JuniorProfil from "views/special/JuniorProfil";
 import Breadcrumbs from "views/components/Breadcrumbs";
 import JuniorSchema from "views/components/Page";
+import ListInterventions from "../views/lists/ListInterventions";
+import ListInterventionsJunior from "../views/lists/ListInterventionsJunior";
 
 
 export default Backbone.Router.extend({
@@ -34,6 +36,8 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
+
+
 
         let links = [
             {
@@ -71,7 +75,7 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let junior = new Junior({prenom: "Juan",nom: "Moreno",noMobile: "0786488797"});
+        let junior = new Junior();
         let juniorSchema = new JuniorSchema({model: junior});
 
         $('#pageContent').html(juniorSchema.render());
@@ -93,23 +97,52 @@ export default Backbone.Router.extend({
 
         //--------------------------------------
 
-        let plagesHoraire = new PlagesHoraire({
-            localStorage: 'plagesHoraire'
-        });
+        let junior = new Junior({
+            "id": 123,
+            "prenom": "juan",
+            "nom": "moreno",
+            "telephone": 786488797,
+            "email": "j.j.moreno994@gmail.com",
+            "adresseHabitation": {
+                "id": 122,
+                "ligne1": "Rue Orient Ville 10",
+                "ligne2": "",
+                "ligne3": "",
+                "ville": "Lausanne",
+                "pays": "Suisse",
+                "npa": 1005
+            },
+            "limitetempstransport": 60,
+            "status": "engagé",
+            "adresseDepart": {
+                "id": 122,
+                "ligne1": "Rue Louis Curttat 24",
+                "ligne2": "",
+                "ligne3": "",
+                "ville": "Lausanne",
+                "pays": "Suisse",
+                "npa": 1005
+            },
+            "adresseFacturation": {
+                "id": 122,
+                "ligne1": "Avenue de Morges 13",
+                "ligne2": "",
+                "ligne3": "",
+                "ville": "Lausanne",
+                "pays": "Suisse",
+                "npa": 1005
+            },
+            "noAVS": 745348611564224,
+            "banqueNom": "BCV",
+            "banqueBIC": 456,
+            "banqueIBAN": "CH435523825252645",
+            "matieres": [
 
-        plagesHoraire.create({
-            jour: "Lundi",
-            heureDebut: "15:00",
-            heureFin: "17:00"
-        });
-        plagesHoraire.create({
-            jour: "Mardi",
-            heureDebut: "10:00",
-            heureFin: "12:00"
-        });
-        plagesHoraire.fetch();
+            ],
+            "plagesHoraire": [
 
-
+            ]
+        });
         let juniorProfil = new JuniorProfil({model: junior});
 
         $('#pageContent').html(juniorProfil.render());
@@ -129,11 +162,8 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let interventions = new Interventions();
-        interventions.fetch();
-        let list = new InterventionsList({
-            collection: interventions
-        });
-        $('#pageContent').html(list.render());
+        let interventions = new Interventions({LocalStorage: 'InterventionsList'});
+        let listInterventions = new ListInterventionsJunior({collection: interventions});
+        $('#pageContent').html(listInterventions.render());
     }
 });

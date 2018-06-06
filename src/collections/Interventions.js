@@ -4,5 +4,8 @@ import Intervention from "../models/Intervention";
 
 export default Backbone.Collection.extend({
     model: Intervention,
-    localStorage: new LocalStorage('interventions')
+    initialize: function(attrs, options) {
+        this.localStorage =  new LocalStorage(attrs.localStorage)
+    }
+
 });

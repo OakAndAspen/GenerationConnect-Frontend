@@ -5,7 +5,7 @@
         <input type="text" class="form-control mb-2" placeholder="N° de téléphone" value="{{telephone}}">
     </div>
     <div class="col-10">
-        <input type="text" class="form-control mb-2" placeholder="Adresse mail" value="{{mail}}">
+        <input type="text" class="form-control mb-2" placeholder="Adresse mail" value="{{email}}">
     </div>
     <div class="col-2">
         <input type="text" class="form-control mb-2" placeholder="Status" value="{{status}}">
@@ -17,7 +17,7 @@
         <input type="text" class="form-control mb-2" placeholder="BIC" value="{{banqueBIC}}">
         <input type="text" class="form-control mb-2" placeholder="IBAN" value="{{banqueIBAN}}">
     </div>
-    {{#with adresseFacturation}}
+    {{#with adresse_Facturation}}
     <div class="col-md-4" data-id="{{id}}">
         <b>Adresse de facturation</b>
         <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
@@ -43,7 +43,7 @@
             <input type="text" class="form-control mb-2" placeholder="Pays" value="{{pays}}">
         </div>
     {{/with}}
-    {{#with adresseHabitation}}
+    {{#with adresse_habitation}}
     <div class="col-md-4" data-id="{{id}}">
         <b>Adresse d'habitation courante</b>
         <div class="form-check form-check-inline">

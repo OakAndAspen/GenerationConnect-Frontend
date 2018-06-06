@@ -9,24 +9,7 @@ export default Backbone.View.extend({
     },
 
     render: function () {
-        this.$el.html(this.template({
-            id: this.model.id,
-            prenom: this.model.prenom,
-            nom: this.model.nom,
-            telephone: this.model.telephone,
-            email: this.model.email,
-            adresseHabitation: this.model.adresseHabitation.toJSON(),
-            limitetempstransport: this.model.limitetempstransport,
-            status: this.model.status,
-            adresseDepart: this.model.adresseDepart,
-            adresseFacturation: this.model.adresseFacturation,
-            noAVS: this.model.noAVS,
-            banqueNom: this.model.banqueNom,
-            banqueBIC: this.model.banqueBIC,
-            banqueIBAN: this.model.banqueIBAN,
-            matieres: this.model.matieres.toJSON(),
-            plagesHoraire: this.model.plagesHoraire.toJSON()
-        }));
+        this.$el.html(this.template(this.model.toJSON()));
 
         return this.$el;
     }
