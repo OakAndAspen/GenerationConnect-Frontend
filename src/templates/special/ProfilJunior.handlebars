@@ -1,61 +1,89 @@
-<h1>{{prenom}} {{nom}}</h1>
+<h1>{{prenom}} {{nom}} <span class="badge badge-secondary ml-2">{{junior.status}}</span></h1>
+<hr/>
+
 <h1>Mes coordonnées</h1>
-<div class="row" data-id="{{id}}">
-    <div class="col-12">
+<div class="row mt-3 px-3" data-id="{{id}}">
+    <div class="col-4">
+        <label>N° de téléphone</label>
         <input type="text" class="form-control mb-2" placeholder="N° de téléphone" value="{{telephone}}">
     </div>
-    <div class="col-10">
+    <div class="col-4">
+        <label>Adresse email</label>
         <input type="text" class="form-control mb-2" placeholder="Adresse mail" value="{{email}}">
     </div>
-    <div class="col-2">
-        <input type="text" class="form-control mb-2" placeholder="Status" value="{{status}}">
+    <div class="col-4">
+        <label>N° AVS</label>
+        <input type="text" class="form-control mb-2" placeholder="N° AVS" value="{{junior.NoAVS}}">
     </div>
-    <div class="col-md-12" data-id="{{id}}">
-        <input type="text" class="form-control mb-2" placeholder="N° AVS" value="{{noAVS}}">
-        <b>Informations bancaires</b>
-        <input type="text" class="form-control mb-2" placeholder="Nom" value="{{banqueNom}}">
-        <input type="text" class="form-control mb-2" placeholder="BIC" value="{{banqueBIC}}">
-        <input type="text" class="form-control mb-2" placeholder="IBAN" value="{{banqueIBAN}}">
+
+</div>
+
+<div class="row row mt-3 px-3" data-id="{{id}}">
+    <div class="col-md-6 mt-3">
+        <div class="card" data-id="{{id}}">
+            <div class="card-header">Informations bancaires</div>
+            <div class="card-body">
+                <input type="text" class="form-control mb-2" placeholder="Nom" value="{{junior.BanqueNom}}">
+                <input type="text" class="form-control mb-2" placeholder="BIC" value="{{junior.BanqueBIC}}">
+                <input type="text" class="form-control mb-2" placeholder="IBAN" value="{{junior.BanqueIBAN}}">
+            </div>
+        </div>
     </div>
-    {{#with adresse_Facturation}}
-    <div class="col-md-4" data-id="{{id}}">
-        <b>Adresse de facturation</b>
-        <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
-        <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
-        <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
-        <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
-        <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
-        <input type="text" class="form-control mb-2" placeholder="Pays" value="{{pays}}">
+
+    {{#with junior.adresse_de_facturation}}
+    <div class="col-md-6 mt-3">
+        <div class="card" data-id="{{id}}">
+            <div class="card-header">
+                Adresse de facturation
+            </div>
+            <div class="card-body">
+                <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
+                <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
+                <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
+                <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
+                <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
+            </div>
+        </div>
     </div>
     {{/with}}
-    {{#with adresseDepart}}
-        <div class="col-md-4" data-id="{{id}}">
-            <b>Adresse de départ (pour la localisation)</b>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="depart">
-                <label class="form-check-label" for="depart">Même adresse d'habitation courante</label>
+    {{#with junior.adresse_de_depart}}
+    <div class="col-md-6 mt-3">
+        <div class="card" data-id="{{id}}">
+            <div class="card-header">
+                Adresse de départ
             </div>
-            <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
-            <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
-            <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
-            <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
-            <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
-            <input type="text" class="form-control mb-2" placeholder="Pays" value="{{pays}}">
+            <div class="card-body">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="depart">
+                    <label class="form-check-label" for="depart"><h4>Même adresse qu'habitation courante</h4></label>
+                </div>
+                <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
+                <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
+                <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
+                <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
+                <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
+            </div>
         </div>
+    </div>
     {{/with}}
     {{#with adresse_habitation}}
-    <div class="col-md-4" data-id="{{id}}">
-        <b>Adresse d'habitation courante</b>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="habitation">
-            <label class="form-check-label" for="habitation">Même adresse que pour la facturation</label>
+    <div class="col-md-6 mt-3">
+        <div class="card" data-id="{{id}}">
+            <div class="card-header">
+                Adresse d'habitation courante
+            </div>
+            <div class="card-body">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="habitation">
+                    <label class="form-check-label" for="habitation"><h4>Même adresse que pour la facturation</h4></label>
+                </div>
+                <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
+                <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
+                <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
+                <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
+                <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
+            </div>
         </div>
-        <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
-        <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
-        <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
-        <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
-        <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
-        <input type="text" class="form-control mb-2" placeholder="Pays" value="{{pays}}">
     </div>
     {{/with}}
 

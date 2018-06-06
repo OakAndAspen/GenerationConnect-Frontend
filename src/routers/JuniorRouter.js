@@ -7,10 +7,10 @@ import PlagesHoraire from "collections/PlagesHoraire";
 
 // Views
 import Dashboard from "views/components/Dashboard";
-import InterventionsList from "views/lists/ListInterventions";
-import JuniorProfil from "views/special/JuniorProfil";
 import Breadcrumbs from "views/components/Breadcrumbs";
 import JuniorSchema from "views/components/Page";
+import ProfilJunior from "../views/special/ProfilJunior";
+import Juniors from "../collections/Juniors";
 
 
 export default Backbone.Router.extend({
@@ -68,8 +68,7 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let junior = new Junior();
-        let juniorSchema = new JuniorSchema({model: junior});
+        let juniorSchema = new JuniorSchema();
 
         $('#pageContent').html(juniorSchema.render());
     },
@@ -90,53 +89,9 @@ export default Backbone.Router.extend({
 
         //--------------------------------------
 
-        let junior = new Junior({
-            "id": 123,
-            "prenom": "juan",
-            "nom": "moreno",
-            "telephone": 786488797,
-            "email": "j.j.moreno994@gmail.com",
-            "adresseHabitation": {
-                "id": 122,
-                "ligne1": "Rue Orient Ville 10",
-                "ligne2": "",
-                "ligne3": "",
-                "ville": "Lausanne",
-                "pays": "Suisse",
-                "npa": 1005
-            },
-            "limitetempstransport": 60,
-            "status": "engagé",
-            "adresseDepart": {
-                "id": 122,
-                "ligne1": "Rue Louis Curttat 24",
-                "ligne2": "",
-                "ligne3": "",
-                "ville": "Lausanne",
-                "pays": "Suisse",
-                "npa": 1005
-            },
-            "adresseFacturation": {
-                "id": 122,
-                "ligne1": "Avenue de Morges 13",
-                "ligne2": "",
-                "ligne3": "",
-                "ville": "Lausanne",
-                "pays": "Suisse",
-                "npa": 1005
-            },
-            "noAVS": 745348611564224,
-            "banqueNom": "BCV",
-            "banqueBIC": 456,
-            "banqueIBAN": "CH435523825252645",
-            "matieres": [
 
-            ],
-            "plagesHoraire": [
-
-            ]
-        });
-        let juniorProfil = new JuniorProfil({model: junior});
+        let junior = new Junior({"id":2,"prenom":"Gabriel","nom":"Lopez","email":"user2@example.com","telephone":"+41245577600","junior":{"status":"actif","LimiteTempsTransport":120,"NoAVS":"756.1234.5678.97","BanqueNom":"UBS Group AG","BanqueBIC":"UBSWCHZH80A","BanqueIBAN":"CH08 0029 8999 9999 9999 Q","adresse_de_depart":{"id":1,"ligne1":"Avenue des Sports 20","ligne2":"","ligne3":"","ville":"Yverdon-les-Bains","npa":1401},"adresse_de_facturation":{"id":1,"ligne1":"Avenue des Sports 20","ligne2":"","ligne3":"","ville":"Yverdon-les-Bains","npa":1401}},"adresse_habitation":{"id":1,"ligne1":"Avenue des Sports 20","ligne2":"","ligne3":"","ville":"Yverdon-les-Bains","npa":1401}});
+        let juniorProfil = new ProfilJunior({model: junior});
 
         $('#pageContent').html(juniorProfil.render());
     },
@@ -155,7 +110,7 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let interventions = new Interventions();
+        let interventions = new Interventions({LocalStorage: 'interventions'});
         interventions.fetch();
         let list = new ListInterventions({
             collection: interventions
