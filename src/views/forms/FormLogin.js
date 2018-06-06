@@ -1,10 +1,10 @@
 import Backbone from "backbone";
-import loginFormTmpl from "templates/forms/FormLogin.handlebars";
+import template from "templates/forms/FormLogin.handlebars";
 
 export default Backbone.View.extend({
 
     initialize: function (attrs, options) {
-        this.template = loginFormTmpl;
+        this.template = template;
     },
 
     render: function () {

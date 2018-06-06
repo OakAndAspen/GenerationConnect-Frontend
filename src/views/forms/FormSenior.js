@@ -1,10 +1,10 @@
 import Backbone from "backbone";
-import subFormTmpl from "templates/forms/FormSenior.handlebars";
+import template from "templates/forms/FormSenior.handlebars";
 
 export default Backbone.View.extend({
 
     initialize: function (attrs, options) {
-        this.template = subFormTmpl;
+        this.template = template;
     },
 
     render: function () {

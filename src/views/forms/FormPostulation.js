@@ -1,10 +1,10 @@
 import Backbone from "backbone";
-import applFormTmpl from "templates/forms/FormPostulation.handlebars";
+import template from "templates/forms/FormPostulation.handlebars";
 
 export default Backbone.View.extend({
 
     initialize: function (attrs, options) {
-        this.template = applFormTmpl;
+        this.template = template;
     },
 
     render: function () {

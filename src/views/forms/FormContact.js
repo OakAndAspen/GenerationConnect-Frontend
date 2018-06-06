@@ -1,10 +1,10 @@
 import Backbone from "backbone";
-import contactFormTmpl from "templates/forms/FormContact.handlebars";
+import template from "templates/forms/FormContact.handlebars";
 
 export default Backbone.View.extend({
 
     initialize: function (attrs, options) {
-        this.template = contactFormTmpl;
+        this.template = template;
     },
 
     render: function () {
