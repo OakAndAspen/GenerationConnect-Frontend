@@ -7,10 +7,11 @@ import seniorsTmpl from "templates/pages/infosSeniors.handlebars";
 import aideTmpl from "templates/pages/aide.handlebars";
 
 // Views
-import ContactForm from "views/forms/FormContact";
-import ApplicationForm from "views/forms/FormPostulation";
-import SubscriptionForm from "views/forms/FormSenior";
-import LoginForm from "views/forms/FormLogin";
+import Page from "views/components/Page";
+import FormContact from "views/forms/FormContact";
+import FormPostulation from "views/forms/FormPostulation";
+import FormSenior from "views/forms/FormSenior";
+import FormLogin from "views/forms/FormLogin";
 
 export default Backbone.Router.extend({
 
@@ -42,22 +43,22 @@ export default Backbone.Router.extend({
     },
 
     contact: function() {
-        let contactForm = new ContactForm();
-        $('#pageContent').html(contactForm.render());
+        let form = new FormContact();
+        $('#pageContent').html(form.render());
     },
 
     postuler: function() {
-        let applForm = new ApplicationForm();
-        $('#pageContent').html(applForm.render());
+        let form = new FormPostulation();
+        $('#pageContent').html(form.render());
     },
 
     inscription: function() {
-        let subForm = new SubscriptionForm();
-        $('#pageContent').html(subForm.render());
+        let form = new FormSenior();
+        $('#pageContent').html(form.render());
     },
 
     login: function() {
-        let loginForm = new LoginForm();
-        $('#pageContent').html(loginForm.render());
+        let form = new FormLogin();
+        $('#pageContent').html(form.render());
     }
 });

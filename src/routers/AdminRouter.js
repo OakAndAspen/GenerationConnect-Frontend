@@ -6,21 +6,20 @@ import Seniors from "collections/Seniors";
 import Interventions from "collections/Interventions";
 import Formations from "collections/Formations";
 import Comptes from "collections/Comptes";
+import Suggestions from "collections/Suggestions";
 
 // Views
 import Dashboard from "views/components/Dashboard";
 import Breadcrumbs from "views/components/Breadcrumbs";
 
-import JuniorsList from "views/lists/ListJuniors";
-import SeniorsList from "views/lists/ListSeniors";
-import InterventionsList from "views/lists/ListInterventions";
-import FormationsList from "views/lists/ListFormations";
-import ComptesList from "views/lists/ListComptes";
+import ListJuniors from "views/lists/ListJuniors";
+import ListSeniors from "views/lists/ListSeniors";
+import ListInterventions from "views/lists/ListInterventions";
+import ListFormations from "views/lists/ListFormations";
+import ListComptes from "views/lists/ListComptes";
+import ListSuggestions from "views/lists/ListSuggestions";
 
-// Templates
-import juniorTmpl from "templates/details/DetailJunior.handlebars";
-import seniorTmpl from "templates/details/DetailSenior.handlebars";
-
+import PagesWYSIWYG from "views/special/PagesWYSIWYG";
 
 export default Backbone.Router.extend({
 
@@ -115,10 +114,12 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let juniors = new Juniors("juniors");
-        juniors.fetch();
-        let list = new JuniorsList({
-            collection: juniors,
+        let collection = new Juniors({
+            localStorage: "juniors"
+        });
+        collection.fetch();
+        let list = new ListJuniors({
+            collection: collection,
         });
         $('#pageContent').html(list.render());
 
@@ -159,10 +160,13 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let seniors = new Seniors("seniors");
-        seniors.fetch();
-        let list = new SeniorsList({
-            collection: seniors
+        let collection = new Seniors({
+            localStorage: "seniors"
+        });
+        collection.fetch();
+
+        let list = new ListSeniors({
+            collection: collection,
         });
         $('#pageContent').html(list.render());
     },
@@ -184,8 +188,6 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-
-        $('#pageContent').html(seniorTmpl);
     },
 
     interventions: function () {
@@ -202,10 +204,13 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let interventions = new Interventions("interventions");
-        interventions.fetch();
-        let list = new InterventionsList({
-            collection: interventions
+        let collection = new Interventions({
+            localStorage: "interventions"
+        });
+        collection.fetch();
+
+        let list = new ListInterventions({
+            collection: collection,
         });
         $('#pageContent').html(list.render());
     },
@@ -227,8 +232,6 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-
-        $('#pageContent').html("<h1>Intervention</h1>");
     },
 
     formations: function () {
@@ -245,10 +248,13 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let formations = new Formations("formations");
-        formations.fetch();
-        let list = new FormationsList({
-            collection: formations
+        let collection = new Formations({
+            localStorage: "formations"
+        });
+        collection.fetch();
+
+        let list = new ListFormations({
+            collection: collection,
         });
         $('#pageContent').html(list.render());
     },
@@ -286,7 +292,7 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-        $('#pageContent').html("<h1>Pages</h1>");
+        $('#pageContent').html(new PagesWYSIWYG().render());
     },
 
     suggestions: function () {
@@ -302,7 +308,15 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-        $('#pageContent').html("<h1>Suggestions</h1>");
+
+        let collection = new Suggestions({
+            localStorage: "suggestions"
+        });
+        collection.fetch();
+        let list = new ListSuggestions({
+            collection: collection,
+        });
+        $('#pageContent').html(list.render());
     },
 
     postulations: function () {
@@ -318,7 +332,16 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-        $('#pageContent').html("<h1>Postulations</h1>");
+
+        let collection = new Juniors({
+            localStorage: "postulations"
+        });
+        collection.fetch();
+
+        let list = new ListJuniors({
+            collection: collection,
+        });
+        $('#pageContent').html(list.render());
     },
 
     postulation: function () {
@@ -354,7 +377,16 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-        $('#pageContent').html("<h1>Comptes</h1>");
+
+        let collection = new Comptes({
+            localStorage: "comptes"
+        });
+        collection.fetch();
+
+        let list = new ListComptes({
+            collection: collection,
+        });
+        $('#pageContent').html(list.render());
     },
 
     compte: function () {

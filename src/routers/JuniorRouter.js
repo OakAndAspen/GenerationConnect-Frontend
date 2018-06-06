@@ -1,10 +1,7 @@
 import Backbone from "backbone";
 
-//test
-
-
 // Models
-import Junior from "../models/Junior";
+import Junior from "models/Junior";
 import Interventions from "collections/Interventions";
 import PlagesHoraire from "collections/PlagesHoraire";
 
@@ -14,8 +11,6 @@ import InterventionsList from "views/lists/ListInterventions";
 import JuniorProfil from "views/special/JuniorProfil";
 import Breadcrumbs from "views/components/Breadcrumbs";
 import JuniorSchema from "views/components/Page";
-import ListInterventions from "../views/lists/ListInterventions";
-import ListInterventionsJunior from "../views/lists/ListInterventionsJunior";
 
 
 export default Backbone.Router.extend({
@@ -36,8 +31,6 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-
-
 
         let links = [
             {
@@ -162,8 +155,11 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let interventions = new Interventions({LocalStorage: 'InterventionsList'});
-        let listInterventions = new ListInterventionsJunior({collection: interventions});
-        $('#pageContent').html(listInterventions.render());
+        let interventions = new Interventions();
+        interventions.fetch();
+        let list = new ListInterventions({
+            collection: interventions
+        });
+        $('#pageContent').html(list.render());
     }
 });

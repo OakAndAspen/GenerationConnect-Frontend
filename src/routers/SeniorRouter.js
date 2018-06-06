@@ -1,15 +1,15 @@
 import Backbone from "backbone";
 
 // Models
-import Junior from "models/Junior";
 import Senior from "models/Senior";
+import Interventions from "collections/Interventions";
 
 // Views
 import Dashboard from "views/components/Dashboard";
-import JuniorProfil from "views/special/JuniorProfil";
-import SeniorProfil from "views/special/SeniorProfil";
-import SeniorSuggestion from "views/forms/FormSuggestion";
 import Breadcrumbs from "views/components/Breadcrumbs";
+import ProfilSenior from "views/special/ProfilSenior";
+import FormSuggestion from "views/forms/FormSuggestion";
+import ListInterventionsSenior from "views/lists/ListInterventionsSenior";
 
 export default Backbone.Router.extend({
 
@@ -65,10 +65,7 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-        let senior = new Senior({prenom: "Juan",nom: "Moreno",noMTel: "0786488797"});
-        let seniorSuggestion = new SeniorSuggestion({model: senior});
-
-        $('#pageContent').html(seniorSuggestion.render());
+        $('#pageContent').html(new FormSuggestion().render());
     },
 
     profil: function() {
@@ -86,7 +83,7 @@ export default Backbone.Router.extend({
         }).render());
 
         let senior = new Senior({prenom: "Juan",nom: "Moreno",noMTel: "0786488797"});
-        let seniorProfil = new SeniorProfil({model: senior});
+        let seniorProfil = new ProfilSenior({model: senior});
 
         $('#pageContent').html(seniorProfil.render());
     },
@@ -104,6 +101,9 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-        $('#pageContent').html("<h1>Interventions</h1>");
+        let interventions = new Interventions("interventions-senior");
+        $('#pageContent').html(new ListInterventionsSenior({
+            collection: interventions
+        }).render());
     }
 });
