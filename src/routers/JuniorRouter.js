@@ -1,5 +1,8 @@
 import Backbone from "backbone";
 
+//test
+import junior from "/testsUnitaires";
+
 // Models
 import Junior from "../models/Junior";
 import Interventions from "collections/Interventions";
@@ -105,12 +108,7 @@ export default Backbone.Router.extend({
             heureFin: "12:00"
         });
         plagesHoraire.fetch();
-        let junior = new Junior({
-            prenom: "Juan",
-            nom: "Moreno",
-            noMobile: "0786488797",
-            plagesHoraire: plagesHoraire
-        });
+
 
         let juniorProfil = new JuniorProfil({model: junior});
 
