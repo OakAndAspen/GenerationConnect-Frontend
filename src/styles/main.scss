@@ -5,6 +5,10 @@ $grey: rgb(165, 165, 165);
 $orange: rgb(237, 125, 49);
 $yellow: rgb(255, 192, 0);
 
+$grey-trans: rgba(165, 165, 165,0.2);
+$orange-trans: rgba(237, 125, 49,0.2);
+$yellow-trans: rgba(255, 192, 0,0.2);
+
 .btn {
   background-color: $yellow !important;
   color: black !important;
@@ -95,4 +99,74 @@ body {
 
 #publicPages a {
   color: black;
+}
+.bg-orange{
+   background-color: $orange;
+ }
+
+.bg-gris{
+  background-color: $grey;
+}
+
+.bg-jaune{
+  background-color: $yellow;
+}
+
+.bg-orange-trans{
+  background-color: $orange-trans;
+  color: black;
+}
+
+.bg-gris-trans{
+  background-color: $grey-trans;
+  color: black;
+}
+
+.bg-jaune-trans{
+  background-color: $yellow-trans;
+  color: black;
+}
+
+.card-img-top{
+  width: 70%;
+}
+
+.card-noborder{
+  border: none;
+}
+
+.card-text-black{
+  color: black;
+  text-align: center;
+}
+
+.text-size{
+    font-size: 200%;
+}
+
+.img-left{
+  width: 50%;
+  float: left;
+}
+
+
+
+@media (min-width: 576px) {
+  .card-img-top{
+    width: 50%;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .card-img-top{
+    width: 40%;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .card-img-top{
+    width: 60%;
+  }
 }
