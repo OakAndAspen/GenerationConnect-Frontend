@@ -89,8 +89,13 @@ body {
 }
 
 .jumbotron {
-  background-color: rgba(165, 165, 165, 0.8);
+  background-color: rgba(165, 165, 165, 0.7);
   color: black;
+}
+
+.jumbotron:hover {
+  cursor: pointer;
+  background-color: $grey;
 }
 
 #disponibilites a {

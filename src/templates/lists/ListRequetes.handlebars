@@ -1,0 +1,25 @@
+<form class="form-inline mb-3 d-flex">
+    <button type="button" class="btn mr-auto" data-target="admin/demandes/new">Nouvelle demande d'intervention
+    </button>
+</form>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>N°</th>
+        <th>Senior</th>
+        <th>Date et heure</th>
+        <th>Statut</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each interventions}}
+        <tr>
+            <td>{{id}}</td>
+            <td><span data-target="admin/senior/{{senior.id}}">{{senior.prenom}} {{senior.nom}}</span></td>
+            <th>{{date}} {{heure}}</th>
+            <th>{{statut}}</th>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

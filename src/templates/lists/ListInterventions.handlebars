@@ -1,54 +1,39 @@
-<a href="" class="btn mb-2">Nouvelle demande</a>
-
-<div class="row mb-3">
-    <div class="col-12 form-inline">
-        <select class="form-control">
-            <option>- Statut -</option>
-            <option>En traitement</option>
-            <option>Confirmé</option>
-            <option>Effectué</option>
-            <option>Archivé</option>
-        </select>
+<form class="form-inline mb-3 d-flex">
+    <button type="button" class="btn mr-auto" data-target="admin/interventions/new">Nouvelle demande d'intervention
+    </button>
+    <div class="form-check mr-2">
+        <input class="form-check-input" name="statut" type="radio" id="statutTous" value="" checked>
+        <label class="form-check-label" for="statutTous">Tous</label>
     </div>
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>N°</th>
-                <th>Date</th>
-                <th>Heure</th>
-                <th>N° S</th>
-                <th>Senior</th>
-                <th>N° J</th>
-                <th>Junior</th>
-                <th>Statut</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><a href="">28374</a></td>
-                <td>-</td>
-                <td>-</td>
-                <td>37332</td>
-                <td>Emilie Richard</td>
-                <td>-</td>
-                <td>-</td>
-                <td>En traitement</td>
-            </tr>
-            <tr>
-                <td><a href="">28374</a></td>
-                <td>13.06.2018</td>
-                <td>14:00-16:00</td>
-                <td>37332</td>
-                <td>Linne Franche</td>
-                <td>36452</td>
-                <td>Arnaud Dupont</td>
-                <td>Confirmé</td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="form-check mr-2">
+        <input class="form-check-input" name="statut" type="radio" id="statutActif" value="Actif">
+        <label class="form-check-label" for="statutActif">Actif</label>
     </div>
-</div>
+    <div class="form-check mr-2">
+        <input class="form-check-input" name="statut" type="radio" id="statutTraitement" value="En traitement">
+        <label class="form-check-label" for="statutTraitement">En traitement</label>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>N°</th>
+        <th>Senior</th>
+        <th>Junior</th>
+        <th>Date</th>
+        <th>Statut</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each interventions}}
+        <tr>
+            <td>{{id}}</td>
+            <td><span data-target="admin/senior/{{senior.id}}">{{senior.prenom}} {{senior.nom}}</span></td>
+            <td><span data-target="admin/junior/{{junior.id}}">{{junior.prenom}} {{junior.nom}}</span></td>
+            <th>{{date}} {{heure}}</th>
+            <th>{{statut}}</th>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
