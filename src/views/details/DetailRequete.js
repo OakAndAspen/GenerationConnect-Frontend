@@ -1,5 +1,5 @@
 import Backbone from "backbone";
-import template from "templates/forms/FormSuggestion.handlebars";
+import template from "templates/details/DetailRequete.handlebars";
 
 export default Backbone.View.extend({
 

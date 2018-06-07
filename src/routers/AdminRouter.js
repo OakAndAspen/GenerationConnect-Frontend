@@ -7,6 +7,7 @@ import Interventions from "collections/Interventions";
 import Formations from "collections/Formations";
 import Comptes from "collections/Comptes";
 import Suggestions from "collections/Suggestions";
+import Requetes from "collections/Requetes";
 
 // Components
 import Dashboard from "views/components/Dashboard";
@@ -19,6 +20,7 @@ import ListInterventions from "views/lists/ListInterventions";
 import ListFormations from "views/lists/ListFormations";
 import ListComptes from "views/lists/ListComptes";
 import ListSuggestions from "views/lists/ListSuggestions";
+import ListRequetes from "views/lists/ListRequetes";
 
 // Forms
 import FormSenior from "views/forms/FormSenior";
@@ -33,6 +35,7 @@ import DetailIntervention from "views/details/DetailIntervention";
 import DetailSenior from "views/details/DetailSenior";
 import DetailFormation from "views/details/DetailFormation";
 import DetailCompte from "views/details/DetailCompte";
+import DetailRequete from "views/details/DetailRequete";
 
 // Special
 import PagesWYSIWYG from "views/special/PagesWYSIWYG";
@@ -48,16 +51,16 @@ export default Backbone.Router.extend({
         "admin/seniors/new": "seniorsNew",
         "admin/seniors/:id": "senior",
         "admin/interventions": "interventions",
-        "admin/interventions/new": "interventionsNew",
         "admin/interventions/:id": "intervention",
+        "admin/demandes": "demandes",
+        "admin/demandes/new": "demandesNew",
+        "admin/demandes/:id": "demande",
         "admin/formations": "formations",
         "admin/formations/new": "formationsNew",
         "admin/formations/:id": "formation",
         "admin/pages": "pages",
         "admin/suggestions": "suggestions",
         "admin/suggestions/new": "suggestionsNew",
-        "admin/postulations": "postulations",
-        "admin/postulations/:id": "postulation",
         "admin/comptes": "comptes",
         "admin/comptes/new": "comptesNew",
         "admin/comptes/:id": "compte"
@@ -76,9 +79,14 @@ export default Backbone.Router.extend({
 
         let links = [
             {
-                'title': 'Juniors',
-                'path': 'admin/juniors',
-                'icon': 'fas fa-user'
+                'title': 'Seniors',
+                'path': 'admin/seniors',
+                'icon': 'far fa-user'
+            },
+            {
+                'title': 'Demandes',
+                'path': 'admin/demandes',
+                'icon': 'fas fa-file-alt'
             },
             {
                 'title': 'Interventions',
@@ -86,19 +94,9 @@ export default Backbone.Router.extend({
                 'icon': 'fas fa-hands-helping'
             },
             {
-                'title': 'Seniors',
-                'path': 'admin/seniors',
-                'icon': 'far fa-user'
-            },
-            {
-                'title': 'Pages éditables',
-                'path': 'admin/pages',
-                'icon': 'fas fa-globe'
-            },
-            {
-                'title': 'Postulations',
-                'path': 'admin/postulations',
-                'icon': 'fas fa-file-alt'
+                'title': 'Juniors',
+                'path': 'admin/juniors',
+                'icon': 'fas fa-user'
             },
             {
                 'title': 'Formation continue',
@@ -106,15 +104,21 @@ export default Backbone.Router.extend({
                 'icon': 'fas fa-graduation-cap'
             },
             {
-                'title': 'Suggestions',
-                'path': 'admin/suggestions',
-                'icon': 'far fa-lightbulb'
-            },
-            {
                 'title': 'Comptes admin',
                 'path': 'admin/comptes',
                 'icon': 'fas fa-users-cog'
+            },
+            {
+                'title': 'Pages éditables',
+                'path': 'admin/pages',
+                'icon': 'fas fa-globe'
+            },
+            {
+                'title': 'Suggestions',
+                'path': 'admin/suggestions',
+                'icon': 'far fa-lightbulb'
             }
+
         ];
         let dashboard = new Dashboard({
             links: links
@@ -249,7 +253,7 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-        $('#pageContent').html(new FormSenior.render());
+        $('#pageContent').html(new FormSenior().render());
     },
 
     interventions: function () {
@@ -298,7 +302,7 @@ export default Backbone.Router.extend({
         $('#pageContent').html(detail.render());
     },
 
-    interventionsNew: function () {
+    demandes: function () {
         $('#pageBreadcrumbs').html(new Breadcrumbs({
             links: [
                 {
@@ -306,16 +310,63 @@ export default Backbone.Router.extend({
                     title: "Tableau de bord"
                 },
                 {
-                    target: "admin/interventions",
-                    title: "Interventions"
-                },
-                {
-                    target: "admin/interventions/new",
-                    title: "Nouvelle intervention"
+                    target: "admin/demandes",
+                    title: "Demandes"
                 }
             ]
         }).render());
-        $('#pageContent').html(new FormRequete.render());
+
+        let collection = new Requetes({
+            localStorage: "requetes"
+        });
+        collection.fetch();
+
+        let list = new ListRequetes({
+            collection: collection,
+        });
+        $('#pageContent').html(list.render());
+    },
+
+    demande: function (id) {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/demandes",
+                    title: "Demandes"
+                },
+                {
+                    target: "admin/demandes/1",
+                    title: "N°983576"
+                }
+            ]
+        }).render());
+
+        let detail = new DetailRequete();
+        $('#pageContent').html(detail.render());
+    },
+
+    demandesNew: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/demandes",
+                    title: "Demandes"
+                },
+                {
+                    target: "admin/demandes/new",
+                    title: "Nouvelle demande"
+                }
+            ]
+        }).render());
+        $('#pageContent').html(new FormRequete().render());
     },
 
     formations: function () {
@@ -442,54 +493,7 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-        $('#pageContent').html(new FormSuggestion.render());
-    },
-
-    postulations: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/postulations",
-                    title: "Postulations"
-                }
-            ]
-        }).render());
-
-        let collection = new Juniors({
-            localStorage: "postulations"
-        });
-        collection.fetch();
-
-        let list = new ListJuniors({
-            collection: collection,
-        });
-        $('#pageContent').html(list.render());
-    },
-
-    postulation: function (id) {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/postulations",
-                    title: "Postulations"
-                },
-                {
-                    target: "admin/postulations/1",
-                    title: "Jean Martin"
-                }
-            ]
-        }).render());
-
-        let detail = new DetailJunior();
-        $('#pageContent').html(detail.render());
+        $('#pageContent').html(new FormSuggestion().render());
     },
 
     comptes: function () {

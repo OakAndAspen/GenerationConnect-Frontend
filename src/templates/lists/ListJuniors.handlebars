@@ -1,5 +1,17 @@
-<form class="form-inline mb-3">
-    <!--<button type="button" class="btn" data-target="admin/comptes/new">Nouveau compte</button>-->
+<form class="form-inline mb-3 d-flex">
+    <div class="form-check ml-auto mr-2">
+        <input class="form-check-input" name="statut" type="radio" id="statutTous" value="" checked>
+        <label class="form-check-label" for="statutTous">Tous</label>
+    </div>
+    <div class="form-check mr-2">
+        <input class="form-check-input" name="statut" type="radio" id="statutActif" value="Actif">
+        <label class="form-check-label" for="statutActif">Actif</label>
+    </div>
+    <div class="form-check mr-2">
+        <input class="form-check-input" name="statut" type="radio" id="statutTraitement" value="En traitement">
+        <label class="form-check-label" for="statutTraitement">En traitement</label>
+    </div>
+    <input type="text" class="form-control mr-2" id="recherche" name="recherche" placeholder="Rechercher...">
 </form>
 
 <table class="table table-striped">
