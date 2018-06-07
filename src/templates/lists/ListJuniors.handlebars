@@ -1,33 +1,26 @@
-<div class="row mb-3">
-    <div class="col-12 form-inline">
-        <select class="form-control">
-            <option>- Statut -</option>
-            <option>Actif</option>
-            <option>Postulation en cours</option>
-            <option>Archivé</option>
-        </select>
-    </div>
-</div>
+<form class="form-inline mb-3">
+    <!--<button type="button" class="btn" data-target="admin/comptes/new">Nouveau compte</button>-->
+</form>
 
-<div class="row">
-    <div class="col-12">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>N°</th>
-                <th>Prénom & Nom</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {{#each juniors}}
-                <tr>
-                    <td><a href="">{{id}}</a></td>
-                    <td>{{prenom}} {{nom}}</td>
-                    <td><a href="#" title="Envoyer un email"><i class="fas fa-envelope"></i></a></td>
-                </tr>
-            {{/each}}
-            </tbody>
-        </table>
-    </div>
-</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>N°</th>
+        <th>Nom & prénom</th>
+        <th>Téléphone</th>
+        <th>Email</th>
+        <th>Statut</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each juniors}}
+        <tr>
+            <td>{{id}}</td>
+            <td><span data-target="admin/juniors/{{id}}">{{prenom}} {{nom}}</span></td>
+            <td>{{telephone}}</td>
+            <td>{{email}}</td>
+            <th>{{statut}}</th>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

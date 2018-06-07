@@ -114,9 +114,7 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let collection = new Juniors({
-
-        });
+        let collection = new Juniors();
         collection.fetch();
         let list = new ListJuniors({
             collection: collection,
@@ -164,6 +162,24 @@ export default Backbone.Router.extend({
             localStorage: "seniors"
         });
         collection.fetch();
+
+        collection.create({
+            id: 4,
+            nom: "Charlot",
+            prenom: "Marc-Henri",
+            email: "charlot.mh@gmail.com",
+            telephone: "078 456 34 34",
+            statut: "actif"
+        });
+
+        collection.create({
+            id: 6,
+            nom: "Hemin",
+            prenom: "Juliette",
+            email: "jhemin@gmail.com",
+            telephone: "076 446 34 00",
+            statut: "en cours de traitement"
+        });
 
         let list = new ListSeniors({
             collection: collection,
