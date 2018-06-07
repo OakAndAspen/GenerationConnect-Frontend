@@ -8,10 +8,11 @@ import Formations from "collections/Formations";
 import Comptes from "collections/Comptes";
 import Suggestions from "collections/Suggestions";
 
-// Views
+// Components
 import Dashboard from "views/components/Dashboard";
 import Breadcrumbs from "views/components/Breadcrumbs";
 
+// Lists
 import ListJuniors from "views/lists/ListJuniors";
 import ListSeniors from "views/lists/ListSeniors";
 import ListInterventions from "views/lists/ListInterventions";
@@ -19,7 +20,23 @@ import ListFormations from "views/lists/ListFormations";
 import ListComptes from "views/lists/ListComptes";
 import ListSuggestions from "views/lists/ListSuggestions";
 
+// Forms
+import FormSenior from "views/forms/FormSenior";
+import FormRequete from "views/forms/FormRequete";
+import FormFormation from "views/forms/FormFormation";
+import FormSuggestion from "views/forms/FormSuggestion";
+import FormCompte from "views/forms/FormCompte";
+
+// Details
+import DetailJunior from "views/details/DetailJunior";
+import DetailIntervention from "views/details/DetailIntervention";
+import DetailSenior from "views/details/DetailSenior";
+import DetailFormation from "views/details/DetailFormation";
+import DetailCompte from "views/details/DetailCompte";
+
+// Special
 import PagesWYSIWYG from "views/special/PagesWYSIWYG";
+
 
 export default Backbone.Router.extend({
 
@@ -28,16 +45,21 @@ export default Backbone.Router.extend({
         "admin/juniors": "juniors",
         "admin/juniors/:id": "junior",
         "admin/seniors": "seniors",
+        "admin/seniors/new": "seniorsNew",
         "admin/seniors/:id": "senior",
         "admin/interventions": "interventions",
+        "admin/interventions/new": "interventionsNew",
         "admin/interventions/:id": "intervention",
         "admin/formations": "formations",
+        "admin/formations/new": "formationsNew",
         "admin/formations/:id": "formation",
         "admin/pages": "pages",
         "admin/suggestions": "suggestions",
+        "admin/suggestions/new": "suggestionsNew",
         "admin/postulations": "postulations",
         "admin/postulations/:id": "postulation",
         "admin/comptes": "comptes",
+        "admin/comptes/new": "comptesNew",
         "admin/comptes/:id": "compte"
     },
 
@@ -141,7 +163,8 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        $('#pageContent').html(juniorTmpl);
+        let detail = new DetailJunior();
+        $('#pageContent').html(detail.render());
     },
 
     seniors: function () {
@@ -187,7 +210,7 @@ export default Backbone.Router.extend({
         $('#pageContent').html(list.render());
     },
 
-    senior: function () {
+    senior: function (id) {
         $('#pageBreadcrumbs').html(new Breadcrumbs({
             links: [
                 {
@@ -204,6 +227,29 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
+
+        let detail = new DetailSenior();
+        $('#pageContent').html(detail.render());
+    },
+
+    seniorsNew: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/seniors",
+                    title: "Seniors"
+                },
+                {
+                    target: "admin/seniors/new",
+                    title: "Nouveau Senior"
+                }
+            ]
+        }).render());
+        $('#pageContent').html(new FormSenior.render());
     },
 
     interventions: function () {
@@ -231,7 +277,7 @@ export default Backbone.Router.extend({
         $('#pageContent').html(list.render());
     },
 
-    intervention: function () {
+    intervention: function (id) {
         $('#pageBreadcrumbs').html(new Breadcrumbs({
             links: [
                 {
@@ -248,6 +294,28 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
+        let detail = new DetailIntervention();
+        $('#pageContent').html(detail.render());
+    },
+
+    interventionsNew: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/interventions",
+                    title: "Interventions"
+                },
+                {
+                    target: "admin/interventions/new",
+                    title: "Nouvelle intervention"
+                }
+            ]
+        }).render());
+        $('#pageContent').html(new FormRequete.render());
     },
 
     formations: function () {
@@ -275,7 +343,7 @@ export default Backbone.Router.extend({
         $('#pageContent').html(list.render());
     },
 
-    formation: function () {
+    formation: function (id) {
         $('#pageBreadcrumbs').html(new Breadcrumbs({
             links: [
                 {
@@ -292,7 +360,29 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-        $('#pageContent').html("<h1>Formation</h1>");
+
+        let detail = new DetailFormation();
+        $('#pageContent').html(detail.render());
+    },
+
+    formationsNew: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/formations",
+                    title: "Formations"
+                },
+                {
+                    target: "admin/formations/new",
+                    title: "Nouvelle formation"
+                }
+            ]
+        }).render());
+        $('#pageContent').html(new FormFormation().render());
     },
 
     pages: function () {
@@ -335,6 +425,26 @@ export default Backbone.Router.extend({
         $('#pageContent').html(list.render());
     },
 
+    suggestionsNew: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/suggestions",
+                    title: "Suggestions"
+                },
+                {
+                    target: "admin/suggestions/new",
+                    title: "Nouvelle suggestion"
+                }
+            ]
+        }).render());
+        $('#pageContent').html(new FormSuggestion.render());
+    },
+
     postulations: function () {
         $('#pageBreadcrumbs').html(new Breadcrumbs({
             links: [
@@ -360,7 +470,7 @@ export default Backbone.Router.extend({
         $('#pageContent').html(list.render());
     },
 
-    postulation: function () {
+    postulation: function (id) {
         $('#pageBreadcrumbs').html(new Breadcrumbs({
             links: [
                 {
@@ -377,7 +487,9 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-        $('#pageContent').html("<h1>Postulation</h1>");
+
+        let detail = new DetailJunior();
+        $('#pageContent').html(detail.render());
     },
 
     comptes: function () {
@@ -405,7 +517,7 @@ export default Backbone.Router.extend({
         $('#pageContent').html(list.render());
     },
 
-    compte: function () {
+    compte: function (id) {
         $('#pageBreadcrumbs').html(new Breadcrumbs({
             links: [
                 {
@@ -422,6 +534,28 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-        $('#pageContent').html("<h1>Compte</h1>");
-    }
+
+        let detail = new DetailCompte();
+        $('#pageContent').html(detail.render());
+    },
+
+    comptesNew: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "admin",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "admin/comptes",
+                    title: "Comptes"
+                },
+                {
+                    target: "admin/comptes/new",
+                    title: "Nouveau compte"
+                }
+            ]
+        }).render());
+        $('#pageContent').html(new FormCompte().render());
+    },
 });
