@@ -131,6 +131,10 @@ body {
   width: 70%;
 }
 
+.card-big{
+  width: 100% !important;
+}
+
 .card-noborder{
   border: none;
 }
@@ -149,7 +153,10 @@ body {
   float: left;
 }
 
-
+.ronds{
+  text-align: center;
+  vertical-align: center;
+}
 
 @media (min-width: 576px) {
   .card-img-top{
@@ -162,6 +169,7 @@ body {
   .card-img-top{
     width: 40%;
   }
+
 }
 
 // Large devices (desktops, 992px and up)
@@ -169,4 +177,6 @@ body {
   .card-img-top{
     width: 60%;
   }
+
+
 }
