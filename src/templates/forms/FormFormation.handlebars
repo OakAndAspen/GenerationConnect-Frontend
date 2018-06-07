@@ -1,6 +1,37 @@
-<h1>Nouvelle formation</h1>
-
-<form>
-    <textarea class="form-control mb-2" placeholder="Description de la formation"></textarea>
-    <button type="button" class="form-control btn mb-3">Enregistrer</button>
+<form class="mb-3">
+    <!-- Nom de la formation -->
+    <div class="form-group">
+        <label for="exampleInputEmail1">Nom</label>
+        <input type="text" class="form-control" id="nom" placeholder="Nom">
+    </div>
+    <!-- Description -->
+    <div class="form-group">
+        <label for="exampleInputPassword1">Description</label>
+        <textarea class="form-control" id="description" placeholder="Description"></textarea>
+    </div>
+    <!-- Date -->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Date</span>
+            </div>
+            <input type="date" class="form-control" id="date"/>
+            <div class="input-group-prepend"></div>
+        </div>
+    </div>
+    <!-- Heure de début et de fin -->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Heure de début</span>
+            </div>
+            <input type="time" class="form-control" id="heureDebut"/>
+            <div class="input-group-prepend">
+                <span class="input-group-text">Heure de fin</span>
+            </div>
+            <input type="time" class="form-control" id="heureFin"/>
+        </div>
+    </div>
+    <!-- Bouton "Enregistrer" -->
+    <button type="button" class="btn" id="send">Enregistrer</button>
 </form>

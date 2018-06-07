@@ -168,4 +168,4 @@ let junior1 = new Junior({
     plagesHoraire: plagesHoraire1,
 });
 
-console.log(JSON.stringify(junior1));
+//console.log(JSON.stringify(junior1));

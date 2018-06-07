@@ -1,41 +1,40 @@
-<h1>Créer un compte administrateur</h1>
+<form class="mb-3">
 
-<div class="row">
-    <div class="col-12">
-        <input type="text" class="form-control mb-2" placeholder="Email">
-    </div>
-    <div class="col-md-6">
-        <input type="text" class="form-control mb-2" placeholder="Prénom">
-    </div>
-    <div class="col-md-6">
-        <input type="text" class="form-control mb-2" placeholder="Nom">
-    </div>
-    <div class="col-12">
-        <input type="text" class="form-control mb-2" placeholder="Adresse">
-    </div>
-    <div class="col-md-4">
-        <input type="text" class="form-control mb-2" placeholder="NPA">
-    </div>
-    <div class="col-md-8">
-        <input type="text" class="form-control mb-2" placeholder="Localité">
-    </div>
-    <div class="col-md-6">
-        <div class="input-group mb-2 mr-sm-2">
-            <input type="password" class="form-control" placeholder="Mot de passe">
-            <div class="input-group-prepend">
-                <div class="input-group-text" title="Voir"><i class="far fa-eye"></i></div>
-            </div>
+    <!-- Nom et prénom -->
+    <div class="form-row mb-2">
+        <div class="col">
+            <label for="prenom">Prénom</label>
+            <input type="text" class="form-control" id="prenom" placeholder="Prénom">
+        </div>
+        <div class="col">
+            <label for="nom">Nom</label>
+            <input type="text" class="form-control" id="nom" placeholder="Nom">
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="input-group mb-2 mr-sm-2">
-            <input type="password" class="form-control" placeholder="Répéter le mot de passe">
-            <div class="input-group-prepend">
-                <div class="input-group-text" title="Voir"><i class="far fa-eye"></i></div>
-            </div>
+
+    <!-- Email et téléphone -->
+    <div class="form-row mb-2">
+        <div class="col">
+            <label for="email">Adresse email</label>
+            <input type="email" class="form-control" id="email" placeholder="Adresse email">
+        </div>
+        <div class="col">
+            <label for="telephone">Téléphone</label>
+            <input type="text" class="form-control" id="telephone" placeholder="Téléphone">
         </div>
     </div>
-    <div class="col-12 my-3">
-        <button type="submit" class="form-control btn" id="send">Enregistrer</button>
+
+    <!-- Fonction -->
+    <div class="form-group mb-2">
+        <label for="fonction">Fonction</label>
+        <select id="fonction" class="custom-select">
+            <option>-</option>
+            <option>Secrétaire</option>
+            <option>Direction</option>
+            <option>Ressources humaines</option>
+        </select>
     </div>
-</div>
+
+    <!-- Bouton "Enregistrer" -->
+    <button type="button" class="btn" id="send">Enregistrer</button>
+</form>
