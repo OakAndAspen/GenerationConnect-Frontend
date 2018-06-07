@@ -27,8 +27,16 @@ import FormFormation from "views/forms/FormFormation";
 import FormSuggestion from "views/forms/FormSuggestion";
 import FormCompte from "views/forms/FormCompte";
 
+// Details
+import DetailJunior from "views/details/DetailJunior";
+import DetailIntervention from "views/details/DetailIntervention";
+import DetailSenior from "views/details/DetailSenior";
+import DetailFormation from "views/details/DetailFormation";
+import DetailCompte from "views/details/DetailCompte";
+
 // Special
 import PagesWYSIWYG from "views/special/PagesWYSIWYG";
+
 
 export default Backbone.Router.extend({
 
@@ -155,7 +163,8 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        $('#pageContent').html(juniorTmpl);
+        let detail = new DetailJunior();
+        $('#pageContent').html(detail.render());
     },
 
     seniors: function () {
@@ -219,7 +228,8 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        $('#pageContent')
+        let detail = new DetailSenior();
+        $('#pageContent').html(detail.render());
     },
 
     seniorsNew: function () {
@@ -284,6 +294,8 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
+        let detail = new DetailIntervention();
+        $('#pageContent').html(detail.render());
     },
 
     interventionsNew: function () {
@@ -348,7 +360,9 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-        $('#pageContent').html("<h1>Formation</h1>");
+
+        let detail = new DetailFormation();
+        $('#pageContent').html(detail.render());
     },
 
     formationsNew: function () {
@@ -473,7 +487,9 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-        $('#pageContent').html("<h1>Postulation</h1>");
+
+        let detail = new DetailJunior();
+        $('#pageContent').html(detail.render());
     },
 
     comptes: function () {
@@ -518,7 +534,9 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-        $('#pageContent').html("<h1>Compte</h1>");
+
+        let detail = new DetailCompte();
+        $('#pageContent').html(detail.render());
     },
 
     comptesNew: function () {
