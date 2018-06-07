@@ -11,6 +11,8 @@ import Breadcrumbs from "views/components/Breadcrumbs";
 import JuniorSchema from "views/components/Page";
 import ProfilJunior from "../views/special/ProfilJunior";
 import Juniors from "../collections/Juniors";
+import ListInterventionsJunior from "views/lists/ListInterventionsJunior";
+import SchemaTmpl from "templates/pages/schema.handlebars";
 
 
 export default Backbone.Router.extend({
@@ -68,9 +70,8 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let juniorSchema = new JuniorSchema();
 
-        $('#pageContent').html(juniorSchema.render());
+        $('#pageContent').html(SchemaTmpl);
     },
 
     profil: function() {
@@ -112,7 +113,7 @@ export default Backbone.Router.extend({
 
         let interventions = new Interventions({LocalStorage: 'interventions'});
         interventions.fetch();
-        let list = new ListInterventions({
+        let list = new ListInterventionsJunior({
             collection: interventions
         });
         $('#pageContent').html(list.render());
