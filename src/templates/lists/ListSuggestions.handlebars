@@ -1,34 +1,24 @@
-<div class="row mb-3">
-    <div class="col-12 form-inline">
-        <select class="form-control">
-            <option>- Statut -</option>
-            <option>En traitement</option>
-            <option>Archivé</option>
-        </select>
-    </div>
-</div>
+<form class="form-inline mb-3">
+    <button type="button" class="btn" data-target="admin/suggestions/new">Nouvelle suggestion</button>
+</form>
 
-<div class="row">
-    <div class="col-12">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>N°</th>
-                <th>Date | Heure</th>
-                <th>N° S</th>
-                <th>Senior</th>
-                <th>Suggestion</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>8273656</td>
-                <td>23.05.2018 | 12:45</td>
-                <td><a href="">2837</a></td>
-                <td>Emilie Richard</td>
-                <td>Ce serait bien que les Juniors nous apportent un petit gâteau quand ils viennent nous voir.</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>N°</th>
+        <th>Date | Heure</th>
+        <th>Senior</th>
+        <th>Suggestion</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each suggestions}}
+    <tr>
+        <td>{{id}}</td>
+        <td>{{date}} | {{heure}}</td>
+        <td><span data-target="admin/seniors/{{senior.id}}">{{senior.prenom}} {{senior.nom}}</span></td>
+        <td>{{contenu}}</td>
+    </tr>
+    {{/each}}
+    </tbody>
+</table>

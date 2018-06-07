@@ -1,33 +1,35 @@
-<div class="row mb-3">
-    <div class="col-12 form-inline">
-        <select class="form-control">
-            <option>- Statut -</option>
-            <option>Actif</option>
-            <option>Postulation en cours</option>
-            <option>Archivé</option>
-        </select>
+<form class="form-inline mb-3 d-flex">
+    <button type="button" class="btn mr-auto" data-target="admin/seniors/new">Nouveau compte senior</button>
+    <div class="form-check mr-2">
+        <input class="form-check-input" type="checkbox" id="statutActif" checked>
+        <label class="form-check-label" for="statutActif">Actifs</label>
     </div>
-</div>
+    <div class="form-check mr-2">
+        <input class="form-check-input" type="checkbox" id="statutTraitement" checked>
+        <label class="form-check-label" for="statutActif">En traitement</label>
+    </div>
+    <input type="text" class="form-control mr-2" id="recherche" placeholder="Rechercher...">
+</form>
 
-<div class="row">
-    <div class="col-12">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>N°</th>
-                <th>Prénom & Nom</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {{#each seniors}}
-                <tr>
-                    <td><a href="">{{id}}</a></td>
-                    <td>{{prenom}} {{nom}}</td>
-                    <td><a href="#" title="Envoyer un email"><i class="fas fa-envelope"></i></a></td>
-                </tr>
-            {{/each}}
-            </tbody>
-        </table>
-    </div>
-</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>N°</th>
+        <th>Nom & prénom</th>
+        <th>Téléphone</th>
+        <th>Email</th>
+        <th>Statut</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each seniors}}
+        <tr>
+            <td>{{id}}</td>
+            <td><span data-target="admin/senior/{{id}}">{{prenom}} {{nom}}</span></td>
+            <td>{{telephone}}</td>
+            <td>{{email}}</td>
+            <th>{{statut}}</th>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

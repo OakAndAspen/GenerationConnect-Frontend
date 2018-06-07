@@ -1,33 +1,22 @@
-    <div class="row mb-3">
-        <div class="col-12 form-inline">
-            <select class="form-control">
-                <option>- Statut -</option>
-                <option>Actif</option>
-                <option>Postulation en cours</option>
-                <option>Archivé</option>
-            </select>
-        </div>
-    </div>
+<form class="form-inline mb-3">
+    <button type="button" class="btn" data-target="admin/formations/new">Nouvelle formation</button>
+</form>
 
-    <div class="row">
-        <div class="col-12">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>N°</th>
-                    <th>Prénom & Nom</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                {{#each formations}}
-                <tr>
-                    <td><a href="">{{id}}</a></td>
-                    <td>{{prenom}} {{nom}}</td>
-                    <td><a href="#" title="Envoyer un email"><i class="fas fa-envelope"></i></a></td>
-                </tr>
-                {{/each}}
-                </tbody>
-            </table>
-        </div>
-    </div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>N°</th>
+        <th>Date | Heure</th>
+        <th>Titre</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each formations}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{date}} | {{heure}}</td>
+            <td><span data-target="admin/seniors/{{senior.id}}">{{nom}}</span></td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
