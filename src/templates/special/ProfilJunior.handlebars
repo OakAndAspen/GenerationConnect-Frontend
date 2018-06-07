@@ -1,135 +1,169 @@
 <h1>{{prenom}} {{nom}} <span class="badge badge-secondary ml-2">{{junior.status}}</span></h1>
 <hr/>
 
-<h1>Mes coordonnées</h1>
-<div class="row mt-3 px-3" data-id="{{id}}">
-    <div class="col-4">
-        <label>N° de téléphone</label>
-        <input type="text" class="form-control mb-2" placeholder="N° de téléphone" value="{{telephone}}">
-    </div>
-    <div class="col-4">
-        <label>Adresse email</label>
-        <input type="text" class="form-control mb-2" placeholder="Adresse mail" value="{{email}}">
-    </div>
-    <div class="col-4">
-        <label>N° AVS</label>
-        <input type="text" class="form-control mb-2" placeholder="N° AVS" value="{{junior.NoAVS}}">
-    </div>
-
-</div>
-
-<div class="row row mt-3 px-3" data-id="{{id}}">
-    <div class="col-md-6 mt-3">
-        <div class="card" data-id="{{id}}">
-            <div class="card-header">Informations bancaires</div>
-            <div class="card-body">
-                <input type="text" class="form-control mb-2" placeholder="Nom" value="{{junior.BanqueNom}}">
-                <input type="text" class="form-control mb-2" placeholder="BIC" value="{{junior.BanqueBIC}}">
-                <input type="text" class="form-control mb-2" placeholder="IBAN" value="{{junior.BanqueIBAN}}">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="dispo-tab" data-toggle="tab" href="#dispo" role="tab" aria-controls="dispo" aria-selected="false">Disponibilités</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="comp-tab" data-toggle="tab" href="#comp" role="tab" aria-controls="comp" aria-selected="false">Compétences</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active my-3" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <h1>Mes coordonnées</h1>
+        <div class="row mt-3 px-3" data-id="{{id}}">
+            <div class="col-4">
+                <label>N° de téléphone</label>
+                <input type="text" class="form-control mb-2" placeholder="+41 XX XXX XX XX" value="{{telephone}}">
             </div>
+            <div class="col-4">
+                <label>Adresse email</label>
+                <input type="text" class="form-control mb-2" placeholder="Adresse mail" value="{{email}}">
+            </div>
+            <div class="col-4">
+                <label>N° AVS</label>
+                <input type="text" class="form-control mb-2" placeholder="N° AVS" value="{{junior.NoAVS}}">
+            </div>
+
         </div>
-    </div>
 
-    {{#with junior.adresse_de_facturation}}
-    <div class="col-md-6 mt-3">
-        <div class="card" data-id="{{id}}">
-            <div class="card-header">
-                Adresse de facturation
-            </div>
-            <div class="card-body">
-                <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
-                <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
-                <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
-                <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
-                <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
-            </div>
-        </div>
-    </div>
-    {{/with}}
-    {{#with junior.adresse_de_depart}}
-    <div class="col-md-6 mt-3">
-        <div class="card" data-id="{{id}}">
-            <div class="card-header">
-                Adresse de départ
-            </div>
-            <div class="card-body">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="depart">
-                    <label class="form-check-label" for="depart"><h4>Même adresse qu'habitation courante</h4></label>
+        <div class="row row mt-3 px-3" data-id="{{id}}">
+            <div class="col-md-6 mt-3">
+                <div class="card" data-id="{{id}}">
+                    <div class="card-header">Informations bancaires</div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label >Nom</label>
+                            <input type="text" class="form-control mb-2" placeholder="Nom" value="{{junior.BanqueNom}}">
+                        </div>
+                        <div class="form-group">
+                            <label>N° BIC</label>
+                            <input type="text" class="form-control mb-2" placeholder="BIC" value="{{junior.BanqueBIC}}">
+                        </div>
+                        <div class="form-group">
+                            <label>N° IBAN</label>
+                            <input type="text" class="form-control mb-2" placeholder="CHXX XXXX XXXX XXXX XXXX X" value="{{junior.BanqueIBAN}}">
+                        </div>
+                    </div>
                 </div>
-                <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
-                <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
-                <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
-                <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
-                <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
             </div>
+
+            {{#with junior.adresse_de_facturation}}
+            <div class="col-md-6 mt-3">
+                <div class="card" data-id="{{id}}">
+                    <div class="card-header">
+                        Adresse de facturation
+                    </div>
+                    <div class="card-body">
+                        <label >Adresse</label>
+                        <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
+                        <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
+                        <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
+                        <label >Ville</label>
+                        <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
+                        <label >NPA</label>
+                        <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
+                    </div>
+                </div>
+            </div>
+            {{/with}}
+            {{#with junior.adresse_de_depart}}
+            <div class="col-md-6 mt-3">
+                <div class="card" data-id="{{id}}">
+                    <div class="card-header">
+                        Adresse de départ
+                    </div>
+                    <div class="card-body">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="depart">
+                            <label class="form-check-label" for="depart"><h4>Même adresse qu'habitation courante</h4></label>
+                        </div>
+                        <label >Adresse</label>
+                        <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
+                        <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
+                        <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
+                        <label >Villa</label>
+                        <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
+                        <label >NPA</label>
+                        <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
+                    </div>
+                </div>
+            </div>
+            {{/with}}
+            {{#with adresse_habitation}}
+            <div class="col-md-6 mt-3">
+                <div class="card" data-id="{{id}}">
+                    <div class="card-header">
+                        Adresse d'habitation courante
+                    </div>
+                    <div class="card-body">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="habitation">
+                            <label class="form-check-label" for="habitation"><h4>Même adresse que pour la facturation</h4></label>
+                        </div>
+                        <label >Adresse</label>
+                        <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
+                        <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
+                        <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
+                        <label >Villa</label>
+                        <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
+                        <label >NPA</label>
+                        <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
+                    </div>
+                </div>
+            </div>
+            {{/with}}
         </div>
     </div>
-    {{/with}}
-    {{#with adresse_habitation}}
-    <div class="col-md-6 mt-3">
-        <div class="card" data-id="{{id}}">
-            <div class="card-header">
-                Adresse d'habitation courante
-            </div>
-            <div class="card-body">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="habitation">
-                    <label class="form-check-label" for="habitation"><h4>Même adresse que pour la facturation</h4></label>
-                </div>
-                <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
-                <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
-                <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
-                <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
-                <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
-            </div>
-        </div>
-    </div>
-    {{/with}}
 
-</div>
 
-<hr/>
+    <div class="tab-pane fade  mt-3" id="dispo" role="tabpanel" aria-labelledby="dispo-tab">
 
-<h1>Mes disponibilités</h1>
-<table id="disponibilites" class="table table-striped">
-    <tbody>
-    {{#each plagesHoraire}}
-    <tr>
-        <th>{{jour}}</th>
-        <td>
-                <span class="badge badge-warning">
-                    {{heureDebut}} - {{heureFin}}
-                    <a href="#" title="Supprimer"><i class="fas fa-times"></i></a>
-                </span>
-            <a href="#" title="Ajouter une plage horaire"><i class="fas fa-plus"></i></a>
-        </td>
-    </tr>
-    {{/each}}
-    </tbody>
-</table>
-
-<hr/>
-
-<h1>Mes compétences</h1>
-
-<div class="row my-3">
-    <div class="col-12">
-    <ul class="list-group">
-        {{#each matieres}}
-            <li class="list-group-item" data-id="{{id}}">{{nom}}</li>
-            {{#each sujets}}
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="{{selected}}" data-id="{{id}}" id="sujet">
-                    <label class="form-check-label" for="sujet">
-                        {{nom}}
-                    </label>
-                </div>
+        <h1>Mes disponibilités</h1>
+        <hr/>
+        <table id="disponibilites" class="table table-striped">
+            <tbody>
+            {{#each plagesHoraire}}
+            <tr>
+                <th>{{jour}}</th>
+                <td>
+                        <span class="badge badge-warning">
+                            {{heureDebut}} - {{heureFin}}
+                            <a href="#" title="Supprimer"><i class="fas fa-times"></i></a>
+                        </span>
+                    <a href="#" title="Ajouter une plage horaire"><i class="fas fa-plus"></i></a>
+                </td>
+            </tr>
             {{/each}}
-        {{/each}}
-    </ul>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="tab-pane fade mt-3" id="comp" role="tabpanel" aria-labelledby="comp-tab">
+        <h1>Mes compétences</h1>
+        <hr/>
+        <div class="row my-3">
+            <div class="col-12">
+            <ul class="list-group">
+                {{#each matieres}}
+                    <li class="list-group-item" data-id="{{id}}">{{nom}}</li>
+                    {{#each sujets}}
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="{{selected}}" data-id="{{id}}" id="sujet">
+                            <label class="form-check-label" for="sujet">
+                                {{nom}}
+                            </label>
+                        </div>
+                    {{/each}}
+                {{/each}}
+            </ul>
+            </div>
+        </div>
     </div>
 </div>
-
 
 
