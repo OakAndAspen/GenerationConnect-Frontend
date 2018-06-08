@@ -1,5 +1,7 @@
 import Backbone from "backbone";
 import template from "templates/forms/FormLogin.handlebars";
+import App from "views/App";
+
 
 export default Backbone.View.extend({
 
@@ -17,7 +19,25 @@ export default Backbone.View.extend({
     },
 
     login: function (event) {
-        console.log("Se connecter");
-    }
+        let email = $('#email').val();
+        let password = $('#password').val();
 
+        $.ajax({
+            type: "POST",
+            url: "http://pingouin.heig-vd.ch/intouchables/api/login",
+            data: {
+                email: email,
+                motdepasse: password
+            },
+            success: function (data) {
+                console.log("Successfully connected!");
+                console.log(JSON.stringify(data));
+                localStorage.setItem("userId", data.id);
+                //location.reload();
+            },
+            error: function () {
+                console.log("Erreur");
+            }
+        });
+    }
 });

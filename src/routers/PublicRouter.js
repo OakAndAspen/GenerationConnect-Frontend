@@ -26,39 +26,41 @@ export default Backbone.Router.extend({
         "login": "login"
     },
 
-    accueil: function() {
+    accueil: function () {
         $('#pageContent').html(accueilTmpl);
     },
 
-    infosJuniors: function() {
+    infosJuniors: function () {
         $('#pageContent').html(juniorsTmpl);
     },
 
-    infosSeniors: function() {
+    infosSeniors: function () {
         $('#pageContent').html(seniorsTmpl);
     },
 
-    aide: function() {
+    aide: function () {
         $('#pageContent').html(aideTmpl);
     },
 
-    contact: function() {
+    contact: function () {
         let form = new FormContact();
         $('#pageContent').html(form.render());
     },
 
-    postuler: function() {
+    postuler: function () {
         let form = new FormPostulation();
         $('#pageContent').html(form.render());
     },
 
-    inscription: function() {
+    inscription: function () {
         let form = new FormSenior();
         $('#pageContent').html(form.render());
     },
 
-    login: function() {
-        let form = new FormLogin();
+    login: function () {
+        let form = new FormLogin({
+            app: this.app
+        });
         $('#pageContent').html(form.render());
     }
 });

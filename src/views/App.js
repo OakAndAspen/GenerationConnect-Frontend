@@ -6,9 +6,6 @@ export default Backbone.View.extend({
     el: 'body',
 
     initialize: function (attrs, options) {
-        this.routers = attrs.routers;
-        this.redirect(attrs.landingPage);
-
         // Affichage de la barre de navigation
         let navBar = new NavBar();
         $('#pageHeader').html(navBar.render());
@@ -32,6 +29,5 @@ export default Backbone.View.extend({
                 }
             }
         }
-
     }
 });

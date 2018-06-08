@@ -5,7 +5,7 @@ import Juniors from "collections/Juniors";
 import Seniors from "collections/Seniors";
 import Interventions from "collections/Interventions";
 import Formations from "collections/Formations";
-import Comptes from "collections/Comptes";
+import Comptes from "collections/Employe";
 import Suggestions from "collections/Suggestions";
 import Requetes from "collections/Requetes";
 
@@ -185,28 +185,8 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let collection = new Seniors({
-            localStorage: "seniors"
-        });
+        let collection = new Seniors();
         collection.fetch();
-
-        collection.create({
-            id: 4,
-            nom: "Charlot",
-            prenom: "Marc-Henri",
-            email: "charlot.mh@gmail.com",
-            telephone: "078 456 34 34",
-            statut: "actif"
-        });
-
-        collection.create({
-            id: 6,
-            nom: "Hemin",
-            prenom: "Juliette",
-            email: "jhemin@gmail.com",
-            telephone: "076 446 34 00",
-            statut: "en cours de traitement"
-        });
 
         let list = new ListSeniors({
             collection: collection,
