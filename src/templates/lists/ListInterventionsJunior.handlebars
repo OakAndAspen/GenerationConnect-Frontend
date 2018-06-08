@@ -34,3 +34,75 @@
         </table>
     </div>
 </div>
+
+<!--<form class="form-inline mb-3">
+    <button type="button" class="btn" data-target="admin/comptes/new">Nouveau compte</button>
+</form>-->
+
+<h2>les demandes en cours de traitement</h2>
+<table class="table table-striped mb-3">
+    <thead>
+    <tr>
+        <th>N°</th>
+        <th>Senior</th>
+        <th>Descriptif</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each demandes}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{senior.prenom}} {{senior.nom}}</td>
+            <td>{{descriptif}}</td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+
+<h2>Vos prochaines interventions</h2>
+<table class="table table-striped mb-3">
+    <thead>
+    <tr>
+        <th>N°</th>
+        <th>Senior</th>
+        <th>Descriptif</th>
+        <th>Adresse</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each interventionsFutures}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{senior.prenom}} {{senior.nom}}</td>
+            <td>{{descriptif}}</td>
+            {{#with senior.adresse_habitation}}
+            <td>{{ligne1}}</td>
+            {{/with}}
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+
+<h2>Vos prochaines visites</h2>
+<table class="table table-striped mb-3">
+    <thead>
+    <tr>
+        <th>N°</th>
+        <th>Senior</th>
+        <th>Descriptif</th>
+        <th>Adresse</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each interventionsPassees}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{senior.prenom}} {{senior.nom}}</td>
+            <td>{{descriptif}}</td>
+            {{#with senior.adresse_habitation}}
+            <td>{{ligne1}}</td>
+            {{/with}}
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
