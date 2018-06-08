@@ -82,7 +82,7 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let senior = new Senior({prenom: "Juan",nom: "Moreno",noMTel: "0786488797"});
+        let senior = new Senior({"id":1,"prenom":"Charles-Auguste","nom":"Beauverd","email":"user1@example.com","telephone":"+41245577600","senior":{"preference":"email","forfait":{"id":1,"nom":"Forfait #1","description":"Forfait #1 Description","prix":19.99}},"adresse_habitation":{"id":1,"ligne1":"Avenue des Sports 20","ligne2":"","ligne3":"","ville":"Yverdon-les-Bains","npa":1401}});
         let seniorProfil = new ProfilSenior({model: senior});
 
         $('#pageContent').html(seniorProfil.render());

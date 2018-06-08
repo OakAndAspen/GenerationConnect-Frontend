@@ -21,7 +21,7 @@ export default Backbone.View.extend({
     login: function (event) {
         let email = $('#email').val();
         let password = $('#password').val();
-
+        console.log("login");
         $.ajax({
             type: "POST",
             url: "http://pingouin.heig-vd.ch/intouchables/api/login",
