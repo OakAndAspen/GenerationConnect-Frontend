@@ -15,6 +15,7 @@ import App from "views/App";
 
 // -------------- Page load -------------------
 
+
 // Routing
 Backbone.history.start();
 

@@ -25,6 +25,7 @@ export default Backbone.View.extend({
             for (let route in this.routers[router].routes) {
                 if (route.localeCompare(page) == 0) {
                     this.routers[router].navigate(page, true);
+                    Backbone.history.loadUrl();
                     break;
                 }
             }

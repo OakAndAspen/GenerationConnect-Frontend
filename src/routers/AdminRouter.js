@@ -48,8 +48,8 @@ export default Backbone.Router.extend({
         "admin/juniors": "juniors",
         "admin/juniors/:id": "junior",
         "admin/seniors": "seniors",
-        "admin/seniors/new": "seniorsNew",
-        "admin/seniors/:id": "senior",
+        "admin/seniors/*something": "senior",
+        //"admin/seniors/new": "seniorsNew",
         "admin/interventions": "interventions",
         "admin/interventions/:id": "intervention",
         "admin/demandes": "demandes",
@@ -194,7 +194,7 @@ export default Backbone.Router.extend({
         $('#pageContent').html(list.render());
     },
 
-    senior: function (id) {
+    senior: function () {
         $('#pageBreadcrumbs').html(new Breadcrumbs({
             links: [
                 {

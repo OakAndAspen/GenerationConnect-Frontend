@@ -20,19 +20,19 @@
     <tr>
         <th>N°</th>
         <th>Nom & prénom</th>
+        <th>Nom & prénom</th>
         <th>Téléphone</th>
         <th>Email</th>
-        <th>Statut</th>
     </tr>
     </thead>
     <tbody>
     {{#each seniors}}
         <tr>
             <td>{{id}}</td>
-            <td><span data-target="admin/senior/{{id}}">{{prenom}} {{nom}}</span></td>
+            <td><span data-target="admin/seniors/{{id}}">{{prenom}} {{nom}}</span></td>
+            <td><a href="#admin/seniors/{{id}}">{{prenom}} {{nom}}</a></td>
             <td>{{telephone}}</td>
             <td>{{email}}</td>
-            <th>{{statut}}</th>
         </tr>
     {{/each}}
     </tbody>
