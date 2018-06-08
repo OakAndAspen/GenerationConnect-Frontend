@@ -111,10 +111,11 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let interventions = new Interventions({LocalStorage: 'interventions'});
-        interventions.fetch();
+        let collection = new Interventions();
+        collection.fetch();
+        console.log(collection);
         let list = new ListInterventionsJunior({
-            collection: interventions
+            collection: collection
         });
         $('#pageContent').html(list.render());
     }

@@ -4,8 +4,7 @@ import Intervention from "../models/Intervention";
 
 export default Backbone.Collection.extend({
     model: Intervention,
-    initialize: function(attrs, options) {
-        this.localStorage =  new LocalStorage(attrs.localStorage)
-    }
+    url: "http://pingouin.heig-vd.ch/intouchables/api/interventions",
+
 
 });
