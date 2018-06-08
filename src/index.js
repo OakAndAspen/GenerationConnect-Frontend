@@ -26,19 +26,18 @@ let hash = location.hash.substring(1);
 if(!hash) hash = 'accueil';
 
 // Création de la vue "App"
-let app = new App({
-    routers: {
-        publicRouter: new PublicRouter(),
-        adminRouter: new AdminRouter(),
-        juniorRouter: new JuniorRouter(),
-        seniorRouter: new SeniorRouter()
-    },
-    landingPage: hash
+let app = new App();
 
+app.routers = {
+    publicRouter: new PublicRouter(),
+    adminRouter: new AdminRouter(),
+    juniorRouter: new JuniorRouter(),
+    seniorRouter: new SeniorRouter()
+};
 
-});
+app.redirect(hash);
 
-import Junior from "models/Junior";
+/*import Junior from "models/Junior";
 import Adresse from "models/Adresse";
 import Sujet from "models/Sujet";
 import Sujets from "collections/Sujets";
@@ -168,4 +167,4 @@ let junior1 = new Junior({
     plagesHoraire: plagesHoraire1,
 });
 
-//console.log(JSON.stringify(junior1));
+console.log(JSON.stringify(junior1));*/

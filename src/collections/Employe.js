@@ -1,5 +1,5 @@
 import Backbone from "backbone";
-import Compte from "models/Compte";
+import Compte from "models/Employe";
 import {LocalStorage} from "backbone.localstorage";
 
 export default Backbone.Collection.extend({
