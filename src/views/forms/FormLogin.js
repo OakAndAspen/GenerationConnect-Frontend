@@ -22,6 +22,7 @@ export default Backbone.View.extend({
         let email = $('#email').val();
         let password = $('#password').val();
 
+        // Setup d'AJAX
         $.ajax({
             type: "POST",
             url: "http://pingouin.heig-vd.ch/intouchables/api/login",
@@ -29,6 +30,7 @@ export default Backbone.View.extend({
                 email: email,
                 motdepasse: password
             },
+            crossDomain: true,
             success: function (data) {
                 console.log("Successfully connected!");
                 console.log(JSON.stringify(data));
