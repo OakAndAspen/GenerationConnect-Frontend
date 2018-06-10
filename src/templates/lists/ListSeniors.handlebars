@@ -1,5 +1,5 @@
 <form class="form-inline mb-3 d-flex">
-    <button type="button" class="btn mr-auto" data-target="admin/seniors/new">Nouveau compte senior</button>
+    <button type="button" class="btn mr-auto" data-target="admin/seniors/1">Nouveau compte senior</button>
     <div class="form-check mr-2">
         <input class="form-check-input" name="statut" type="radio" id="statutTous" value="" checked>
         <label class="form-check-label" for="statutTous">Tous</label>
@@ -20,7 +20,6 @@
     <tr>
         <th>N°</th>
         <th>Nom & prénom</th>
-        <th>Nom & prénom</th>
         <th>Téléphone</th>
         <th>Email</th>
     </tr>
@@ -29,7 +28,6 @@
     {{#each seniors}}
         <tr>
             <td>{{id}}</td>
-            <td><span data-target="admin/seniors/{{id}}">{{prenom}} {{nom}}</span></td>
             <td><a href="#admin/seniors/{{id}}">{{prenom}} {{nom}}</a></td>
             <td>{{telephone}}</td>
             <td>{{email}}</td>

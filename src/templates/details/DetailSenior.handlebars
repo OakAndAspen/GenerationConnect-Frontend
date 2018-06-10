@@ -1,10 +1,73 @@
-<h1>Fiche du senior</h1>
+<h1>{{prenom}} {{nom}}</h1>
 
-<ul>
-    <li>Photo</li>
-    <li>Adresse</li>
-    <li>Disponibilité</li>
-    <li>Prestations en cours de traitement</li>
-    <li>Prestations archivées</li>
-    <li>Champ libre commentaires</li>
+<!-- Navigation -->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="profil-tab" data-toggle="tab" href="#profil" role="tab" aria-controls="profil"
+           aria-selected="true">Coordonnées</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="demandes-tab" data-toggle="tab" href="#demandes" role="tab" aria-controls="demandes"
+           aria-selected="false">Demandes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="interventions-tab" data-toggle="tab" href="#interventions" role="tab" aria-controls="interventions"
+           aria-selected="false">Interventions</a>
+    </li>
 </ul>
+
+<!-- Contenu -->
+<div class="tab-content" id="myTabContent">
+    <!-- Onglet "Coordonnées" -->
+    <div class="tab-pane fade show active my-3" id="profil" role="tabpanel" aria-labelledby="profil-tab">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>N° de téléphone</label>
+                    <input type="text" class="form-control mb-2" placeholder="+41 XX XXX XX XX" value="{{telephone}}">
+                </div>
+                <div class="form-group">
+                    <label>Adresse email</label>
+                    <input type="text" class="form-control mb-2" placeholder="Adresse mail" value="{{email}}">
+                </div>
+                <div class="form-group">
+                    <label>Préférence de contact</label>
+                    <input type="text" class="form-control mb-2" placeholder="preference" value="{{senior.preference}}">
+                </div>
+                <div class="form-group">
+                    <label>Commentaires</label>
+                    <textarea class="form-control"></textarea>
+                </div>
+            </div>
+            {{#with adresse_habitation}}
+                <div class="col-md-6">
+                    <div class="card" data-id="{{id}}">
+                        <div class="card-header">
+                            Adresse d'habitation courante
+                        </div>
+                        <div class="card-body">
+                            <label>Adresse</label>
+                            <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
+                            <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
+                            <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
+                            <label>Ville</label>
+                            <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
+                            <label>NPA</label>
+                            <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
+                        </div>
+                    </div>
+                </div>
+            {{/with}}
+        </div>
+    </div>
+
+    <!-- Onglet "Demandes" -->
+    <div class="tab-pane fade mt-3" id="demandes" role="tabpanel" aria-labelledby="demandes-tab">
+        <h1>Liste des demandes en cours</h1>
+    </div>
+
+    <!-- Onglet "Interventions" -->
+    <div class="tab-pane fade mt-3" id="interventions" role="tabpanel" aria-labelledby="interventions-tab">
+        <h1>Liste des interventions</h1>
+    </div>
+</div>

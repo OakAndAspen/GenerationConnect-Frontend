@@ -4,8 +4,6 @@ import Suggestion from "../models/Suggestion";
 
 
 export default Backbone.Collection.extend({
-    initialize: function(attrs, options) {
-        this.localStorage =  new LocalStorage(attrs.localStorage)
-    },
-    model: Suggestion
+    model: Suggestion,
+    url: "http://pingouin.heig-vd.ch/intouchables/api/suggestions"
 });

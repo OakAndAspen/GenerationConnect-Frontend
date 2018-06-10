@@ -3,8 +3,6 @@ import Compte from "models/Employe";
 import {LocalStorage} from "backbone.localstorage";
 
 export default Backbone.Collection.extend({
-    initialize: function(attrs, options) {
-        this.localStorage =  new LocalStorage(attrs.localStorage)
-    },
-    model: Compte
+    model: Compte,
+    url: "http://pingouin.heig-vd.ch/intouchables/api/employes"
 });

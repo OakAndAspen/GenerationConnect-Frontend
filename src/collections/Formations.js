@@ -3,8 +3,6 @@ import Formation from "models/Formation";
 import {LocalStorage} from "backbone.localstorage";
 
 export default Backbone.Collection.extend({
-    initialize: function(attrs, options) {
-        this.localStorage =  new LocalStorage(attrs.localStorage)
-    },
-    model: Formation
+    model: Formation,
+    url: "http://pingouin.heig-vd.ch/intouchables/api/formations"
 });

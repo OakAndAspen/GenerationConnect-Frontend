@@ -1,5 +1,5 @@
 import Backbone from "backbone";
-import template from "templates/details/DetailCompte.handlebars";
+import template from "templates/forms/FormEmploye.handlebars";
 
 export default Backbone.View.extend({
 
@@ -8,7 +8,8 @@ export default Backbone.View.extend({
     },
 
     render: function () {
-        this.$el.html(this.template(this.model.toJSON()));
+        this.$el.html(this.template());
         return this.$el;
     }
+
 });

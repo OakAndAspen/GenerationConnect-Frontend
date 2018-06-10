@@ -8,7 +8,8 @@ export default Backbone.View.extend({
     },
 
     render: function () {
-        this.$el.html(this.template);
+        console.log(this.model.toJSON());
+        this.$el.html(this.template(this.model.toJSON()));
         return this.$el;
     }
 });

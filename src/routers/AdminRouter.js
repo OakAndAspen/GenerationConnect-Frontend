@@ -5,7 +5,7 @@ import Juniors from "collections/Juniors";
 import Seniors from "collections/Seniors";
 import Interventions from "collections/Interventions";
 import Formations from "collections/Formations";
-import Comptes from "collections/Employe";
+import Comptes from "collections/Employes";
 import Suggestions from "collections/Suggestions";
 import Requetes from "collections/Requetes";
 
@@ -18,7 +18,7 @@ import ListJuniors from "views/lists/ListJuniors";
 import ListSeniors from "views/lists/ListSeniors";
 import ListInterventions from "views/lists/ListInterventions";
 import ListFormations from "views/lists/ListFormations";
-import ListComptes from "views/lists/ListComptes";
+import ListComptes from "views/lists/ListEmployes";
 import ListSuggestions from "views/lists/ListSuggestions";
 import ListRequetes from "views/lists/ListRequetes";
 
@@ -27,18 +27,24 @@ import FormSenior from "views/forms/FormSenior";
 import FormRequete from "views/forms/FormRequete";
 import FormFormation from "views/forms/FormFormation";
 import FormSuggestion from "views/forms/FormSuggestion";
-import FormCompte from "views/forms/FormCompte";
+import FormCompte from "views/forms/FormEmploye";
 
 // Details
 import DetailJunior from "views/details/DetailJunior";
 import DetailIntervention from "views/details/DetailIntervention";
 import DetailSenior from "views/details/DetailSenior";
 import DetailFormation from "views/details/DetailFormation";
-import DetailCompte from "views/details/DetailCompte";
+import DetailCompte from "views/details/DetailEmploye";
 import DetailRequete from "views/details/DetailRequete";
 
 // Special
 import PagesWYSIWYG from "views/special/PagesWYSIWYG";
+import Senior from "../models/Senior";
+import Intervention from "../models/Intervention";
+import Requete from "../models/Requete";
+import Formation from "../models/Formation";
+import Employe from "../models/Employe";
+import DetailEmploye from "../views/details/DetailEmploye";
 
 
 export default Backbone.Router.extend({
@@ -48,8 +54,8 @@ export default Backbone.Router.extend({
         "admin/juniors": "juniors",
         "admin/juniors/:id": "junior",
         "admin/seniors": "seniors",
-        "admin/seniors/*something": "senior",
-        //"admin/seniors/new": "seniorsNew",
+        "admin/seniors/new": "seniorsNew",
+        "admin/seniors/:id": "senior",
         "admin/interventions": "interventions",
         "admin/interventions/:id": "intervention",
         "admin/demandes": "demandes",
@@ -161,14 +167,18 @@ export default Backbone.Router.extend({
                     title: "Juniors"
                 },
                 {
-                    target: "admin/juniors/1",
-                    title: "Jean Martin"
+                    target: "admin/juniors/" + id,
+                    title: "N° " + id
                 }
             ]
         }).render());
 
-        let detail = new DetailJunior();
-        $('#pageContent').html(detail.render());
+        let model = new Junior({id: id});
+        model.fetch({
+            success: function (model) {
+                $('#pageContent').html(new DetailJunior({model: model}).render());
+            }
+        });
     },
 
     seniors: function () {
@@ -194,7 +204,8 @@ export default Backbone.Router.extend({
         $('#pageContent').html(list.render());
     },
 
-    senior: function () {
+    senior: function (id) {
+
         $('#pageBreadcrumbs').html(new Breadcrumbs({
             links: [
                 {
@@ -206,14 +217,18 @@ export default Backbone.Router.extend({
                     title: "Seniors"
                 },
                 {
-                    target: "admin/seniors/1",
-                    title: "Jean Martin"
+                    target: "admin/seniors/" + id,
+                    title: "N° " + id
                 }
             ]
         }).render());
 
-        let detail = new DetailSenior();
-        $('#pageContent').html(detail.render());
+        let model = new Senior({id: id});
+        model.fetch({
+            success: function (model) {
+                $('#pageContent').html(new DetailSenior({model: model}).render());
+            }
+        });
     },
 
     seniorsNew: function () {
@@ -273,13 +288,18 @@ export default Backbone.Router.extend({
                     title: "Interventions"
                 },
                 {
-                    target: "admin/interventions/1",
-                    title: "N° 237668"
+                    target: "admin/interventions/"+id,
+                    title: "N° "+id
                 }
             ]
         }).render());
-        let detail = new DetailIntervention();
-        $('#pageContent').html(detail.render());
+
+        let model = new Intervention({id: id});
+        model.fetch({
+            success: function (model) {
+                $('#pageContent').html(new DetailIntervention({model: model}).render());
+            }
+        });
     },
 
     demandes: function () {
@@ -325,8 +345,12 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let detail = new DetailRequete();
-        $('#pageContent').html(detail.render());
+        let model = new Requete({id: id});
+        model.fetch({
+            success: function (model) {
+                $('#pageContent').html(new DetailRequete({model: model}).render());
+            }
+        });
     },
 
     demandesNew: function () {
@@ -392,8 +416,12 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let detail = new DetailFormation();
-        $('#pageContent').html(detail.render());
+        let model = new Formation({id: id});
+        model.fetch({
+            success: function (model) {
+                $('#pageContent').html(new DetailFormation({model: model}).render());
+            }
+        });
     },
 
     formationsNew: function () {
@@ -519,8 +547,12 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let detail = new DetailCompte();
-        $('#pageContent').html(detail.render());
+        let model = new Employe({id: id});
+        model.fetch({
+            success: function (model) {
+                $('#pageContent').html(new DetailEmploye({model: model}).render());
+            }
+        });
     },
 
     comptesNew: function () {

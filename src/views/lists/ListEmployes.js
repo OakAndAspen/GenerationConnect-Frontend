@@ -1,5 +1,5 @@
 import Backbone from "backbone";
-import template from "templates/lists/ListeComptes.handlebars";
+import template from "templates/lists/ListeEmployes.handlebars";
 
 export default Backbone.View.extend({
 
