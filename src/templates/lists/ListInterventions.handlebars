@@ -1,17 +1,19 @@
 <form class="form-inline mb-3 d-flex">
-    <button type="button" class="btn mr-auto" data-target="admin/interventions/new">Nouvelle demande d'intervention
-    </button>
-    <div class="form-check mr-2">
+    <div class="form-check mr-2 ml-auto">
         <input class="form-check-input" name="statut" type="radio" id="statutTous" value="" checked>
         <label class="form-check-label" for="statutTous">Tous</label>
     </div>
     <div class="form-check mr-2">
-        <input class="form-check-input" name="statut" type="radio" id="statutActif" value="Actif">
-        <label class="form-check-label" for="statutActif">Actif</label>
+        <input class="form-check-input" name="statut" type="radio" id="statutPlanifie" value="planifie">
+        <label class="form-check-label" for="statutPlanifie">Planifié</label>
     </div>
     <div class="form-check mr-2">
-        <input class="form-check-input" name="statut" type="radio" id="statutTraitement" value="En traitement">
-        <label class="form-check-label" for="statutTraitement">En traitement</label>
+        <input class="form-check-input" name="statut" type="radio" id="statutAnnule" value="annule">
+        <label class="form-check-label" for="statutAnnule">Annulé</label>
+    </div>
+    <div class="form-check mr-2">
+        <input class="form-check-input" name="statut" type="radio" id="statutFinalise" value="finalise">
+        <label class="form-check-label" for="statutFinalise">Finalisé</label>
     </div>
 </form>
 
@@ -19,7 +21,6 @@
     <thead>
     <tr>
         <th>N°</th>
-        <th>Senior</th>
         <th>Junior</th>
         <th>Date</th>
         <th>Statut</th>
@@ -28,10 +29,9 @@
     <tbody>
     {{#each interventions}}
         <tr>
-            <td>{{id}}</td>
-            <td><span data-target="admin/senior/{{senior.id}}">{{senior.prenom}} {{senior.nom}}</span></td>
-            <td><span data-target="admin/junior/{{junior.id}}">{{junior.prenom}} {{junior.nom}}</span></td>
-            <th>{{date}} {{heure}}</th>
+            <td><a href="#admin/interventions/{{id}}">{{id}}</a></td>
+            <td><a href="#admin/junior/{{user.id}}">{{user.prenom}} {{user.nom}}</a></td>
+            <th>{{debutprevu}}</th>
             <th>{{statut}}</th>
         </tr>
     {{/each}}

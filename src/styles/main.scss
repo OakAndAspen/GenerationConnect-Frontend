@@ -36,8 +36,14 @@ h4 {
   font-size: 12px;
 }
 
-.table [data-target], .table a {
+.table [data-target], a {
   color: $orange;
+  text-decoration: none;
+}
+
+.table [data-target]:hover, a:hover {
+  color: $orange;
+  text-decoration: underline;
 }
 
 body {
