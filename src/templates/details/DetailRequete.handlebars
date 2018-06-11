@@ -1,7 +1,57 @@
-<ul>
-    <li>Statut | Date | Heure</li>
-    <li>Actions (annuler, archiver, etc.)</li>
-    <li>Description</li>
-    <li>Champ libre commentaires</li>
-    <li>Choix d'un junior</li>
-</ul>
+<!-- Informations de l'intervention -->
+<table class="table">
+    <thead>
+    <tr>
+        <th>Statut</th>
+        <th>Début</th>
+        <th>Fin</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{statut}}</td>
+        <td>{{debutprevu}}</td>
+        <td>{{finprevu}}</td>
+        <td>
+            <button class="btn">Annuler</button>
+            <button class="btn">Archiver</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<hr/>
+
+<div class="row my-3">
+    <div class="col-md-6">
+        <p>// Description de la demande //</p>
+    </div>
+    <div class="col-md-6">
+        <textarea class="form-control">// Commentaires //</textarea>
+    </div>
+</div>
+
+<hr/>
+
+<div class="row my-3">
+    <!-- Informations du senior -->
+    <div class="col-md-6">
+        {{#with requete.soumis_par}}
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title text-center"><h1>Senior</h1></div>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="#admin/seniors/{{id}}">{{prenom}} {{nom}}</a></li>
+                    <li class="list-group-item">{{email}}</li>
+                    <li class="list-group-item">{{telephone}}</li>
+                </ul>
+            </div>
+        {{/with}}
+    </div>
+    <!-- Informations du junior -->
+    <div class="col-md-6">
+        <h1>Choix d'un junior</h1>
+    </div>
+</div>

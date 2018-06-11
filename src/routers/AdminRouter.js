@@ -45,6 +45,7 @@ import Requete from "../models/Requete";
 import Formation from "../models/Formation";
 import Employe from "../models/Employe";
 import DetailEmploye from "../views/details/DetailEmploye";
+import Junior from "../models/Junior";
 
 
 export default Backbone.Router.extend({
@@ -152,7 +153,6 @@ export default Backbone.Router.extend({
             collection: collection,
         });
         $('#pageContent').html(list.render());
-
     },
 
     junior: function (id) {
@@ -173,12 +173,75 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let model = new Junior({id: id});
+        /*let model = new Junior({id: id});
         model.fetch({
             success: function (model) {
                 $('#pageContent').html(new DetailJunior({model: model}).render());
             }
+        });*/
+
+        let model = new Junior({
+            "id": 2,
+            "prenom": "Gabriel",
+            "nom": "Lopez",
+            "email": "user2@example.com",
+            "telephone": "+41245577600",
+            "junior": {
+                "status": "actif",
+                "LimiteTempsTransport": 120,
+                "NoAVS": "756.1234.5678.97",
+                "BanqueNom": "UBS Group AG",
+                "BanqueBIC": "UBSWCHZH80A",
+                "BanqueIBAN": "CH08 0029 8999 9999 9999 Q",
+                "adresse_de_depart": {
+                    "id": 1,
+                    "ligne1": "Avenue des Sports 20",
+                    "ligne2": "",
+                    "ligne3": "",
+                    "ville": "Yverdon-les-Bains",
+                    "npa": 1401
+                },
+                "adresse_de_facturation": {
+                    "id": 1,
+                    "ligne1": "Avenue des Sports 20",
+                    "ligne2": "",
+                    "ligne3": "",
+                    "ville": "Yverdon-les-Bains",
+                    "npa": 1401
+                },
+                "matieres": [
+                    {
+                        "id": 1,
+                        "nom": "Skype",
+                        "description": "Papy telephone maison",
+                        "sujet_id": 1,
+                        "pivot": {
+                            "junior_user_id": 2,
+                            "matiere_id": 1
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "nom": "Cueillette",
+                        "description": "Aller cueillir des fraises ou des champignons",
+                        "sujet_id": 2,
+                        "pivot": {
+                            "junior_user_id": 2,
+                            "matiere_id": 2
+                        }
+                    }
+                ]
+            },
+            "adresse_habitation": {
+                "id": 1,
+                "ligne1": "Avenue des Sports 20",
+                "ligne2": "",
+                "ligne3": "",
+                "ville": "Yverdon-les-Bains",
+                "npa": 1401
+            }
         });
+        $('#pageContent').html(new DetailJunior({model: model}).render());
     },
 
     seniors: function () {
@@ -288,8 +351,8 @@ export default Backbone.Router.extend({
                     title: "Interventions"
                 },
                 {
-                    target: "admin/interventions/"+id,
-                    title: "N° "+id
+                    target: "admin/interventions/" + id,
+                    title: "N° " + id
                 }
             ]
         }).render());
@@ -387,9 +450,7 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let collection = new Formations({
-            localStorage: "formations"
-        });
+        let collection = new Formations();
         collection.fetch();
 
         let list = new ListFormations({
@@ -411,17 +472,34 @@ export default Backbone.Router.extend({
                 },
                 {
                     target: "admin/formations/1",
-                    title: "N°272859"
+                    title: "N° " + id
                 }
             ]
         }).render());
 
-        let model = new Formation({id: id});
+        /*let model = new Formation({id: id});
         model.fetch({
             success: function (model) {
                 $('#pageContent').html(new DetailFormation({model: model}).render());
             }
+        });*/
+
+        let model = new Formation({
+            "id": 1,
+            "nom": "formation initiale",
+            "description": "Cette formation doit être suivie par tous les juniors",
+            "plage_horaire": {
+                "id": 1,
+                "joursemaine": "lundi",
+                "heuredebut": "14:00:00",
+                "heurefin": "15:00:00",
+                "plage_unique": {
+                    "plage_horaire_id": 1,
+                    "Date": "2018-06-10"
+                }
+            }
         });
+        $('#pageContent').html(new DetailFormation({model: model}).render());
     },
 
     formationsNew: function () {
