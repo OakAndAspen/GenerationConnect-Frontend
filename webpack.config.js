@@ -7,8 +7,7 @@ module.exports = {
     watch: true,
     output: {
         filename: 'app.js',
-        //path: path.resolve(__dirname, 'public')
-        path: "C:\\wamp64\\www\\ProjWeb-Back\\public\\frontend\\"
+        path: path.resolve(__dirname, 'public')
     },
     module: {
         rules: [

@@ -2,18 +2,21 @@ import Backbone from "backbone";
 
 // Models
 import Junior from "models/Junior";
+import Intervention from "models/Intervention";
 import Interventions from "collections/Interventions";
-import PlagesHoraire from "collections/PlagesHoraire";
+import Requetes from "collections/Requetes";
+import Juniors from "collections/Juniors";
 
 // Views
 import Dashboard from "views/components/Dashboard";
 import Breadcrumbs from "views/components/Breadcrumbs";
 import JuniorSchema from "views/components/Page";
-import ProfilJunior from "../views/special/ProfilJunior";
-import Juniors from "../collections/Juniors";
+import ProfilJunior from "views/special/ProfilJunior";
 import ListInterventionsJunior from "views/lists/ListInterventionsJunior";
-import SchemaTmpl from "templates/pages/schema.handlebars";
+import DetailInterventionJunior from "views/details/DetailInterventionJunior";
 
+// Templates
+import SchemaTmpl from "templates/pages/schema.handlebars";
 
 export default Backbone.Router.extend({
 
@@ -21,6 +24,7 @@ export default Backbone.Router.extend({
         "juniors": "dashboard",
         "juniors/profil": "profil",
         "juniors/interventions": "interventions",
+        "juniors/interventions/:id": "intervention",
         "juniors/schema": "schema"
     },
 
@@ -171,17 +175,46 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
+        console.log(GlobalVariables.getApiURL());
 
-        let collection = new Interventions();
-        collection.fetch();
-        console.log(collection);
+        /*let interventionsFutures = new Interventions();
+        interventionsFutures.fetch();
+        let interventionsPassees = new Interventions();
+        interventionsPassees.fetch();
+        let demandes = new Requetes();
+        demandes.fetch();*/
 
-        var data_filter = collection.filter( element => element.user.junior)
-        console.log(data_filter)
-
-        let list = new ListInterventionsJunior({
-            collection: collection
+        /*let list = new ListInterventionsJunior({
+            interventionsFutures: interventionsFutures,
+            interventionsPassees: interventionsPassees,
+            demandes: demandes
         });
-        $('#pageContent').html(list.render());
+        $('#pageContent').html(list.render());*/
+    },
+
+    intervention: function(id) {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "juniors",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "juniors/interventions",
+                    title: "Interventions"
+                },
+                {
+                    target: "juniors/interventions/"+id,
+                    title: "N° "+id
+                }
+            ]
+        }).render());
+
+        let model = new Intervention({id: id});
+        model.fetch({
+            success: function (model) {
+                $('#pageContent').html(new DetailInterventionJunior({model: model}).render());
+            }
+        });
     }
 });

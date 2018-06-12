@@ -10,9 +10,6 @@ import Breadcrumbs from "views/components/Breadcrumbs";
 import ProfilSenior from "views/special/ProfilSenior";
 import FormSuggestion from "views/forms/FormSuggestion";
 import ListInterventionsSenior from "views/lists/ListInterventionsSenior";
-import FormRequete from "../views/forms/FormRequete";
-import Matieres from "../collections/Matieres";
-
 
 export default Backbone.Router.extend({
 
@@ -21,8 +18,8 @@ export default Backbone.Router.extend({
         "seniors/profil": "profil",
         "seniors/interventions": "interventions",
         "seniors/suggestion": "suggestion",
-        'seniors/demande': 'demande'
-
+        'seniors/demande': 'demande',
+        "seniors/interventions/:id": "intervention"
     },
 
     route: function(route, name, callback) {
@@ -188,5 +185,29 @@ export default Backbone.Router.extend({
         console.log(requete);
 
         $('#pageContent').html(requete.render());
+    },
+
+    intervention: function(id) {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "seniors",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "seniors/interventions",
+                    title: "Interventions"
+                },
+                {
+                    target: "seniors/interventions/"+id,
+                    title: "N° "+id
+                }
+            ]
+        }).render());
+
+        let interventions = new Interventions();
+        $('#pageContent').html(new ListInterventionsSenior({
+            collection: interventions
+        }).render());
     }
 });
