@@ -1,9 +1,10 @@
 import Backbone from "backbone";
+import AppConfig from "config";
 
 export default Backbone.Model.extend({
 
     url: function () {
-        return "http://pingouin.heig-vd.ch/intouchables/api/formations/" + this.id;
+        return AppConfig.apiUrl + "/formations/" + this.id;
     },
 
     initialize: function (attrs, options) {
