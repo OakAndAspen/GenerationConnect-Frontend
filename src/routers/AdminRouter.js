@@ -1,24 +1,32 @@
 import Backbone from "backbone";
 
+// Components
+import Dashboard from "views/components/Dashboard";
+import Breadcrumbs from "views/components/Breadcrumbs";
+
+// Models
+import Junior from "models/Junior";
+import Senior from "models/Senior";
+import Intervention from "models/Intervention";
+import Requete from "models/Requete";
+import Formation from "models/Formation";
+import Employe from "models/Employe";
+
 // Collections
 import Juniors from "collections/Juniors";
 import Seniors from "collections/Seniors";
 import Interventions from "collections/Interventions";
 import Formations from "collections/Formations";
-import Comptes from "collections/Employes";
+import Employes from "collections/Employes";
 import Suggestions from "collections/Suggestions";
 import Requetes from "collections/Requetes";
-
-// Components
-import Dashboard from "views/components/Dashboard";
-import Breadcrumbs from "views/components/Breadcrumbs";
 
 // Lists
 import ListJuniors from "views/lists/ListJuniors";
 import ListSeniors from "views/lists/ListSeniors";
 import ListInterventions from "views/lists/ListInterventions";
 import ListFormations from "views/lists/ListFormations";
-import ListComptes from "views/lists/ListEmployes";
+import ListEmployes from "views/lists/ListEmployes";
 import ListSuggestions from "views/lists/ListSuggestions";
 import ListRequetes from "views/lists/ListRequetes";
 
@@ -27,25 +35,18 @@ import FormSenior from "views/forms/FormSenior";
 import FormRequete from "views/forms/FormRequete";
 import FormFormation from "views/forms/FormFormation";
 import FormSuggestion from "views/forms/FormSuggestion";
-import FormCompte from "views/forms/FormEmploye";
+import FormEmploye from "views/forms/FormEmploye";
 
 // Details
 import DetailJunior from "views/details/DetailJunior";
 import DetailIntervention from "views/details/DetailIntervention";
 import DetailSenior from "views/details/DetailSenior";
 import DetailFormation from "views/details/DetailFormation";
-import DetailCompte from "views/details/DetailEmploye";
+import DetailEmploye from "views/details/DetailEmploye";
 import DetailRequete from "views/details/DetailRequete";
 
 // Special
 import PagesWYSIWYG from "views/special/PagesWYSIWYG";
-import Senior from "../models/Senior";
-import Intervention from "../models/Intervention";
-import Requete from "../models/Requete";
-import Formation from "../models/Formation";
-import Employe from "../models/Employe";
-import DetailEmploye from "../views/details/DetailEmploye";
-import Junior from "../models/Junior";
 
 export default Backbone.Router.extend({
 
@@ -67,9 +68,9 @@ export default Backbone.Router.extend({
         "admin/pages": "pages",
         "admin/suggestions": "suggestions",
         "admin/suggestions/new": "suggestionsNew",
-        "admin/comptes": "comptes",
-        "admin/comptes/new": "comptesNew",
-        "admin/comptes/:id": "compte"
+        "admin/comptes": "employes",
+        "admin/comptes/new": "employesNew",
+        "admin/comptes/:id": "employe"
     },
 
     dashboard: function () {
@@ -147,11 +148,13 @@ export default Backbone.Router.extend({
         }).render());
 
         let collection = new Juniors();
-        collection.fetch();
-        let list = new ListJuniors({
-            collection: collection,
+        collection.fetch({
+            success: function () {
+                console.log(collection.toJSON());
+                let list = new ListJuniors({collection: collection});
+                $('#pageContent').html(list.render());
+            }
         });
-        $('#pageContent').html(list.render());
     },
 
     junior: function (id) {
@@ -172,75 +175,12 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        /*let model = new Junior({id: id});
+        let model = new Junior({id: id});
         model.fetch({
             success: function (model) {
                 $('#pageContent').html(new DetailJunior({model: model}).render());
             }
-        });*/
-
-        let model = new Junior({
-            "id": 2,
-            "prenom": "Gabriel",
-            "nom": "Lopez",
-            "email": "user2@example.com",
-            "telephone": "+41245577600",
-            "junior": {
-                "status": "actif",
-                "LimiteTempsTransport": 120,
-                "NoAVS": "756.1234.5678.97",
-                "BanqueNom": "UBS Group AG",
-                "BanqueBIC": "UBSWCHZH80A",
-                "BanqueIBAN": "CH08 0029 8999 9999 9999 Q",
-                "adresse_de_depart": {
-                    "id": 1,
-                    "ligne1": "Avenue des Sports 20",
-                    "ligne2": "",
-                    "ligne3": "",
-                    "ville": "Yverdon-les-Bains",
-                    "npa": 1401
-                },
-                "adresse_de_facturation": {
-                    "id": 1,
-                    "ligne1": "Avenue des Sports 20",
-                    "ligne2": "",
-                    "ligne3": "",
-                    "ville": "Yverdon-les-Bains",
-                    "npa": 1401
-                },
-                "matieres": [
-                    {
-                        "id": 1,
-                        "nom": "Skype",
-                        "description": "Papy telephone maison",
-                        "sujet_id": 1,
-                        "pivot": {
-                            "junior_user_id": 2,
-                            "matiere_id": 1
-                        }
-                    },
-                    {
-                        "id": 2,
-                        "nom": "Cueillette",
-                        "description": "Aller cueillir des fraises ou des champignons",
-                        "sujet_id": 2,
-                        "pivot": {
-                            "junior_user_id": 2,
-                            "matiere_id": 2
-                        }
-                    }
-                ]
-            },
-            "adresse_habitation": {
-                "id": 1,
-                "ligne1": "Avenue des Sports 20",
-                "ligne2": "",
-                "ligne3": "",
-                "ville": "Yverdon-les-Bains",
-                "npa": 1401
-            }
         });
-        $('#pageContent').html(new DetailJunior({model: model}).render());
     },
 
     seniors: function () {
@@ -258,12 +198,13 @@ export default Backbone.Router.extend({
         }).render());
 
         let collection = new Seniors();
-        collection.fetch();
-
-        let list = new ListSeniors({
-            collection: collection,
+        collection.fetch({
+            success: function () {
+                console.log(collection.toJSON());
+                let list = new ListSeniors({collection: collection});
+                $('#pageContent').html(list.render());
+            }
         });
-        $('#pageContent').html(list.render());
     },
 
     senior: function (id) {
@@ -327,15 +268,14 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let collection = new Interventions({
-            localStorage: "interventions"
+        let collection = new Interventions();
+        collection.fetch({
+            success: function () {
+                console.log(collection.toJSON());
+                let list = new ListInterventions({collection: collection});
+                $('#pageContent').html(list.render());
+            }
         });
-        collection.fetch();
-
-        let list = new ListInterventions({
-            collection: collection,
-        });
-        $('#pageContent').html(list.render());
     },
 
     intervention: function (id) {
@@ -358,7 +298,7 @@ export default Backbone.Router.extend({
 
         let model = new Intervention({id: id});
         model.fetch({
-            success: function (model) {
+            success: function () {
                 $('#pageContent').html(new DetailIntervention({model: model}).render());
             }
         });
@@ -378,15 +318,13 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let collection = new Requetes({
-            localStorage: "requetes"
+        let collection = new Requetes();
+        collection.fetch({
+            success: function () {
+                let list = new ListRequetes({collection: collection});
+                $('#pageContent').html(list.render());
+            }
         });
-        collection.fetch();
-
-        let list = new ListRequetes({
-            collection: collection,
-        });
-        $('#pageContent').html(list.render());
     },
 
     demande: function (id) {
@@ -402,7 +340,7 @@ export default Backbone.Router.extend({
                 },
                 {
                     target: "admin/demandes/1",
-                    title: "N°983576"
+                    title: "N° "+id
                 }
             ]
         }).render());
@@ -450,12 +388,12 @@ export default Backbone.Router.extend({
         }).render());
 
         let collection = new Formations();
-        collection.fetch();
-
-        let list = new ListFormations({
-            collection: collection,
+        collection.fetch({
+            success: function () {
+                let list = new ListFormations({collection: collection});
+                $('#pageContent').html(list.render());
+            }
         });
-        $('#pageContent').html(list.render());
     },
 
     formation: function (id) {
@@ -478,12 +416,10 @@ export default Backbone.Router.extend({
 
         let model = new Formation({id: id});
         model.fetch({
-            success: function (model) {
+            success: function () {
                 $('#pageContent').html(new DetailFormation({model: model}).render());
             }
         });
-
-        $('#pageContent').html(new DetailFormation({model: model}).render());
     },
 
     formationsNew: function () {
@@ -536,14 +472,14 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let collection = new Suggestions({
-            localStorage: "suggestions"
+        let collection = new Suggestions();
+        collection.fetch({
+            success: function () {
+                console.log(collection.toJSON());
+                let list = new ListSuggestions({collection: collection});
+                $('#pageContent').html(list.render());
+            }
         });
-        collection.fetch();
-        let list = new ListSuggestions({
-            collection: collection,
-        });
-        $('#pageContent').html(list.render());
     },
 
     suggestionsNew: function () {
@@ -566,7 +502,7 @@ export default Backbone.Router.extend({
         $('#pageContent').html(new FormSuggestion().render());
     },
 
-    comptes: function () {
+    employes: function () {
         $('#pageBreadcrumbs').html(new Breadcrumbs({
             links: [
                 {
@@ -580,18 +516,17 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let collection = new Comptes({
-            localStorage: "comptes"
+        let collection = new Employes();
+        collection.fetch({
+            success: function () {
+                console.log(collection.toJSON());
+                let list = new ListEmployes({collection: collection});
+                $('#pageContent').html(list.render());
+            }
         });
-        collection.fetch();
-
-        let list = new ListComptes({
-            collection: collection,
-        });
-        $('#pageContent').html(list.render());
     },
 
-    compte: function (id) {
+    employe: function (id) {
         $('#pageBreadcrumbs').html(new Breadcrumbs({
             links: [
                 {
@@ -604,20 +539,20 @@ export default Backbone.Router.extend({
                 },
                 {
                     target: "admin/comptes/1",
-                    title: "Jean Martin"
+                    title: "N° "+id
                 }
             ]
         }).render());
 
         let model = new Employe({id: id});
         model.fetch({
-            success: function (model) {
+            success: function () {
                 $('#pageContent').html(new DetailEmploye({model: model}).render());
             }
         });
     },
 
-    comptesNew: function () {
+    employesNew: function () {
         $('#pageBreadcrumbs').html(new Breadcrumbs({
             links: [
                 {
@@ -634,6 +569,6 @@ export default Backbone.Router.extend({
                 }
             ]
         }).render());
-        $('#pageContent').html(new FormCompte().render());
+        $('#pageContent').html(new FormEmploye().render());
     },
 });

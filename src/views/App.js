@@ -6,7 +6,6 @@ import AdminRouter from "routers/AdminRouter";
 import SeniorRouter from "routers/SeniorRouter";
 
 export default Backbone.View.extend({
-    urlApi: "urlTest",
     el: 'body',
 
     initialize: function (attrs, options) {
@@ -19,9 +18,8 @@ export default Backbone.View.extend({
 
         // Affichage de la barre de navigation
         let navBar = new NavBar();
-
         $('#pageHeader').html(navBar.render());
-    },
+    }/*,
 
     events: {
         'click [data-target]': 'linkTo'
@@ -42,5 +40,5 @@ export default Backbone.View.extend({
                 }
             }
         }
-    }
+    }*/
 });

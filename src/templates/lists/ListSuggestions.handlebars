@@ -1,5 +1,5 @@
 <form class="form-inline mb-3">
-    <button type="button" class="btn" data-target="admin/suggestions/new">Nouvelle suggestion</button>
+    <a class="btn" href="#admin/suggestions/new">Nouvelle suggestion</a>
 </form>
 
 <table class="table table-striped">
@@ -16,7 +16,7 @@
     <tr>
         <td>{{id}}</td>
         <td>{{date}} | {{heure}}</td>
-        <td><span data-target="admin/seniors/{{senior.id}}">{{senior.prenom}} {{senior.nom}}</span></td>
+        <td><a href="#admin/seniors/{{senior.id}}">{{senior.prenom}} {{senior.nom}}</a></td>
         <td>{{contenu}}</td>
     </tr>
     {{/each}}

@@ -1,4 +1,5 @@
 import Backbone from "backbone";
+import AppConfig from "config";
 import template from "templates/forms/FormLogin.handlebars";
 import App from "views/App";
 
@@ -22,17 +23,14 @@ export default Backbone.View.extend({
         let email = $('#email').val();
         let password = $('#password').val();
 
-
-
         // Setup d'AJAX
         $.ajax({
             type: "POST",
-            url: "http://localhost/ProjWeb-Back/public/api/login",
+            url: AppConfig.apiUrl+"/login",
             data: {
                 email: email,
                 motdepasse: password
             },
-            crossDomain: true,
             success: function (data) {
                 console.log("Successfully connected!");
                 console.log(JSON.stringify(data));
@@ -43,13 +41,15 @@ export default Backbone.View.extend({
                 if(data.junior) window.location.hash = "#juniors";
                 if(data.senior) window.location.hash = "#seniors";
 
-
-
-
                 location.reload();
             },
-            error: function () {
-                console.log("Erreur");
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log("---------------------");
+                console.log("Erreur lors de la requête AJAX:");
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(errorThrown);
+                console.log("---------------------");
             }
         });
     }

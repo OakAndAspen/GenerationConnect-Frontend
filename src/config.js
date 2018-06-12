@@ -1,3 +1,3 @@
 export default {
-    apiUrl: "http://pingouin.heig-vd.ch/intouchables/api"
+    apiUrl: "http://localhost/_ECOLE/ProjetIntegration-Backend/public/api"
 }

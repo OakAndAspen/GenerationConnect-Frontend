@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light">
-    <span class="navbar-brand" data-target="accueil"><img src="images/logo.png" height="50"></span>
+    <a class="navbar-brand" href="#accueil"><img src="images/logo.png" height="50"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,20 +8,20 @@
         <ul id="menu" class="navbar-nav mr-auto">
             {{#each links}}
                 <li class="nav-item">
-                    <span class="nav-link" data-target="{{target}}">{{title}}</span>
+                    <a class="nav-link" href="#{{target}}">{{title}}</a>
                 </li>
             {{/each}}
         </ul>
         <ul id="controls" class="navbar-nav align-self-end">
             <li class="nav-item">
-                <span class="nav-link" data-target="login">
+                <a class="nav-link" href="#login">
                     <i class="fas fa-sign-in-alt"></i> Connexion
-                </span>
+                </a>
             </li>
             <li class="nav-item">
-                <span class="nav-link text-danger" data-target="aide">
+                <a class="nav-link text-danger" href="#aide">
                     <i class="fas fa-question-circle"></i> Aide
-                </span>
+                </a>
             </li>
         </ul>
     </div>

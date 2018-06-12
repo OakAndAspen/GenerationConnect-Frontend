@@ -41,6 +41,4 @@ export default Backbone.View.extend({
         this.recherche = $(event.target).val();
         this.render();
     }
-
-
 });
