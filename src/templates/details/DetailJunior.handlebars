@@ -1,11 +1,123 @@
-<h1>Fiche de l'agent</h1>
+<h1>{{prenom}} {{nom}} <span class="badge badge-secondary">{{junior.status}}</span></h1>
 
-<ul>
-    <li>Photo</li>
-    <li>Adresse</li>
-    <li>Disponibilité</li>
-    <li>Prestations en cours de traitement</li>
-    <li>Prestations archivées</li>
-    <li>Formations effectuées</li>
-    <li>Champ libre commentaires</li>
+<!-- Navigation -->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="profil-tab" data-toggle="tab" href="#profil" role="tab" aria-controls="profil"
+           aria-selected="true">Coordonnées</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="interventions-tab" data-toggle="tab" href="#interventions" role="tab"
+           aria-controls="interventions"
+           aria-selected="false">Interventions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="formations-tab" data-toggle="tab" href="#formations" role="tab"
+           aria-controls="formations"
+           aria-selected="false">Formations</a>
+    </li>
 </ul>
+
+<!-- Contenu -->
+<div class="tab-content" id="myTabContent">
+
+    <!-- Onglet "Coordonnées" -->
+    <div class="tab-pane show active my-3" id="profil" role="tabpanel" aria-labelledby="profil-tab">
+        <!-- Infos de base -->
+        <table class="table table-responsive-sm">
+            <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Telephone</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{prenom}}</td>
+                <td>{{nom}}</td>
+                <td>{{email}}</td>
+                <td>{{telephone}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- Adresses -->
+        <table class="table table-responsive-sm">
+            <thead>
+            <tr>
+                <th>Adresse de facturation</th>
+                <th>Adresse d'habitation</th>
+                <th>Adresse de départ</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {{#with adresse_habitation}}
+                    <td>{{ligne1}} {{ligne2}} {{ligne3}} <br/>{{npa}} {{ville}}</td>
+                {{/with}}
+
+                {{#with junior.adresse_de_depart}}
+                    <td>{{ligne1}} {{ligne2}} {{ligne3}} <br/>{{npa}} {{ville}}</td>
+                {{/with}}
+
+                {{#with junior.adresse_de_facturation}}
+                    <td>{{ligne1}} {{ligne2}} {{ligne3}} <br/>{{npa}} {{ville}}</td>
+                {{/with}}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Onglet "Interventions" -->
+    <div class="tab-pane my-3" id="interventions" role="tabpanel" aria-labelledby="interventions-tab">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>N°</th>
+                <th>Senior</th>
+                <th>Date</th>
+                <th>Statut</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each interventions}}
+                <tr>
+                    <td><a href="#admin/interventions/{{id}}">{{id}}</a></td>
+                    {{#with requete.soumis_par}}
+                    <td><a href="#admin/senior/{{id}}">{{prenom}} {{nom}}</a></td>
+                    {{/with}}
+                    <th>{{debutprevu}}</th>
+                    <th>{{statut}}</th>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Onglet "Formations" -->
+    <div class="tab-pane my-3" id="formations" role="tabpanel" aria-labelledby="formations-tab">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>N°</th>
+                <th>Nom</th>
+                <th>Date</th>
+                <th>Heure de début</th>
+                <th>Heure de fin</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each formations}}
+                <tr>
+                    <td><a href="#admin/formations/{{id}}">{{id}}</a></td>
+                    <th>{{nom}}</th>
+                    <th>{{plage_horaire.plage_unique.Date}}</th>
+                    <th>{{plage_horaire.heuredebut}}</th>
+                    <th>{{plage_horaire.heurefin}}</th>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

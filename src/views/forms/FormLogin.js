@@ -35,7 +35,13 @@ export default Backbone.View.extend({
                 console.log("Successfully connected!");
                 console.log(JSON.stringify(data));
                 localStorage.setItem("userId", data.id);
-                //location.reload();
+
+                // Redirection vers la bonne page
+                if(data.employe) window.location.hash = "#admin";
+                if(data.junior) window.location.hash = "#juniors";
+                if(data.senior) window.location.hash = "#seniors";
+
+                location.reload();
             },
             error: function () {
                 console.log("Erreur");

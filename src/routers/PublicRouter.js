@@ -58,9 +58,7 @@ export default Backbone.Router.extend({
     },
 
     login: function () {
-        let form = new FormLogin({
-            app: this.app
-        });
+        let form = new FormLogin();
         $('#pageContent').html(form.render());
     }
 });
