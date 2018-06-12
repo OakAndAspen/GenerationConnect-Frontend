@@ -91,7 +91,67 @@ export default Backbone.Router.extend({
         //--------------------------------------
 
 
-        let junior = new Junior({"id":2,"prenom":"Gabriel","nom":"Lopez","email":"user2@example.com","telephone":"+41245577600","junior":{"status":"actif","LimiteTempsTransport":120,"NoAVS":"756.1234.5678.97","BanqueNom":"UBS Group AG","BanqueBIC":"UBSWCHZH80A","BanqueIBAN":"CH08 0029 8999 9999 9999 Q","adresse_de_depart":{"id":1,"ligne1":"Avenue des Sports 20","ligne2":"","ligne3":"","ville":"Yverdon-les-Bains","npa":1401},"adresse_de_facturation":{"id":1,"ligne1":"Avenue des Sports 20","ligne2":"","ligne3":"","ville":"Yverdon-les-Bains","npa":1401}},"adresse_habitation":{"id":1,"ligne1":"Avenue des Sports 20","ligne2":"","ligne3":"","ville":"Yverdon-les-Bains","npa":1401}});
+        let junior = new Junior({
+            "id": 2,
+            "prenom": "Gabriel",
+            "nom": "Lopez",
+            "email": "user2@example.com",
+            "telephone": "+41245577600",
+            "junior": {
+                "status": "actif",
+                "LimiteTempsTransport": 120,
+                "NoAVS": "756.1234.5678.97",
+                "BanqueNom": "UBS Group AG",
+                "BanqueBIC": "UBSWCHZH80A",
+                "BanqueIBAN": "CH08 0029 8999 9999 9999 Q",
+                "adresse_de_depart": {
+                    "id": 1,
+                    "ligne1": "Avenue des Sports 20",
+                    "ligne2": "",
+                    "ligne3": "",
+                    "ville": "Yverdon-les-Bains",
+                    "npa": 1401
+                },
+                "adresse_de_facturation": {
+                    "id": 1,
+                    "ligne1": "Avenue des Sports 20",
+                    "ligne2": "",
+                    "ligne3": "",
+                    "ville": "Yverdon-les-Bains",
+                    "npa": 1401
+                },
+                "matieres": [
+                    {
+                        "id": 1,
+                        "nom": "Skype",
+                        "description": "Papy telephone maison",
+                        "sujet_id": 1,
+                        "pivot": {
+                            "junior_user_id": 2,
+                            "matiere_id": 1
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "nom": "Cueillette",
+                        "description": "Aller cueillir des fraises ou des champignons",
+                        "sujet_id": 2,
+                        "pivot": {
+                            "junior_user_id": 2,
+                            "matiere_id": 2
+                        }
+                    }
+                ]
+            },
+            "adresse_habitation": {
+                "id": 1,
+                "ligne1": "Avenue des Sports 20",
+                "ligne2": "",
+                "ligne3": "",
+                "ville": "Yverdon-les-Bains",
+                "npa": 1401
+            }
+        });
         let juniorProfil = new ProfilJunior({model: junior});
 
         $('#pageContent').html(juniorProfil.render());
@@ -111,9 +171,14 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
+
         let collection = new Interventions();
         collection.fetch();
         console.log(collection);
+
+        var data_filter = collection.filter( element => element.user.junior)
+        console.log(data_filter)
+
         let list = new ListInterventionsJunior({
             collection: collection
         });
