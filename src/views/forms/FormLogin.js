@@ -22,10 +22,12 @@ export default Backbone.View.extend({
         let email = $('#email').val();
         let password = $('#password').val();
 
+
+
         // Setup d'AJAX
         $.ajax({
             type: "POST",
-            url: "http://pingouin.heig-vd.ch/intouchables/api/login",
+            url: "http://localhost/ProjWeb-Back/public/api/login",
             data: {
                 email: email,
                 motdepasse: password
@@ -40,6 +42,9 @@ export default Backbone.View.extend({
                 if(data.employe) window.location.hash = "#admin";
                 if(data.junior) window.location.hash = "#juniors";
                 if(data.senior) window.location.hash = "#seniors";
+
+
+
 
                 location.reload();
             },

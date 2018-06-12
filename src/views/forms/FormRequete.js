@@ -4,11 +4,14 @@ import template from "templates/forms/FormRequete.handlebars";
 export default Backbone.View.extend({
 
     initialize: function (attrs, options) {
+        this.matieres = attrs.matieres;
         this.template = template;
     },
 
     render: function () {
-        this.$el.html(this.template);
+        this.$el.html(this.template({
+            matieres: this.matieres.toJSON(),
+        }));
         return this.$el;
     },
 

@@ -8,6 +8,7 @@ export default Backbone.View.extend({
     initialize: function (attrs, options) {
         // Affichage de la barre de navigation
         let navBar = new NavBar();
+
         $('#pageHeader').html(navBar.render());
     },
 

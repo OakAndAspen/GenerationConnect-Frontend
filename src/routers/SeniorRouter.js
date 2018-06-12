@@ -10,6 +10,9 @@ import Breadcrumbs from "views/components/Breadcrumbs";
 import ProfilSenior from "views/special/ProfilSenior";
 import FormSuggestion from "views/forms/FormSuggestion";
 import ListInterventionsSenior from "views/lists/ListInterventionsSenior";
+import FormRequete from "../views/forms/FormRequete";
+import Matieres from "../collections/Matieres";
+
 
 export default Backbone.Router.extend({
 
@@ -17,8 +20,30 @@ export default Backbone.Router.extend({
         "seniors": "dashboard",
         "seniors/profil": "profil",
         "seniors/interventions": "interventions",
-        "seniors/suggestion": "suggestion"
+        "seniors/suggestion": "suggestion",
+        'seniors/demande': 'demande'
+
     },
+
+    route: function(route, name, callback) {
+        var router = this;
+        if (!callback) callback = this[name];
+
+        if(!true){
+
+            return false;
+        }
+
+
+
+        var f = function() {
+            console.log('route before', route);
+            callback.apply(router, arguments);
+            console.log('route after', route);
+        };
+        return Backbone.Router.prototype.route.call(this, route, name, f);
+    },
+
 
     dashboard: function() {
         $('#pageBreadcrumbs').html(new Breadcrumbs({
@@ -45,6 +70,11 @@ export default Backbone.Router.extend({
                 'title': 'Faire une suggestion',
                 'path': 'seniors/suggestion',
                 'icon': 'fas fa-lightbulb'
+            },
+            {
+                'title': 'Faire une requête',
+                'path': 'seniors/demande',
+                'icon': 'fas fa-question-circle'
             }];
         let dashboard = new Dashboard({
             links: links
@@ -82,10 +112,14 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        let senior = new Senior({"id":1,"prenom":"Charles-Auguste","nom":"Beauverd","email":"user1@example.com","telephone":"+41245577600","senior":{"preference":"email","forfait":{"id":1,"nom":"Forfait #1","description":"Forfait #1 Description","prix":19.99}},"adresse_habitation":{"id":1,"ligne1":"Avenue des Sports 20","ligne2":"","ligne3":"","ville":"Yverdon-les-Bains","npa":1401}});
-        let seniorProfil = new ProfilSenior({model: senior});
 
-        $('#pageContent').html(seniorProfil.render());
+
+        let senior = new Senior();
+        senior.fetch({
+            success: function (senior) {
+                $('#pageContent').html(new ProfilSenior({model: senior}).render());
+            }
+        });
     },
 
     interventions: function() {
@@ -102,8 +136,57 @@ export default Backbone.Router.extend({
             ]
         }).render());
         let interventions = new Interventions("interventions-senior");
+
         $('#pageContent').html(new ListInterventionsSenior({
             collection: interventions
         }).render());
+    },
+
+    demande: function () {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "seniors",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "seniors/demande",
+                    title: "Demande"
+                }
+            ]
+        }).render());
+
+        //let matieresListe = new Matieres();
+        //matieresListe.fetch();
+
+        let matieresListe = new Matieres([{
+                "id": 1,
+                "nom": "Skype",
+                "description": "Papy telephone maison",
+                "sujet": {
+                    "id": 1,
+                    "nom": "Informatique",
+                    "description": "Sujet #1 Description"
+                }
+            },
+            {
+                "id": 2,
+                "nom": "Cueillette",
+                "description": "Aller cueillir des fraises ou des champignons",
+                "sujet": {
+                    "id": 2,
+                    "nom": "Jardinage",
+                    "description": "Sujet #2 Description"
+                }
+            }]);
+
+
+        let requete = new FormRequete({
+            matieres: matieresListe,
+        });
+
+        console.log(requete);
+
+        $('#pageContent').html(requete.render());
     }
 });
