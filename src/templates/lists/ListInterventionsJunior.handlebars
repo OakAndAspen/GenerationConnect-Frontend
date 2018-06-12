@@ -1,65 +1,27 @@
-<div class="row mb-3">
-    <div class="col-12 form-inline">
-        <select class="form-control">
-            <option>- Statut -</option>
-            <option>Actif</option>
-            <option>Postulation en cours</option>
-            <option>Archivé</option>
-        </select>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>N°</th>
-                <th>Titre</th>
-                <th>Senior</th>
-                <th>Adresse</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {{#each demandes}}
-                <tr>
-                    <td><a href="">{{id}}</a></td>
-                    <td>{{user.prenom}}</td>
-                    <td>{{user.email}}</td>
-                    <td><a href="#" title="Envoyer un email"><i class="fas fa-envelope"></i></a></td>
-                </tr>
-            {{/each}}
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<!--<form class="form-inline mb-3">
-    <button type="button" class="btn" data-target="admin/comptes/new">Nouveau compte</button>
-</form>-->
-
-<h2>les demandes en cours de traitement</h2>
-<table class="table table-striped mb-3">
+<h2>Demandes d'intervention</h2>
+<table class="table table-striped">
     <thead>
     <tr>
         <th>N°</th>
+        <th>Titre</th>
         <th>Senior</th>
-        <th>Descriptif</th>
+        <th>Adresse</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
     {{#each demandes}}
         <tr>
-            <td>{{id}}</td>
-            <td>{{senior.prenom}} {{senior.nom}}</td>
-            <td>{{descriptif}}</td>
+            <td><a href="">{{id}}</a></td>
+            <td>{{user.prenom}}</td>
+            <td>{{user.email}}</td>
+            <td><a href="#" title="Envoyer un email"><i class="fas fa-envelope"></i></a></td>
         </tr>
     {{/each}}
     </tbody>
 </table>
 
-<h2>Vos prochaines interventions</h2>
+<h2>Interventions planifiées</h2>
 <table class="table table-striped mb-3">
     <thead>
     <tr>
@@ -76,14 +38,15 @@
             <td>{{senior.prenom}} {{senior.nom}}</td>
             <td>{{descriptif}}</td>
             {{#with senior.adresse_habitation}}
-            <td>{{ligne1}}</td>
+                <td>{{ligne1}}</td>
             {{/with}}
         </tr>
     {{/each}}
     </tbody>
 </table>
 
-<h2>Vos prochaines visites</h2>
+<h2>Interventions passées</h2>
+<p class="text-warning">Merci de remplir le rapport d'intervention.</p>
 <table class="table table-striped mb-3">
     <thead>
     <tr>
@@ -100,7 +63,7 @@
             <td>{{senior.prenom}} {{senior.nom}}</td>
             <td>{{descriptif}}</td>
             {{#with senior.adresse_habitation}}
-            <td>{{ligne1}}</td>
+                <td>{{ligne1}}</td>
             {{/with}}
         </tr>
     {{/each}}

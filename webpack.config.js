@@ -7,7 +7,8 @@ module.exports = {
     watch: true,
     output: {
         filename: 'app.js',
-        path: path.resolve(__dirname, 'public')
+        //path: path.resolve(__dirname, 'public')
+        path: "C:\\xampp\\htdocs\\_ECOLE\\ProjetIntegration-Backend\\public\\frontend"
     },
     module: {
         rules: [

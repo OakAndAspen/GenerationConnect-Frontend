@@ -17,6 +17,7 @@ export default Backbone.Router.extend({
         "seniors": "dashboard",
         "seniors/profil": "profil",
         "seniors/interventions": "interventions",
+        "seniors/interventions/:id": "intervention",
         "seniors/suggestion": "suggestion"
     },
 
@@ -102,6 +103,30 @@ export default Backbone.Router.extend({
             ]
         }).render());
         let interventions = new Interventions("interventions-senior");
+        $('#pageContent').html(new ListInterventionsSenior({
+            collection: interventions
+        }).render());
+    },
+
+    intervention: function(id) {
+        $('#pageBreadcrumbs').html(new Breadcrumbs({
+            links: [
+                {
+                    target: "seniors",
+                    title: "Tableau de bord"
+                },
+                {
+                    target: "seniors/interventions",
+                    title: "Interventions"
+                },
+                {
+                    target: "seniors/interventions/"+id,
+                    title: "N° "+id
+                }
+            ]
+        }).render());
+
+        let interventions = new Interventions();
         $('#pageContent').html(new ListInterventionsSenior({
             collection: interventions
         }).render());

@@ -1,4 +1,5 @@
 import Backbone from "backbone";
+import AppConfig from "config";
 
 // Templates
 import accueilTmpl from "templates/pages/accueil.handlebars";

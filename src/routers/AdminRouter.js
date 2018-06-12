@@ -47,7 +47,6 @@ import Employe from "../models/Employe";
 import DetailEmploye from "../views/details/DetailEmploye";
 import Junior from "../models/Junior";
 
-
 export default Backbone.Router.extend({
 
     routes: {
@@ -477,28 +476,13 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        /*let model = new Formation({id: id});
+        let model = new Formation({id: id});
         model.fetch({
             success: function (model) {
                 $('#pageContent').html(new DetailFormation({model: model}).render());
             }
-        });*/
-
-        let model = new Formation({
-            "id": 1,
-            "nom": "formation initiale",
-            "description": "Cette formation doit être suivie par tous les juniors",
-            "plage_horaire": {
-                "id": 1,
-                "joursemaine": "lundi",
-                "heuredebut": "14:00:00",
-                "heurefin": "15:00:00",
-                "plage_unique": {
-                    "plage_horaire_id": 1,
-                    "Date": "2018-06-10"
-                }
-            }
         });
+
         $('#pageContent').html(new DetailFormation({model: model}).render());
     },
 
