@@ -1,10 +1,8 @@
 import Backbone from "backbone";
-import {LocalStorage} from "backbone.localstorage";
+import AppConfig from "config";
 import PlageHoraire from "models/PlageHoraire";
 
 export default Backbone.Collection.extend({
-    initialize: function(attrs, options) {
-        this.localStorage =  new LocalStorage(attrs.localStorage);
-    },
-    model: PlageHoraire
+    model: PlageHoraire,
+    url: AppConfig.apiUrl + "/plagesHoraire"
 });

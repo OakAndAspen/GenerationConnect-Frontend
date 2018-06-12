@@ -1,8 +1,8 @@
 import Backbone from "backbone";
-import {LocalStorage} from "backbone.localstorage";
+import AppConfig from "config";
 import Intervention from "../models/Intervention";
 
 export default Backbone.Collection.extend({
     model: Intervention,
-    url: "http://pingouin.heig-vd.ch/intouchables/api/interventions"
+    url: AppConfig.apiUrl + "/interventions"
 });

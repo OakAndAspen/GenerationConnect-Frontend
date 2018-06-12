@@ -1,8 +1,8 @@
 import Backbone from "backbone";
+import AppConfig from "config";
 import Senior from "models/Senior";
-import {LocalStorage} from "backbone.localstorage";
 
 export default Backbone.Collection.extend({
     model: Senior,
-    url: "http://pingouin.heig-vd.ch/intouchables/api/seniors"
+    url: AppConfig.apiUrl + "/seniors"
 });

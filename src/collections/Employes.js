@@ -1,8 +1,8 @@
 import Backbone from "backbone";
+import AppConfig from "config";
 import Compte from "models/Employe";
-import {LocalStorage} from "backbone.localstorage";
 
 export default Backbone.Collection.extend({
     model: Compte,
-    url: "http://pingouin.heig-vd.ch/intouchables/api/employes"
+    url: AppConfig.apiUrl + "/employes"
 });
