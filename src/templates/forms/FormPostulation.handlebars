@@ -1,11 +1,104 @@
 <h1>Je postule pour être un Junior!</h1>
 
-<form class="my-3" id="formPostulation">
-    <input type="text" class="form-control mb-2" placeholder="Prénom" id="prenom">
-    <input type="text" class="form-control mb-2" placeholder="Nom" id="nom">
-    <input type="date" class="form-control mb-2" placeholder="Date de naissance" id="dateNaissance">
-    <input type="text" class="form-control mb-2" placeholder="Adresse email" id="email">
-    <textarea class="form-control mb-2" placeholder="Mon message" id="message"></textarea>
-    <input type="file" class="form-control mb-2" id="file">
-    <button type="submit" class="form-control btn" id="send">Postuler</button>
-</form>
+<div class="container">
+    <form class="my-3" id="formPostulation">
+        <div class="row">
+            <div class="col-6">
+                <input type="text" class="form-control mb-2" placeholder="Prénom" id="prenom">
+            </div>
+            <div class="col-6">
+                <input type="text" class="form-control mb-2" placeholder="Nom" id="nom">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <input type="text" class="form-control mb-2" placeholder="Email" id="email">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <input type="password" class="form-control mb-2" placeholder="Mot de passe" id="motdepasse1">
+            </div>
+            <div class="col-6">
+                <input type="password" class="form-control mb-2" placeholder="Répeter mode de passe" id="motdepasse2">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <input type="text" class="form-control mb-2" placeholder="Téléphone" id="telephone">
+            </div>
+            <div class="col-6">
+                <input type="number" class="form-control mb-2" placeholder="Limite de temps" id="limitetemps">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <h2 class="my-3">Adresse d'habitation</h2>
+                <input type="text" class="form-control mb-2" placeholder="ligne 1" id="ligne1hab">
+                <input type="text" class="form-control mb-2" placeholder="ligne 2" id="ligne2hab">
+                <input type="text" class="form-control mb-2" placeholder="ligne 3" id="ligne3hab">
+                <input type="text" class="form-control mb-2" placeholder="NPA" id="noNPAhab">
+                <input type="text" class="form-control mb-2" placeholder="Localité" id="villehab">
+            </div>
+            <div class="col-6">
+                <h2 class="my-3">Informations de paiement</h2>
+                <input type="text" class="form-control mb-2" placeholder="N° AVS" id="noavs">
+                <input type="text" class="form-control mb-2" placeholder="Nom de la Banque" id="banquenom">
+                <input type="text" class="form-control mb-2" placeholder="N° BIC" id="banquebic">
+                <input type="text" class="form-control mb-2" placeholder="N° IBAN" id="banqueiban">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <h2 class="my-3" >Adresse de départ (Localisation)*</h2>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="0" id="adresse1">
+                    <label class="form-check-label" for="adresse1">
+                        Même que l'adresse d'habitation
+                    </label>
+                    <div class="unchecked1">
+                        <input type="text" class="form-control mb-2" placeholder="ligne 1" id="ligne1loc">
+                        <input type="text" class="form-control mb-2" placeholder="ligne 2" id="ligne2loc">
+                        <input type="text" class="form-control mb-2" placeholder="ligne 3" id="ligne3loc">
+                        <input type="text" class="form-control mb-2" placeholder="NPA" id="noNPAloc">
+                        <input type="text" class="form-control mb-2" placeholder="Localité" id="villeloc">
+                    </div>
+                    <div class="checked1">
+                </div>
+
+
+                </div>
+            </div>
+            <div class="col-6">
+                <h2 class="my-3">Adresse de facturation*</h2>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="0"  id="adresse2">
+                    <label class="form-check-label" for="adresse2">
+                        Même que l'adresse d'habitation
+                    </label>
+                    <div class="unchecked2">
+                        <input type="text" class="form-control mb-2" placeholder="ligne 1" id="ligne1fac">
+                        <input type="text" class="form-control mb-2" placeholder="ligne 2" id="ligne2fac">
+                        <input type="text" class="form-control mb-2" placeholder="ligne 3" id="ligne3fac">
+                        <input type="text" class="form-control mb-2" placeholder="NPA" id="noNPAfac">
+                        <input type="text" class="form-control mb-2" placeholder="Localité" id="villefac">
+                    </div>
+                    <div class="checked2">
+                </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 my-4">
+                <p>* les éléments signalés avec une étoiles sont facultatifs</p>
+            </div>
+        </div>
+
+        <textarea class="form-control mb-2" placeholder="Mon message" id="message"></textarea>
+        <input type="file" class="form-control mb-2" id="cvFile">
+        <button type="submit" class="form-control btn" id="send">Postuler</button>
+
+    </form>
+</div>
