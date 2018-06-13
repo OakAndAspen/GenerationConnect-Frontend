@@ -28,6 +28,15 @@ export default Backbone.Router.extend({
         "login": "login"
     },
 
+    route: function(route, name, callback) {
+        if (!callback) callback = this[name];
+        var f = function() {
+            console.log(location.hash + " 2");
+            callback.apply(this, arguments);
+        };
+        return Backbone.Router.prototype.route.call(this, route, name, f);
+    },
+
     accueil: function () {
         $('#pageContent').html(accueilTmpl);
     },
@@ -65,7 +74,6 @@ export default Backbone.Router.extend({
                 $('#pageContent').html(form.render());
             }
         });
-
     },
 
     login: function () {

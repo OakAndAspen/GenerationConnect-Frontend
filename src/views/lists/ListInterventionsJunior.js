@@ -5,9 +5,9 @@ export default Backbone.View.extend({
 
     initialize: function (attrs, options) {
         this.template = template;
-        /*this.demandes = attrs.demandes;
+        this.demandes = attrs.demandes;
         this.interventionsFutures = attrs.interventionsFutures;
-        this.interventionsPassees = attrs.interventionsPassees;*/
+        this.interventionsPassees = attrs.interventionsPassees;
         this.listenTo(this.collection, "change add remove", this.render);
     },
 
