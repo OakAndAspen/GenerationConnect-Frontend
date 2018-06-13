@@ -47,6 +47,7 @@ import DetailRequete from "views/details/DetailRequete";
 
 // Special
 import PagesWYSIWYG from "views/special/PagesWYSIWYG";
+import AppConfig from "config";
 
 export default Backbone.Router.extend({
 
@@ -208,7 +209,6 @@ export default Backbone.Router.extend({
     },
 
     senior: function (id) {
-
         $('#pageBreadcrumbs').html(new Breadcrumbs({
             links: [
                 {
@@ -228,7 +228,7 @@ export default Backbone.Router.extend({
 
         let model = new Senior({id: id});
         model.fetch({
-            success: function (model) {
+            success: function () {
                 $('#pageContent').html(new DetailSenior({model: model}).render());
             }
         });
@@ -271,7 +271,6 @@ export default Backbone.Router.extend({
         let collection = new Interventions();
         collection.fetch({
             success: function () {
-                console.log(collection.toJSON());
                 let list = new ListInterventions({collection: collection});
                 $('#pageContent').html(list.render());
             }
@@ -348,7 +347,13 @@ export default Backbone.Router.extend({
         let model = new Requete({id: id});
         model.fetch({
             success: function (model) {
-                $('#pageContent').html(new DetailRequete({model: model}).render());
+                $.ajax({
+                    type: "GET",
+                    url: AppConfig.apiUrl+"/matching/"+id,
+                    success: function (data) {
+                        $('#pageContent').html(new DetailRequete({model: model, matching:data}).render());
+                    }
+                });
             }
         });
     },

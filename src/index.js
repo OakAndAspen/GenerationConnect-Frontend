@@ -11,10 +11,6 @@ import App from "views/App";
 // Routing
 Backbone.history.start();
 
-// Redirection vers la bonne page
-/* TODO: Ne fonctionne pas. Passe par la fonction redirect et trouve la route,
-mais ne passe pas par la fonction dans le router */
-
 let hash = location.hash.substring(1);
 if(!hash) hash = 'accueil';
 

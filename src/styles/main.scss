@@ -77,8 +77,10 @@ body {
 }
 
 #pageBreadcrumbs {
-  color: black;
-  font-variant: small-caps;
+  a {
+    color: black;
+    font-variant: small-caps;
+  }
 
   li:not(:last-child):hover span {
     text-decoration: underline;

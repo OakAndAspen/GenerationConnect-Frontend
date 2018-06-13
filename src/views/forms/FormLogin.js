@@ -1,7 +1,6 @@
 import Backbone from "backbone";
 import AppConfig from "config";
 import template from "templates/forms/FormLogin.handlebars";
-import App from "views/App";
 
 
 export default Backbone.View.extend({
@@ -23,7 +22,7 @@ export default Backbone.View.extend({
         let email = $('#email').val();
         let password = $('#password').val();
 
-        // Setup d'AJAX
+        // Requête AJAX pour le login
         $.ajax({
             type: "POST",
             url: AppConfig.apiUrl+"/login",
@@ -42,14 +41,6 @@ export default Backbone.View.extend({
                 if(data.senior) window.location.hash = "#seniors";
 
                 location.reload();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log("---------------------");
-                console.log("Erreur lors de la requête AJAX:");
-                console.log(jqXHR);
-                console.log(textStatus);
-                console.log(errorThrown);
-                console.log("---------------------");
             }
         });
     }

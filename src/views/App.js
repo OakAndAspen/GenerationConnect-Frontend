@@ -19,7 +19,7 @@ export default Backbone.View.extend({
         // Affichage de la barre de navigation
         let navBar = new NavBar();
         $('#pageHeader').html(navBar.render());
-    }/*,
+    },
 
     events: {
         'click [data-target]': 'linkTo'
@@ -40,5 +40,5 @@ export default Backbone.View.extend({
                 }
             }
         }
-    }*/
+    }
 });
