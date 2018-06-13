@@ -1,6 +1,6 @@
 import Backbone from "backbone";
 import template from "templates/details/DetailRequete.handlebars";
-import AppConfig from "../../config";
+import AppConfig from "config";
 
 export default Backbone.View.extend({
 
@@ -10,10 +10,6 @@ export default Backbone.View.extend({
     },
 
     render: function () {
-        console.log("---------------");
-        console.log(this.matching);
-        console.log("...............");
-
         this.$el.html(this.template({
             requete: this.model.toJSON(),
             matching: this.matching
@@ -27,17 +23,25 @@ export default Backbone.View.extend({
 
     // Soumission du choix du junior au backend
     soumission: function (event) {
+        console.log("Submitting");
         let juniorId = $(event.target).attr("data-id");
-        let requeteId = this.model.get(id);
+        let requeteId = this.model.get("id");
+        console.log("Junior: "+juniorId+" | Requete: "+requeteId);
         $.ajax({
             type: "POST",
             url: AppConfig.apiUrl+"/soumissions",
             data: {
-                "Requete_id": requeteId,
-                "Junior_id": juniorId
+                "requete_id": requeteId,
+                "junior_id": juniorId
             },
             success: function (data) {
+                console.log("Success");
                 console.log(data);
+            },
+            error: function (a, b, c) {
+                console.log(a);
+                console.log(b);
+                console.log(c);
             }
         });
     }

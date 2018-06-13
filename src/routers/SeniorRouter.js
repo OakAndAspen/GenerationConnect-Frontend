@@ -24,25 +24,19 @@ export default Backbone.Router.extend({
         "seniors/interventions/:id": "intervention"
     },
 
-    route: function(route, name, callback) {
-        var router = this;
+    route: function (route, name, callback) {
         if (!callback) callback = this[name];
-
-        if(!true){
-
+        let userType = localStorage.getItem('userType');
+        if (!userType || userType != 'senior') {
+            console.log("Tu es un " + userType + "! Tu n'as pas accès à cet endroit du site, petit coquin.");
             return false;
         }
-
-
-
-        var f = function() {
-            console.log('route before', route);
-            callback.apply(router, arguments);
-            console.log('route after', route);
+        var f = function () {
+            console.log(location.hash);
+            callback.apply(this, arguments);
         };
         return Backbone.Router.prototype.route.call(this, route, name, f);
     },
-
 
     dashboard: function() {
         $('#pageBreadcrumbs').html(new Breadcrumbs({

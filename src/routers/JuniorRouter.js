@@ -28,7 +28,21 @@ export default Backbone.Router.extend({
         "juniors/schema": "schema"
     },
 
-    dashboard: function() {
+    route: function (route, name, callback) {
+        if (!callback) callback = this[name];
+        let userType = localStorage.getItem('userType');
+        if (!userType || userType != 'junior') {
+            console.log("Tu es un " + userType + "! Tu n'as pas accès à cet endroit du site, petit coquin.");
+            return false;
+        }
+        var f = function () {
+            console.log(location.hash);
+            callback.apply(this, arguments);
+        };
+        return Backbone.Router.prototype.route.call(this, route, name, f);
+    },
+
+    dashboard: function () {
         $('#pageBreadcrumbs').html(new Breadcrumbs({
             links: [
                 {
@@ -175,43 +189,21 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
+        console.log(GlobalVariables.getApiURL());
 
+        /*let interventionsFutures = new Interventions();
+        interventionsFutures.fetch();
+        let interventionsPassees = new Interventions();
+        interventionsPassees.fetch();
+        let demandes = new Requetes();
+        demandes.fetch();*/
 
-        // INTERVENTIONS
-        let interventionslist = new Interventions();
-        interventionslist.fetch({
-            success: function (interventionslist) {
-                console.log(JSON.stringify(interventionslist));
-
-                // FUTURES ET PASSEES
-                let interventionsFinalisee = interventionslist.where({statut: "finalise"});
-                let interventionsPlanifiees = interventionslist.where({statut: "planifie"});
-                console.log(interventionsFinalisee);
-                console.log(interventionsPlanifiees);
-
-                // DEMANDES
-                let demandes = new Requetes();
-                demandes.fetch({
-                    success: function (demandes) {
-
-                        console.log(demandes);
-                        let demandesNaN = demandes.where({statut: "envoye"});
-                        //let demandesNaN = demandes.filter( element => element.statut ="envoye");
-                        console.log("Demandes:");
-                        console.log(demandes);
-                        console.log(demandesNaN);
-
-                        // RENDER VIEW
-                        let list = new ListInterventionsJunior({
-                            interventionsFutures: interventionsPlanifiees,
-                            interventionsPassees: interventionsFinalisee,
-                            demandes: demandesNaN,
-                        });
-                        $('#pageContent').html(list.render());
-                    }
-                });
-            }
+        /*let list = new ListInterventionsJunior({
+            interventionsFutures: interventionsFutures,
+            interventionsPassees: interventionsPassees,
+            demandes: demandes
         });
+        $('#pageContent').html(list.render());*/
     },
 
     intervention: function(id) {

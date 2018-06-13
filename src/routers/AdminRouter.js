@@ -74,6 +74,20 @@ export default Backbone.Router.extend({
         "admin/comptes/:id": "employe"
     },
 
+    route: function (route, name, callback) {
+        if (!callback) callback = this[name];
+        let userType = localStorage.getItem('userType');
+        if (!userType || userType != 'employe') {
+            console.log("Tu es un " + userType + "! Tu n'as pas accès à cet endroit du site, petit coquin.");
+            return false;
+        }
+        var f = function () {
+            console.log(location.hash);
+            callback.apply(this, arguments);
+        };
+        return Backbone.Router.prototype.route.call(this, route, name, f);
+    },
+
     dashboard: function () {
 
         $('#pageBreadcrumbs').html(new Breadcrumbs({
@@ -338,7 +352,7 @@ export default Backbone.Router.extend({
                     title: "Demandes"
                 },
                 {
-                    target: "admin/demandes/1",
+                    target: "admin/demandes/"+id,
                     title: "N° "+id
                 }
             ]
