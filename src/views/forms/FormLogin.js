@@ -1,6 +1,6 @@
 import Backbone from "backbone";
 import template from "templates/forms/FormLogin.handlebars";
-import App from "views/App";
+import AppConfig from "config";
 
 
 export default Backbone.View.extend({
@@ -27,7 +27,7 @@ export default Backbone.View.extend({
         // Setup d'AJAX
         $.ajax({
             type: "POST",
-            url: "http://localhost/ProjWeb-Back/public/api/login",
+            url: AppConfig.apiUrl + "/login",
             data: {
                 email: email,
                 motdepasse: password
@@ -36,7 +36,7 @@ export default Backbone.View.extend({
             success: function (data) {
                 console.log("Successfully connected!");
                 console.log(JSON.stringify(data));
-                localStorage.setItem("userId", data.id);
+                localStorage.setItem("userID", data.id);
 
                 // Redirection vers la bonne page
                 if(data.employe) window.location.hash = "#admin";

@@ -13,6 +13,7 @@ import FormContact from "views/forms/FormContact";
 import FormPostulation from "views/forms/FormPostulation";
 import FormSenior from "views/forms/FormSenior";
 import FormLogin from "views/forms/FormLogin";
+import Forfaits from "../collections/Forfaits";
 
 export default Backbone.Router.extend({
 
@@ -54,8 +55,17 @@ export default Backbone.Router.extend({
     },
 
     inscription: function () {
-        let form = new FormSenior();
-        $('#pageContent').html(form.render());
+
+        let listForfaits = new Forfaits();
+        listForfaits.fetch({
+            success: function (listForfaits) {
+                let form = new FormSenior({
+                    forfaits: listForfaits,
+                });
+                $('#pageContent').html(form.render());
+            }
+        });
+
     },
 
     login: function () {

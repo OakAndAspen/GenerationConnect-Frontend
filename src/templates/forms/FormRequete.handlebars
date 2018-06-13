@@ -1,27 +1,87 @@
 <h1>Nouvelle demande d'intervention</h1>
-
+<hr/>
 <form>
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-        <label class="form-check-label" for="defaultCheck1">
-            Default checkbox
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-        <label class="form-check-label" for="defaultCheck1">
-            Default checkbox
-        </label>
-    </div>
+    <div class="container">
+       <div class="row">
+            <div class="col">
 
-    {{#each matieres}}
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="sujet1" value="{{id}}">
-            <label class="form-check-label" for="inlineCheckbox1"><h3>{{nom}}</h3></label>
-            <label class="form-check-label" for="inlineCheckbox1">{{description}}</label>
-        </div>
-    {{/each}}
+                <h2 class="my-3">Matière concernée</h2>
+                {{#each sujets}}
+                    <label class="form-check-label" for="sujet">
+                        <h2>{{nom}}</h2>
+                    </label>
+                    {{#each this.matieres}}
+                        <div class="form-check my-2">
+                            <input class="form-check-input" type="radio" name="matiereRadio" id="sujet{{id}}" value="{{id}}">
+                            <label class="form-check-label" for="sujet">
+                                <h3>{{nom}}</h3> {{description}}
+                            </label>
+                        </div>
+                    {{/each}}
+                {{/each}}
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <h2 class="my-3">Type de demande</h2>
+                    <select class="form-control" id="type">
+                        <option value="unique">Unique</option>
+                        <option value="repetitif">Repetitive</option>
+                    </select>
+                </div>
 
-    <textarea class="form-control my-5" placeholder="Description de votre demande" id="commentaire"></textarea>
-    <button type="submit" class="form-control btn mb-3">Envoyer la demande</button>
+                <h2 class="my-3">Date et heures</h2>
+
+                <label class="form-text mr-3 mb-3" for="dateJour">Date <input class="ml-2" type="date" name="date" id="dateJour"></label>
+
+                <label class="form-text mr-3 mb-3" for="dateDebut">Heure de début <input class="ml-2" type="time" name="heuredebut" id="heuredebut"></label>
+                <label class="form-text mr-3 mb-3" for="dateFin">Heure de fin <input class="ml-2" type="time" name="heurefin" id="heurefin"></label>
+
+            </div>
+       </div>
+       <div class="row">
+           <div class="col">
+               <h2 class="my-3">Commentaire</h2>
+               <textarea class="form-control mb-5" placeholder="Description de votre demande" id="commentaire"></textarea>
+           </div>
+       </div>
+    </div>
+    <button type="button" class="form-control btn mb-3" id="send">Envoyer la demande</button>
 </form>
+
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Succès</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                La demande a bien été envoyée !
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="errorsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Erreur</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                La demande n'a pas été envoyé. Une erreur a été rencontré.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

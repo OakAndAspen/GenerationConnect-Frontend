@@ -3,6 +3,7 @@ import Backbone from "backbone";
 // Models
 import Senior from "models/Senior";
 import Interventions from "collections/Interventions";
+import Sujets from "collections/Sujets";
 
 // Views
 import Dashboard from "views/components/Dashboard";
@@ -10,6 +11,7 @@ import Breadcrumbs from "views/components/Breadcrumbs";
 import ProfilSenior from "views/special/ProfilSenior";
 import FormSuggestion from "views/forms/FormSuggestion";
 import ListInterventionsSenior from "views/lists/ListInterventionsSenior";
+import FormRequete from "views/forms/FormRequete";
 
 export default Backbone.Router.extend({
 
@@ -109,9 +111,9 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
+        let userId = localStorage.getItem('userID');
 
-
-        let senior = new Senior();
+        let senior = new Senior({id:userId});
         senior.fetch({
             success: function (senior) {
                 $('#pageContent').html(new ProfilSenior({model: senior}).render());
@@ -153,10 +155,9 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        //let matieresListe = new Matieres();
-        //matieresListe.fetch();
 
-        let matieresListe = new Matieres([{
+
+        /*let matieresListe = new Matieres([{
                 "id": 1,
                 "nom": "Skype",
                 "description": "Papy telephone maison",
@@ -175,16 +176,19 @@ export default Backbone.Router.extend({
                     "nom": "Jardinage",
                     "description": "Sujet #2 Description"
                 }
-            }]);
+            }]);*/
 
 
-        let requete = new FormRequete({
-            matieres: matieresListe,
+        let sujetsListe = new Sujets();
+        sujetsListe.fetch({
+            success: function (sujetsListe) {
+                let requete = new FormRequete({
+                    sujets: sujetsListe,
+                });
+
+                $('#pageContent').html(requete.render());
+            }
         });
-
-        console.log(requete);
-
-        $('#pageContent').html(requete.render());
     },
 
     intervention: function(id) {
