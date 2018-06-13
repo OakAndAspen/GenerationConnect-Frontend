@@ -175,21 +175,43 @@ export default Backbone.Router.extend({
             ]
         }).render());
 
-        console.log(GlobalVariables.getApiURL());
 
-        /*let interventionsFutures = new Interventions();
-        interventionsFutures.fetch();
-        let interventionsPassees = new Interventions();
-        interventionsPassees.fetch();
-        let demandes = new Requetes();
-        demandes.fetch();*/
 
-        /*let list = new ListInterventionsJunior({
-            interventionsFutures: interventionsFutures,
-            interventionsPassees: interventionsPassees,
-            demandes: demandes
+        // INTERVENTIONS
+        let interventionslist = new Interventions();
+        interventionslist.fetch({
+            success: function (interventionslist) {
+                console.log(JSON.stringify(interventionslist));
+
+                // FUTURES ET PASSEES
+                let interventionsFinalisee = interventionslist.where({statut: "finalise"});
+                let interventionsPlanifiees = interventionslist.where({statut: "planifie"});
+                console.log(interventionsFinalisee);
+                console.log(interventionsPlanifiees);
+
+                // DEMANDES
+                let demandes = new Requetes();
+                demandes.fetch({
+                    success: function (demandes) {
+
+                        console.log(demandes);
+                        let demandesNaN = demandes.where({statut: "envoye"});
+                        //let demandesNaN = demandes.filter( element => element.statut ="envoye");
+                        console.log("Demandes:");
+                        console.log(demandes);
+                        console.log(demandesNaN);
+
+                        // RENDER VIEW
+                        let list = new ListInterventionsJunior({
+                            interventionsFutures: interventionsPlanifiees,
+                            interventionsPassees: interventionsFinalisee,
+                            demandes: demandesNaN,
+                        });
+                        $('#pageContent').html(list.render());
+                    }
+                });
+            }
         });
-        $('#pageContent').html(list.render());*/
     },
 
     intervention: function(id) {

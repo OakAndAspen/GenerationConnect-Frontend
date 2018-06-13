@@ -3,19 +3,27 @@
     <thead>
     <tr>
         <th>N°</th>
-        <th>Titre</th>
         <th>Senior</th>
-        <th>Adresse</th>
-        <th></th>
+        <th>Matière</th>
+        <th>Date</th>
+        <th>Heures</th>
+        <th>Accepter</th>
     </tr>
     </thead>
     <tbody>
     {{#each demandes}}
         <tr>
             <td><a href="">{{id}}</a></td>
-            <td>{{user.prenom}}</td>
-            <td>{{user.email}}</td>
-            <td><a href="#" title="Envoyer un email"><i class="fas fa-envelope"></i></a></td>
+            {{#each this}}
+            {{#if soumis_par.id}}
+
+            <td>{{soumis_par.prenom}} {{soumis_par.nom}}</td>
+            <td>{{matiere.nom}}</td>
+            <td>{{plage_horaire.joursemaine}}, {{plage_horaire.plage_unique.date}}</td>
+            <td>{{plage_horaire.heuredebut}} - {{plage_horaire.heurefin}}</td>
+            <td><a href="#" title="Accepter la demande" id="accepter" data-id="{{id}}"><i class="far fa-check-circle"></i></a></td>
+            {{/if}}
+            {{/each}}
         </tr>
     {{/each}}
     </tbody>
@@ -33,6 +41,7 @@
     </thead>
     <tbody>
     {{#each interventionsFutures}}
+
         <tr>
             <td>{{id}}</td>
             <td>{{senior.prenom}} {{senior.nom}}</td>
@@ -40,6 +49,7 @@
             {{#with senior.adresse_habitation}}
                 <td>{{ligne1}}</td>
             {{/with}}
+
         </tr>
     {{/each}}
     </tbody>
@@ -53,7 +63,7 @@
         <th>N°</th>
         <th>Senior</th>
         <th>Descriptif</th>
-        <th>Adresse</th>
+        <th>Date</th>
     </tr>
     </thead>
     <tbody>
@@ -61,10 +71,8 @@
         <tr>
             <td>{{id}}</td>
             <td>{{senior.prenom}} {{senior.nom}}</td>
-            <td>{{descriptif}}</td>
-            {{#with senior.adresse_habitation}}
-                <td>{{ligne1}}</td>
-            {{/with}}
+            <td>{{description}}</td>
+            <td>{{finprevu}}</td>
         </tr>
     {{/each}}
     </tbody>
