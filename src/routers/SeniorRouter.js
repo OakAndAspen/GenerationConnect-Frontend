@@ -20,7 +20,7 @@ export default Backbone.Router.extend({
         "seniors/profil": "profil",
         "seniors/interventions": "interventions",
         "seniors/suggestion": "suggestion",
-        'seniors/demande': 'demande',
+        "seniors/demande": "demande",
         "seniors/interventions/:id": "intervention"
     },
 

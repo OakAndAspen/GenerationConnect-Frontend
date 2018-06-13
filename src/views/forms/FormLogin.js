@@ -22,9 +22,7 @@ export default Backbone.View.extend({
         let email = $('#email').val();
         let password = $('#password').val();
 
-
-
-        // Setup d'AJAX
+        // Requête AJAX pour le login
         $.ajax({
             type: "POST",
             url: AppConfig.apiUrl + "/login",
@@ -32,7 +30,6 @@ export default Backbone.View.extend({
                 email: email,
                 motdepasse: password
             },
-            crossDomain: true,
             success: function (data) {
                 console.log("Successfully connected!");
                 console.log(JSON.stringify(data));
@@ -42,9 +39,6 @@ export default Backbone.View.extend({
                 if(data.employe) window.location.hash = "#admin";
                 if(data.junior) window.location.hash = "#juniors";
                 if(data.senior) window.location.hash = "#seniors";
-
-
-
 
                 location.reload();
             },

@@ -1,0 +1,12 @@
+<div class="row dashboard">
+    {{#each links}}
+    <div class="col-md-4 p-md-2">
+        <div class="jumbotron text-center">
+            <a href="#{{path}}">
+                <h1 class="display-3"><i class="{{icon}}"></i></h1>
+                <h1>{{ title }}</h1>
+            </a>
+        </div>
+    </div>
+    {{/each}}
+</div>
