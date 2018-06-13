@@ -5,9 +5,9 @@ $grey: rgb(165, 165, 165);
 $orange: rgb(237, 125, 49);
 $yellow: rgb(255, 192, 0);
 
-$grey-trans: rgba(165, 165, 165,0.2);
-$orange-trans: rgba(237, 125, 49,0.2);
-$yellow-trans: rgba(255, 192, 0,0.2);
+$grey-trans: rgba(165, 165, 165, 0.2);
+$orange-trans: rgba(237, 125, 49, 0.2);
+$yellow-trans: rgba(255, 192, 0, 0.2);
 
 .btn {
   background-color: $yellow !important;
@@ -77,8 +77,10 @@ body {
 }
 
 #pageBreadcrumbs {
-  color: black;
-  font-variant: small-caps;
+  a {
+    color: black;
+    font-variant: small-caps;
+  }
 
   li:not(:last-child):hover span {
     text-decoration: underline;
@@ -92,16 +94,20 @@ body {
 
 .dashboard {
   font-variant: all-small-caps;
-}
 
-.jumbotron {
-  background-color: rgba(165, 165, 165, 0.7);
-  color: black;
-}
+  .jumbotron {
+    background-color: rgba(165, 165, 165, 0.5);
+    color: black;
+  }
 
-.jumbotron:hover {
-  cursor: pointer;
-  background-color: $grey;
+  .jumbotron:hover {
+    cursor: pointer;
+    background-color: $grey;
+  }
+
+  a {
+    color: black;
+  }
 }
 
 #disponibilites a {
@@ -111,73 +117,74 @@ body {
 #publicPages a {
   color: black;
 }
-.bg-orange{
-   background-color: $orange;
- }
 
-.bg-gris{
+.bg-orange {
+  background-color: $orange;
+}
+
+.bg-gris {
   background-color: $grey;
 }
 
-.bg-jaune{
+.bg-jaune {
   background-color: $yellow;
 }
 
-.bg-orange-trans{
+.bg-orange-trans {
   background-color: $orange-trans;
   color: black;
 }
 
-.bg-gris-trans{
+.bg-gris-trans {
   background-color: $grey-trans;
   color: black;
 }
 
-.bg-jaune-trans{
+.bg-jaune-trans {
   background-color: $yellow-trans;
   color: black;
 }
 
-.card-img-top{
+.card-img-top {
   width: 70%;
 }
 
-.card-big{
+.card-big {
   width: 100% !important;
 }
 
-.card-noborder{
+.card-noborder {
   border: none;
 }
 
-.card-text-black{
+.card-text-black {
   color: black;
   text-align: center;
 }
 
-.text-size{
-    font-size: 200%;
+.text-size {
+  font-size: 200%;
 }
 
-.img-left{
+.img-left {
   width: 50%;
   float: left;
 }
 
-.ronds{
+.ronds {
   text-align: center;
   vertical-align: center;
 }
 
 @media (min-width: 576px) {
-  .card-img-top{
+  .card-img-top {
     width: 50%;
   }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-  .card-img-top{
+  .card-img-top {
     width: 40%;
   }
 
@@ -185,9 +192,8 @@ body {
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-  .card-img-top{
+  .card-img-top {
     width: 60%;
   }
-
 
 }

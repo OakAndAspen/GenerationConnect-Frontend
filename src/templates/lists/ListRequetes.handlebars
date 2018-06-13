@@ -1,6 +1,5 @@
 <form class="form-inline mb-3 d-flex">
-    <button type="button" class="btn mr-auto" data-target="admin/demandes/new">Nouvelle demande d'intervention
-    </button>
+    <a type="button" class="btn" href="#admin/demandes/new">Nouvelle demande d'intervention</a>
 </form>
 
 <table class="table table-striped">
@@ -8,16 +7,14 @@
     <tr>
         <th>N°</th>
         <th>Senior</th>
-        <th>Date et heure</th>
         <th>Statut</th>
     </tr>
     </thead>
     <tbody>
-    {{#each interventions}}
+    {{#each requetes}}
         <tr>
-            <td>{{id}}</td>
-            <td><span data-target="admin/senior/{{senior.id}}">{{senior.prenom}} {{senior.nom}}</span></td>
-            <th>{{date}} {{heure}}</th>
+            <td><a href="#admin/demandes/{{id}}">{{id}}</a></td>
+            <td><a href="#admin/seniors/{{soumis_par.id}}">{{soumis_par.prenom}} {{soumis_par.nom}}</a></td>
             <th>{{statut}}</th>
         </tr>
     {{/each}}

@@ -1,21 +1,23 @@
 <form class="form-inline mb-3">
-    <button type="button" class="btn" data-target="admin/formations/new">Nouvelle formation</button>
+    <a class="btn" href="#admin/formations/new">Nouvelle formation</a>
 </form>
 
 <table class="table table-striped">
     <thead>
     <tr>
         <th>N°</th>
-        <th>Date | Heure</th>
         <th>Titre</th>
+        <th>Date</th>
+        <th>Heure</th>
     </tr>
     </thead>
     <tbody>
     {{#each formations}}
         <tr>
-            <td>{{id}}</td>
-            <td>{{date}} | {{heure}}</td>
-            <td><span data-target="admin/seniors/{{senior.id}}">{{nom}}</span></td>
+            <td><a href="#admin/formations/{{id}}">{{id}}</a></td>
+            <td>{{nom}}</td>
+            <td>{{plage_horaire.plage_unique.date}}</td>
+            <td>{{plage_horaire.heuredebut}}</td>
         </tr>
     {{/each}}
     </tbody>

@@ -6,24 +6,25 @@ export default Backbone.View.extend({
     initialize: function (attrs, options) {
         this.template = template;
         this.listenTo(this.collection, "change add remove", this.render);
-        this.statut = '';
-        this.recherche = 'e';
+        /*this.statut = '';
+        this.recherche = 'e';*/
     },
 
     render: function () {
-        let recherche = this.recherche;
+        /*let recherche = this.recherche;
         let results = this.collection.clone();
         results.each(function (result) {
             if(!name.includes(recherche)){
                 results.remove(this);
             }
-        });
+        });*/
+        console.log(this.collection.toJSON());
 
         this.$el.html(this.template({
-            seniors: results.toJSON()
+            seniors: this.collection.toJSON()
         }));
         return this.$el;
-    },
+    }/*,
     
     events: {
         "change [name=statut]" : "filter",
@@ -40,7 +41,5 @@ export default Backbone.View.extend({
         console.log("searching");
         this.recherche = $(event.target).val();
         this.render();
-    }
-
-
+    }*/
 });

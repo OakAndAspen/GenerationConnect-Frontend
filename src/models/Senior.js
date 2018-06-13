@@ -1,5 +1,4 @@
 import Backbone from "backbone";
-import Seniors from "collections/Seniors";
 import AppConfig from "config";
 
 export default Backbone.Model.extend({
