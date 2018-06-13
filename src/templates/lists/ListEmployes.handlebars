@@ -1,5 +1,5 @@
 <form class="form-inline mb-3">
-    <button type="button" class="btn" data-target="admin/comptes/new">Nouveau compte</button>
+    <a href="#admin/comptes/new" class="btn">Nouveau compte</a>
 </form>
 
 <table class="table table-striped">
@@ -16,7 +16,7 @@
     {{#each comptes}}
         <tr>
             <td>{{id}}</td>
-            <td><span data-target="admin/comptes/{{compte.id}}">{{compte.prenom}} {{compte.nom}}</span></td>
+            <td><a href="#admin/comptes/{{id}}">{{prenom}} {{nom}}</a></td>
             <td>{{telephone}}</td>
             <td>{{email}}</td>
             <td>{{fonction}}</td>
