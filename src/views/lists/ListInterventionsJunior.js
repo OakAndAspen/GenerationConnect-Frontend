@@ -52,6 +52,7 @@ export default Backbone.View.extend({
 
     render: function () {
         console.log("render this");
+
         console.log(this.demandesNT);
         console.log(this.interventionsFutures);
         console.log(this.interventionsPassees);

@@ -12,6 +12,8 @@ import ProfilSenior from "views/special/ProfilSenior";
 import FormSuggestion from "views/forms/FormSuggestion";
 import ListInterventionsSenior from "views/lists/ListInterventionsSenior";
 import FormRequete from "views/forms/FormRequete";
+import Requetes from "../collections/Requetes";
+import ListInterventionsJunior from "../views/lists/ListInterventionsJunior";
 
 export default Backbone.Router.extend({
 
@@ -39,24 +41,25 @@ export default Backbone.Router.extend({
     dashboard: function() {
         let links = [
             {
-                'title': 'Mes interventions',
-                'path':'seniors/interventions',
-                'icon': 'fas fa-hands-helping'
-            },
-            {
                 'title': 'Mon profil',
                 'path': 'seniors/profil',
                 'icon': 'fas fa-user'
             },
             {
-                'title': 'Faire une suggestion',
-                'path': 'seniors/suggestion',
-                'icon': 'fas fa-lightbulb'
+                'title': 'Mes interventions',
+                'path':'seniors/interventions',
+                'icon': 'fas fa-hands-helping'
             },
             {
                 'title': 'Faire une requête',
                 'path': 'seniors/demande',
                 'icon': 'fas fa-question-circle'
+            }
+            ,
+            {
+                'title': 'Faire une suggestion',
+                'path': 'seniors/suggestion',
+                'icon': 'fas fa-lightbulb'
             }];
         let dashboard = new Dashboard({
             links: links
@@ -79,10 +82,49 @@ export default Backbone.Router.extend({
     },
 
     interventions: function() {
-        let interventions = new Interventions("interventions-senior");
+        /*let interventions = new Interventions("interventions-senior");
         $('#pageContent').html(new ListInterventionsSenior({
             collection: interventions
-        }).render());
+        }).render());*/
+
+        // INTERVENTIONS
+        let interventionslist = new Interventions();
+        interventionslist.fetch({
+            success: function (interventionslist) {
+                console.log(JSON.stringify(interventionslist));
+
+                // FUTURES ET PASSEES
+                let interventionsFinalisee = interventionslist.where({statut: "finalise"});
+                let interventionsPlanifiees = interventionslist.where({statut: "planifie"});
+                console.log(interventionsFinalisee);
+                console.log(interventionsPlanifiees);
+
+                // DEMANDES
+                let demandes = new Requetes();
+                demandes.fetch({
+                    success: function (demandes) {
+
+                        console.log(demandes);
+                        //let demandesNaN = demandes.where({statut: "accepte"});
+                        let demandesNaN = demandes.filter(demandes => demandes.statut != "accepte");
+
+                        console.log("Demandes:");
+                        console.log(demandes);
+                        console.log(demandesNaN);
+
+
+                        // RENDER VIEW
+                        let list = new ListInterventionsSenior({
+                            interventionsFutures: interventionsPlanifiees,
+                            interventionsPassees: interventionsFinalisee,
+                            demandes: demandesNaN,
+                        });
+                        $('#pageContent').html(list.render());
+                    }
+                });
+            }
+        });
+
     },
 
     demande: function () {

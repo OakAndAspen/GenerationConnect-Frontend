@@ -6,13 +6,23 @@
     <tr>
         <th>N°</th>
         <th>Descriptif</th>
+        <th>Date</th>
+        <th>Heures</th>
     </tr>
     </thead>
     <tbody>
     {{#each demandes}}
         <tr>
-            <td>{{id}}</td>
-            <td>{{descriptif}}</td>
+            <td><a href="">{{id}}</a></td>
+            {{#each this}}
+                {{#if matiere.id}}
+
+                    <td>{{matiere.nom}} {{matiere.description}}</td>
+                    <td>{{plage_horaire.joursemaine}}, {{plage_horaire.plage_unique.date}}</td>
+                    <td>{{plage_horaire.heuredebut}} - {{plage_horaire.heurefin}}</td>
+                    <td><a href="#" title="Accepter la demande" id="accepter" data-id="{{id}}"><i class="far fa-check-circle"></i></a></td>
+                {{/if}}
+            {{/each}}
         </tr>
     {{/each}}
     </tbody>
@@ -31,28 +41,39 @@
     {{#each interventionsFutures}}
         <tr>
             <td>{{id}}</td>
-            <td>{{junior.prenom}} {{junior.nom}}</td>
-            <td>{{descriptif}}</td>
+            {{#each this}}
+                {{#if junior_affecte.id}}
+                    <td>{{junior_affecte.prenom}} {{junior_affecte.nom}}</td>
+                    <td>{{requete.matiere.nom}} - {{requete.matiere.description}}</td>
+                    <td>{{finprevu}}</td>
+                {{/if}}
+            {{/each}}
         </tr>
     {{/each}}
     </tbody>
 </table>
 
-<h2>Vos prochaines visites</h2>
+<h2>Vos visites antièrieures</h2>
 <table class="table table-striped mb-3">
     <thead>
     <tr>
         <th>N°</th>
-        <th>Junior assigné</th>
+        <th>Junior</th>
         <th>Descriptif</th>
+        <th>Date</th>
     </tr>
     </thead>
     <tbody>
     {{#each interventionsPassees}}
         <tr>
             <td>{{id}}</td>
-            <td>{{junior.prenom}} {{junior.nom}}</td>
-            <td>{{descriptif}}</td>
+            {{#each this}}
+                {{#if junior_affecte.id}}
+                    <td>{{junior_affecte.prenom}} {{junior_affecte.nom}}</td>
+                    <td>{{requete.matiere.nom}} - {{requete.matiere.description}}</td>
+                    <td>{{finprevu}}</td>
+                {{/if}}
+            {{/each}}
         </tr>
     {{/each}}
     </tbody>

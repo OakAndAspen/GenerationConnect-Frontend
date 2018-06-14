@@ -10,11 +10,13 @@ export default Backbone.View.extend({
 
     render: function () {
         this.$el.html(this.template());
+        //this.templates.
         return this.$el;
     },
 
     events: {
-        'submit form': 'submit'
+        'submit form': 'submit',
+
     },
 
     submit: function (event) {
@@ -154,8 +156,13 @@ export default Backbone.View.extend({
                 console.log(JSON.stringify(data));
                 //localStorage.setItem("userId", data.id);
                 //location.reload();
+                $('#successModal').modal('show');
+                $('#successModal').on('hidden.bs.modal', function () {
+                    window.location.hash = '#login';
+                })
             },
             error: function () {
+                $('#errorsModal').modal('show');
                 console.log("Erreur");
             }
         });

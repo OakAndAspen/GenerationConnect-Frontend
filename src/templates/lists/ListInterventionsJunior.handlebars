@@ -40,16 +40,12 @@
     </tr>
     </thead>
     <tbody>
-    {{#each interventionsFutures}}
-
+    {{#each interventionsPassees}}
         <tr>
             <td>{{id}}</td>
-            <td>{{senior.prenom}} {{senior.nom}}</td>
-            <td>{{descriptif}}</td>
-            {{#with senior.adresse_habitation}}
-                <td>{{ligne1}}</td>
-            {{/with}}
-
+            <td>{{junior.prenom}} {{junior.nom}}</td>
+            <td>{{description}}</td>
+            <td>{{debutprevu}}</td>
         </tr>
     {{/each}}
     </tbody>

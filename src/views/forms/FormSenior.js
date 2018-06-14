@@ -20,7 +20,12 @@ export default Backbone.View.extend({
         'click #send': 'send'
     },
 
-    send: function (event) {
+
+    oeilMDP2: function(event){
+        console.log("TEST2");
+    },
+
+    send: function(event) {
         let email = $("#email").val();
         let prenom = $("#prenom").val();
         let nom = $("#nom").val();

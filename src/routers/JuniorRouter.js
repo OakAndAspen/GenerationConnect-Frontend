@@ -43,14 +43,14 @@ export default Backbone.Router.extend({
     dashboard: function () {
         let links = [
             {
-                'title': 'Mes interventions',
-                'path': 'juniors/interventions',
-                'icon': 'fas fa-hands-helping'
-            },
-            {
                 'title': 'Mon profil',
                 'path': 'juniors/profil',
                 'icon': 'fas fa-user'
+            },
+            {
+                'title': 'Mes interventions',
+                'path': 'juniors/interventions',
+                'icon': 'fas fa-hands-helping'
             },
             {
                 'title': 'Schéma d\'intervention',

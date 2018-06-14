@@ -13,8 +13,9 @@
     <div class="col-md-6">
         <input type="text" class="form-control mb-2" placeholder="N° Téléphone" id="telephone">
     </div>
-    <h2 class="my-3">Adresse</h2>
+
     <div class="col-12">
+        <h2 class="my-3">Adresse</h2>
         <input type="text" class="form-control mb-2" placeholder="ligne 1" id="ligne1">
     </div>
     <div class="col-12">
@@ -32,17 +33,13 @@
     <div class="col-md-6">
         <div class="input-group mb-2 mr-sm-2">
             <input type="password" class="form-control" placeholder="Mot de passe" id="mdp">
-            <div class="input-group-prepend">
-                <div class="input-group-text" title="Voir"><i class="far fa-eye"></i></div>
-            </div>
+
         </div>
     </div>
     <div class="col-md-6">
         <div class="input-group mb-2 mr-sm-2">
             <input type="password" class="form-control" placeholder="Répéter le mot de passe" id="mdp2">
-            <div class="input-group-prepend">
-                <div class="input-group-text" title="Voir"><i class="far fa-eye"></i></div>
-            </div>
+
         </div>
     </div>
     <div class="col-md-6">
@@ -51,10 +48,11 @@
             <option value="email">Email</option>
             <option value="sms">SMS</option>
         </select>
+        <h2 class="my-3">Forfaits</h2>
     </div>
     <div class="col-md-12 mt-3">
+
         <div class="row">
-        <h2 class="my-3">Forfaits</h2>
         {{#each forfaits}}
             <div class="col">
                 <div class="form-check mr-0">
