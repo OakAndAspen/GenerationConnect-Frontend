@@ -34,9 +34,8 @@ export default Backbone.View.extend({
             },
             success: function (data) {
                 console.log("Success");
-            },
-            error: function () {
-
+                location.hash = '#admin/demandes';
+                location.reload();
             }
         });
     }
