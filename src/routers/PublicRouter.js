@@ -1,19 +1,13 @@
 import Backbone from "backbone";
 import AppConfig from "config";
 
-// Templates
-import accueilTmpl from "templates/pages/accueil.handlebars";
-import juniorsTmpl from "templates/pages/infosJuniors.handlebars";
-import seniorsTmpl from "templates/pages/infosSeniors.handlebars";
-import aideTmpl from "templates/pages/aide.handlebars";
-
 // Views
 import Page from "views/components/Page";
 import FormContact from "views/forms/FormContact";
 import FormPostulation from "views/forms/FormPostulation";
 import FormSenior from "views/forms/FormSenior";
 import FormLogin from "views/forms/FormLogin";
-import Forfaits from "../collections/Forfaits";
+import Forfaits from "collections/Forfaits";
 
 export default Backbone.Router.extend({
 

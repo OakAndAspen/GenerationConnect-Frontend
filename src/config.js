@@ -1,3 +1,3 @@
 export default {
-    apiUrl: "http://localhost/ProjWeb-Back/public/api"
+    apiUrl: "http://localhost/_ECOLE/ProjetIntegration-Backend/public/api"
 }

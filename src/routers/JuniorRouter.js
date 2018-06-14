@@ -5,11 +5,9 @@ import Junior from "models/Junior";
 import Intervention from "models/Intervention";
 import Interventions from "collections/Interventions";
 import Requetes from "collections/Requetes";
-import Juniors from "collections/Juniors";
 
 // Views
 import Dashboard from "views/components/Dashboard";
-import Breadcrumbs from "views/components/Breadcrumbs";
 import JuniorSchema from "views/components/Page";
 import ProfilJunior from "views/special/ProfilJunior";
 import ListInterventionsJunior from "views/lists/ListInterventionsJunior";
@@ -21,6 +19,7 @@ import Page from "../views/components/Page";
 import Senior from "../models/Senior";
 import ProfilSenior from "../views/special/ProfilSenior";
 import Soumissions from "../collections/Soumissions";
+import Page from "views/components/Page";
 
 export default Backbone.Router.extend({
 

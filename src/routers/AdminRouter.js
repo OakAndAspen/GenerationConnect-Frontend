@@ -88,6 +88,13 @@ export default Backbone.Router.extend({
     },
 
     dashboard: function () {
+        let array = JSON.parse(localStorage.getItem('userRoles'));
+        let roles = '';
+        array.forEach(function (role) {
+            roles += role.name;
+        });
+
+        // TODO: Afficher conditionnellement les élément du dashboard en fonction du rôle
         let links = [
             {
                 'title': 'Seniors',
@@ -129,7 +136,6 @@ export default Backbone.Router.extend({
                 'path': 'admin/suggestions',
                 'icon': 'far fa-lightbulb'
             }
-
         ];
         let dashboard = new Dashboard({
             links: links
@@ -244,8 +250,7 @@ export default Backbone.Router.extend({
         let collection = new Formations();
         collection.fetch({
             success: function () {
-                let list = new ListFormations({collection: collection});
-                $('#pageContent').html(list.render());
+                $('#pageContent').html(new ListFormations({collection: collection}).render());
             }
         });
     },
