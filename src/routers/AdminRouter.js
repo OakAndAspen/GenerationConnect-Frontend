@@ -88,6 +88,13 @@ export default Backbone.Router.extend({
     },
 
     dashboard: function () {
+        let array = JSON.parse(localStorage.getItem('userRoles'));
+        let roles = '';
+        array.forEach(function (role) {
+            roles += role.name;
+        });
+
+        // TODO: Afficher conditionnellement les élément du dashboard en fonction du rôle
         let links = [
             {
                 'title': 'Seniors',
@@ -129,7 +136,6 @@ export default Backbone.Router.extend({
                 'path': 'admin/suggestions',
                 'icon': 'far fa-lightbulb'
             }
-
         ];
         let dashboard = new Dashboard({
             links: links

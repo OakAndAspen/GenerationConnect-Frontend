@@ -42,6 +42,7 @@ export default Backbone.View.extend({
                 }
                 else if(data.employe) {
                     localStorage.setItem("userType", "employe");
+                    localStorage.setItem("userRoles", JSON.stringify(data.roles));
                     if(data.employe) window.location.hash = "#admin";
                 }
                 // Redirection

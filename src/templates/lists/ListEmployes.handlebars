@@ -18,7 +18,7 @@
             <td>{{prenom}} {{nom}}</td>
             <td>{{telephone}}</td>
             <td>{{email}}</td>
-            <td>{{fonction}}</td>
+            <td>{{#each roles}}{{title}}{{/each}}</td>
             <td class="text-right">
                 <a href="#admin/comptes/{{id}}" class="btn" title="Voir le détail"><i class="fas fa-eye"></i> Voir</a>
             </td>
