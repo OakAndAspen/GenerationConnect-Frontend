@@ -14,12 +14,10 @@ import ListInterventionsJunior from "views/lists/ListInterventionsJunior";
 import DetailInterventionJunior from "views/details/DetailInterventionJunior";
 
 // Templates
-import SchemaTmpl from "templates/pages/schema.handlebars";
 import Page from "../views/components/Page";
 import Senior from "../models/Senior";
 import ProfilSenior from "../views/special/ProfilSenior";
 import Soumissions from "../collections/Soumissions";
-import Page from "views/components/Page";
 
 export default Backbone.Router.extend({
 
