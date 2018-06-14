@@ -6,17 +6,54 @@ export default Backbone.View.extend({
 
     initialize: function (attrs, options) {
         this.template = template;
+        this.templateRow = "";
+        this.first = 0;
+        this.disponibilite = new Array();
     },
 
     render: function () {
         this.$el.html(this.template());
-        //this.templates.
         return this.$el;
     },
 
     events: {
         'submit form': 'submit',
+        'click #addDispo': 'addDispo'
+    },
 
+    addDispo: function (event) {
+        console.log("test");
+
+        $("#tableDispo").css("display","block");
+
+        if(this.first == 0)
+        {
+            this.templateRow = $("#rowDispo").clone();
+            $("#rowDispo").remove();
+            this.first = 1;
+            console.log("if");
+        }
+
+        let jour = $("#jour").val();
+        let debut = $("#heureDebut").val();
+        let fin = $("#heureFin").val();
+
+        let row = this.templateRow.clone();
+        row.attr("id","");
+
+        row.append("<td>"+ jour +"</td>");
+        row.append("<td>"+ debut +"</td>");
+        row.append("<td>"+ fin +"</td>");
+
+        let plage = {
+            'jour': jour,
+            'debut': debut,
+            'fin': fin
+        };
+
+        this.disponibilite.push(plage);
+
+        $("#tbody").append(row);
     },
 
     submit: function (event) {
@@ -74,12 +111,7 @@ export default Backbone.View.extend({
 
 
 
-        //let fileCV = $("#cvFile").prop('files')[0];
-
-        // let formData = new FormData($("#formPostulation")[0]);
-
         let form = new FormData();
-
 
         form.append("prenom",prenom);
         form.append("nom",nom);
@@ -114,6 +146,11 @@ export default Backbone.View.extend({
 
         form.append("cv", $("#cvFile")[0].files[0]);
 
+        let i = 0;
+        this.disponibilite.forEach(function(item) {
+            form.append("plageshoraires[" + i++ + "]", '{"jour":"' + item.jour + '", "debut":"' + item.debut + '", "fin":"' + item.fin + '"}');
+        });
+
         $.ajax({
             type: "POST",
             url: AppConfig.apiUrl + "/inscription/junior",
@@ -121,36 +158,6 @@ export default Backbone.View.extend({
             processData: false,
             contentType: false,
             data: form,
-            /*data: {
-                prenom: prenom,
-                nom: nom,
-                email: email,
-                motdepasse: motdepasse,
-                motdepasse_confirmation: motdepasse2,
-                telephone: phone,
-                'adresse_habitation[ligne1]': ligne1hab,
-                'adresse_habitation[ligne2]': ligne2hab,
-                'adresse_habitation[ligne3]': ligne3hab,
-                'adresse_habitation[ville]': villehab,
-                'adresse_habitation[npa]': NoNPAhab,
-
-                'adresse_depart[ligne1]': ligne1loc,
-                'adresse_depart[ligne2]': ligne2loc,
-                'adresse_depart[ligne3]': ligne3loc,
-                'adresse_depart[ville]': villeloc,
-                'adresse_depart[npa]': NoNPAloc,
-                'adresse_facturation[ligne1]': ligne1fac,
-                'adresse_facturation[ligne2]': ligne2fac,
-                'adresse_facturation[ligne3]': ligne3fac,
-                'adresse_facturation[ville]': villefac,
-                'adresse_facturation[npa]': NoNPAfac,
-                NoAVS: avs,
-                BanqueNom: banquenom,
-                BanqueBIC: banquebic,
-                BanqueIBAN: banqueiban,
-                LimiteTempsTransport: limitetemps,
-                cv: fileCV
-                },*/
             success: function (data) {
                 console.log("Successfully connected!");
                 console.log(JSON.stringify(data));
@@ -168,5 +175,4 @@ export default Backbone.View.extend({
         });
         console.log("Envoyer la postulation");
     }
-
 });
