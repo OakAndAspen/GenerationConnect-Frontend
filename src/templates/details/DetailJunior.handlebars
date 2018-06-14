@@ -90,7 +90,7 @@
                 <tr>
                     <td><a href="#admin/interventions/{{id}}">{{id}}</a></td>
                     {{#with requete.soumis_par}}
-                    <td><a href="#admin/senior/{{id}}">{{prenom}} {{nom}}</a></td>
+                        <td><a href="#admin/senior/{{id}}">{{prenom}} {{nom}}</a></td>
                     {{/with}}
                     <th>{{debutprevu}}</th>
                     <th>{{statut}}</th>
@@ -128,6 +128,10 @@
 
     <!-- Onglet "Fichiers" -->
     <div class="tab-pane my-3" id="fichiers" role="tabpanel" aria-labelledby="fichiers-tab">
-        // Fichiers //
+        <ul>
+            {{#each fichiers}}
+                <li><a href="../api/download/{{id}}" target="_blank">{{nom}}</a></li>
+            {{/each}}
+        </ul>
     </div>
 </div>

@@ -70,6 +70,11 @@ body {
       color: $yellow;
     }
 
+    a:hover {
+      color: $yellow;
+      text-decoration: underline;
+    }
+
     h3 {
       font-weight: bold;
     }
