@@ -208,14 +208,20 @@ export default Backbone.Router.extend({
     },
 
     demande: function (id) {
+        console.log("Détail demande");
         let model = new Requete({id: id});
         model.fetch({
             success: function (model) {
+                console.log("Requête récupérée");
                 $.ajax({
                     type: "GET",
                     url: AppConfig.apiUrl+"/matching/"+id,
                     success: function (data) {
+                        console.log("Matching récupéré");
                         $('#pageContent').html(new DetailRequete({model: model, matching:data}).render());
+                    },
+                    error: function () {
+                        console.log("Le matching n'a pas pu être récupéré");
                     }
                 });
             }

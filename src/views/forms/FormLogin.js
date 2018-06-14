@@ -44,12 +44,12 @@ export default Backbone.View.extend({
                     localStorage.setItem("userType", "employe");
                     if(data.employe) window.location.hash = "#admin";
                 }
-
                 // Redirection
                 location.reload();
             },
             error: function () {
                 console.log("Erreur lors de la connexion");
+                $('#errorsModal').modal('show');
             }
         });
     }
