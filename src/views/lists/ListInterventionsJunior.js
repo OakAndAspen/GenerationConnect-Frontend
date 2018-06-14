@@ -7,9 +7,9 @@ export default Backbone.View.extend({
     initialize: function (attrs, options) {
         this.template = template;
         console.log("init attrs");
-        console.log(attrs.demandes);
-        console.log(attrs.interventionsFutures);
-        console.log(attrs.interventionsPassees);
+        //console.log(attrs.demandes);
+        //console.log(attrs.interventionsFutures);
+        //console.log(attrs.interventionsPassees);
         this.demandesNT = attrs.demandes;
         this.interventionsFutures = attrs.interventionsFutures;
         this.interventionsPassees = attrs.interventionsPassees;
@@ -31,7 +31,7 @@ export default Backbone.View.extend({
             success: function (data) {
 
                 console.log("Successfully connected!");
-                console.log(JSON.stringify(data));
+                //console.log(JSON.stringify(data));
                 //localStorage.setItem("userId", data.id);
                 //location.reload();
                 $('#successModal').modal('show');
@@ -58,7 +58,7 @@ export default Backbone.View.extend({
         console.log(this.interventionsPassees);
 
         this.$el.html(this.template({
-            demandes: this.demandesNT,
+            soumission: this.demandesNT.toJSON(),
             interventionsFutures: this.interventionsFutures,
             interventionsPassees: this.interventionsPassees,
         }));

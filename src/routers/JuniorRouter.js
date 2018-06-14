@@ -18,6 +18,9 @@ import DetailInterventionJunior from "views/details/DetailInterventionJunior";
 // Templates
 import SchemaTmpl from "templates/pages/schema.handlebars";
 import Page from "../views/components/Page";
+import Senior from "../models/Senior";
+import ProfilSenior from "../views/special/ProfilSenior";
+import Soumissions from "../collections/Soumissions";
 
 export default Backbone.Router.extend({
 
@@ -69,70 +72,14 @@ export default Backbone.Router.extend({
     },
 
     profil: function () {
-        let junior = new Junior({
-            "id": 2,
-            "prenom": "Gabriel",
-            "nom": "Lopez",
-            "email": "user2@example.com",
-            "telephone": "+41245577600",
-            "junior": {
-                "status": "actif",
-                "LimiteTempsTransport": 120,
-                "NoAVS": "756.1234.5678.97",
-                "BanqueNom": "UBS Group AG",
-                "BanqueBIC": "UBSWCHZH80A",
-                "BanqueIBAN": "CH08 0029 8999 9999 9999 Q",
-                "adresse_de_depart": {
-                    "id": 1,
-                    "ligne1": "Avenue des Sports 20",
-                    "ligne2": "",
-                    "ligne3": "",
-                    "ville": "Yverdon-les-Bains",
-                    "npa": 1401
-                },
-                "adresse_de_facturation": {
-                    "id": 1,
-                    "ligne1": "Avenue des Sports 20",
-                    "ligne2": "",
-                    "ligne3": "",
-                    "ville": "Yverdon-les-Bains",
-                    "npa": 1401
-                },
-                "matieres": [
-                    {
-                        "id": 1,
-                        "nom": "Skype",
-                        "description": "Papy telephone maison",
-                        "sujet_id": 1,
-                        "pivot": {
-                            "junior_user_id": 2,
-                            "matiere_id": 1
-                        }
-                    },
-                    {
-                        "id": 2,
-                        "nom": "Cueillette",
-                        "description": "Aller cueillir des fraises ou des champignons",
-                        "sujet_id": 2,
-                        "pivot": {
-                            "junior_user_id": 2,
-                            "matiere_id": 2
-                        }
-                    }
-                ]
-            },
-            "adresse_habitation": {
-                "id": 1,
-                "ligne1": "Avenue des Sports 20",
-                "ligne2": "",
-                "ligne3": "",
-                "ville": "Yverdon-les-Bains",
-                "npa": 1401
+
+        let userId = localStorage.getItem('userID');
+        let junior = new Junior({id: userId});
+        junior.fetch({
+            success: function (junior) {
+                $('#pageContent').html(new ProfilJunior({model: junior}).render());
             }
         });
-        let juniorProfil = new ProfilJunior({model: junior});
-
-        $('#pageContent').html(juniorProfil.render());
     },
 
     interventions: function() {
@@ -140,31 +87,24 @@ export default Backbone.Router.extend({
         let interventionslist = new Interventions();
         interventionslist.fetch({
             success: function (interventionslist) {
-                console.log(JSON.stringify(interventionslist));
+                //console.log(JSON.stringify(interventionslist));
 
                 // FUTURES ET PASSEES
                 let interventionsFinalisee = interventionslist.where({statut: "finalise"});
                 let interventionsPlanifiees = interventionslist.where({statut: "planifie"});
-                console.log(interventionsFinalisee);
-                console.log(interventionsPlanifiees);
+                //console.log(interventionsFinalisee);
+                //console.log(interventionsPlanifiees);
 
                 // DEMANDES
-                let demandes = new Requetes();
+                let demandes = new Soumissions();
                 demandes.fetch({
                     success: function (demandes) {
-
-                        console.log(demandes);
-                        let demandesNaN = demandes.where({statut: "envoye"});
-                        //let demandesNaN = demandes.filter( element => element.statut ="envoye");
-                        console.log("Demandes:");
-                        console.log(demandes);
-                        console.log(demandesNaN);
 
                         // RENDER VIEW
                         let list = new ListInterventionsJunior({
                             interventionsFutures: interventionsPlanifiees,
                             interventionsPassees: interventionsFinalisee,
-                            demandes: demandesNaN,
+                            demandes: demandes,
                         });
                         $('#pageContent').html(list.render());
                     }

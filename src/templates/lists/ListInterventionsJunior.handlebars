@@ -11,19 +11,36 @@
     </tr>
     </thead>
     <tbody>
-    {{#each demandes}}
+    <!--{{#each soumission}}
         <tr>
-            <td><a href="">{{id}}</a></td>
             {{#each this}}
-            {{#if soumis_par.id}}
+                {{#each this}}
+                    {{#if requete.id}}
+                    <td><a href="">{{requete.id}}</a></td>
 
-            <td>{{soumis_par.prenom}} {{soumis_par.nom}}</td>
-            <td>{{matiere.nom}}</td>
-            <td>{{plage_horaire.joursemaine}}, {{plage_horaire.plage_unique.date}}</td>
-            <td>{{plage_horaire.heuredebut}} - {{plage_horaire.heurefin}}</td>
-            <td><a href="#" title="Accepter la demande" id="accepter" data-id="{{id}}"><i class="far fa-check-circle"></i></a></td>
-            {{/if}}
+
+                    <td>{{requete.soumis_par.prenom}} {{requete.soumis_par.nom}}</td>
+                    <td>{{requete.matiere.nom}}</td>
+                    <td>{{plage_horaire.joursemaine}}, {{plage_horaire.plage_unique.date}}</td>
+                    <td>{{plage_horaire.heuredebut}} - {{plage_horaire.heurefin}}</td>
+                    <td><a href="#" title="Accepter la demande" id="accepter" data-id="{{id}}"><i class="far fa-check-circle"></i></a></td>
+                    {{/if}}
+                {{/each}}
             {{/each}}
+        </tr>
+    {{/each}}-->
+    {{#each soumission}}
+        <tr>
+
+            <td><a href="">{{id}}</a></td>
+
+
+            <td>{{requete.soumis_par.prenom}} {{requete.soumis_par.nom}}</td>
+            <td>{{requete.matiere.nom}}</td>
+            <td>{{requete.plage_horaire.joursemaine}}, {{requete.plage_horaire.plage_unique.date}}</td>
+            <td>{{requete.plage_horaire.heuredebut}} - {{requete.plage_horaire.heurefin}}</td>
+            <td><a href="#" title="Accepter la demande" id="accepter" data-id="{{id}}"><i class="far fa-check-circle"></i></a></td>
+
         </tr>
     {{/each}}
     </tbody>
@@ -36,16 +53,20 @@
         <th>N°</th>
         <th>Senior</th>
         <th>Descriptif</th>
-        <th>Adresse</th>
+        <th>Date</th>
     </tr>
     </thead>
     <tbody>
-    {{#each interventionsPassees}}
+    {{#each interventionsFutures}}
         <tr>
             <td>{{id}}</td>
-            <td>{{junior.prenom}} {{junior.nom}}</td>
-            <td>{{description}}</td>
-            <td>{{debutprevu}}</td>
+            {{#each this}}
+                {{#if requete.soumis_par.id}}
+                    <td>{{requete.soumis_par.prenom}} {{requete.soumis_par.nom}}</td>
+                    <td>{{requete.matiere.nom}} - {{requete.matiere.description}}</td>
+                    <td>{{finprevu}}</td>
+                {{/if}}
+            {{/each}}
         </tr>
     {{/each}}
     </tbody>
@@ -63,12 +84,17 @@
     </tr>
     </thead>
     <tbody>
+
     {{#each interventionsPassees}}
         <tr>
             <td>{{id}}</td>
-            <td>{{senior.prenom}} {{senior.nom}}</td>
-            <td>{{description}}</td>
-            <td>{{finprevu}}</td>
+            {{#each this}}
+                {{#if requete.soumis_par.id}}
+                    <td>{{requete.soumis_par.prenom}} {{requete.soumis_par.nom}}</td>
+                    <td>{{requete.matiere.nom}} - {{requete.matiere.description}}</td>
+                    <td>{{finprevu}}</td>
+                {{/if}}
+            {{/each}}
         </tr>
     {{/each}}
     </tbody>

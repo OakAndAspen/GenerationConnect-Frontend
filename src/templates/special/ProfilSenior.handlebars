@@ -5,9 +5,7 @@
     <li class="nav-item">
         <a class="nav-link active" id="profil-tab" data-toggle="tab" href="#profil" role="tab" aria-controls="profil" aria-selected="true">Coordonnées</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" id="comp-tab" data-toggle="tab" href="#comp" role="tab" aria-controls="comp" aria-selected="false">Sujets</a>
-    </li>
+
 </ul>
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active my-3" id="profil" role="tabpanel" aria-labelledby="profil-tab">
@@ -72,26 +70,7 @@
         </div>
     </div>
 
-    <div class="tab-pane fade mt-3" id="comp" role="tabpanel" aria-labelledby="comp-tab">
 
-        <div class="row my-3">
-            <div class="col-12">
-                <ul class="list-group">
-                    {{#each sujets}}
-                        <li class="list-group-item" data-id="{{id}}">{{nom}}</li>
-                        {{#each matieres}}
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="{{selected}}" data-id="{{id}}" id="sujet">
-                                <label class="form-check-label" for="sujet">
-                                    {{nom}}
-                                </label>
-                            </div>
-                        {{/each}}
-                    {{/each}}
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>
 
 

@@ -125,22 +125,64 @@
 
         <!--<h1>Mes disponibilités</h1>-->
 
-        <table id="disponibilites" class="table table-striped">
-            <tbody>
-            {{#each plages_horaire}}
-            <tr>
-                <th>{{joursemaine}}</th>
-                <td>
-                        <span class="badge badge-warning">
-                            {{heureDebut}} - {{heureFin}}
-                            <a href="#" title="Supprimer"><i class="fas fa-times"></i></a>
-                        </span>
-                    <a href="#" title="Ajouter une plage horaire"><i class="fas fa-plus"></i></a>
-                </td>
-            </tr>
-            {{/each}}
-            </tbody>
-        </table>
+        <div class="row mb-2">
+            <div class="col-3">
+                <select class="form-control" id="jour" >
+                    <option>Choisir...</option>
+                    <option>Lundi</option>
+                    <option>Mardi</option>
+                    <option>Mercredi</option>
+                    <option>Jeudi</option>
+                    <option>Vendredi</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <input type="time" class="form-control mb-2" placeholder="Début" id="heureDebut">
+            </div>
+            <div class="col-4">
+                <input type="time" class="form-control mb-2" placeholder="Fin" id="heureFin">
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-success fas fa-plus btn-green" id="addDispo"></button>
+            </div>
+
+        </div>
+        <div class="row" id="listDispo">
+            <div class="col-12" style="" id="tableDispo">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Jour</th>
+                        <th>Début</th>
+                        <th>Fin</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody">
+                    {{#each junior.plageshoraires}}
+                        <tr>
+                            <td>
+                                <div class="col-1">
+                                    <button style="" type="button" class="btn btn-danger fas fa-minus btn-red"></button>
+                                    <style>
+                                        .btn-red {
+                                            background-color:red !important;
+                                        }
+                                        .btn-green {
+                                            background-color:forestgreen !important;
+                                        }
+                                    </style>
+                                </div>
+                            </td>
+                            <td>{{joursemaine}}</td>
+                            <td>{{heuredebut}}</td>
+                            <td>{{heurefin}}</td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <div class="tab-pane fade mt-3" id="comp" role="tabpanel" aria-labelledby="comp-tab">
@@ -150,20 +192,18 @@
             <div class="col-12">
             <ul class="list-group">
                 {{#each junior.matieres}}
-                    <li class="list-group-item" data-id="{{id}}">{{nom}}</li>
-                    <p>{{description}}</p>
-                    <!--{{#each sujets}}
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="{{selected}}" data-id="{{id}}" id="sujet">
-                            <label class="form-check-label" for="sujet">
-                                {{nom}}
-                            </label>
-                        </div>
-                    {{/each}}-->
+                    <div class="form-check my-2">
+                        <input class="form-check-input" type="checkbox" name="matiereRadio" id="sujet{{id}}"
+                               value="{{id}}" checked>
+                        <label class="form-check-label" for="sujet">
+                            <h3>{{nom}}</h3> {{description}}
+                        </label>
+                    </div>
                 {{/each}}
             </ul>
             </div>
         </div>
+
     </div>
 </div>
 
