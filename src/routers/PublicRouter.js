@@ -7,7 +7,7 @@ import FormContact from "views/forms/FormContact";
 import FormPostulation from "views/forms/FormPostulation";
 import FormSenior from "views/forms/FormSenior";
 import FormLogin from "views/forms/FormLogin";
-import Forfaits from "../collections/Forfaits";
+import Forfaits from "collections/Forfaits";
 
 export default Backbone.Router.extend({
 
