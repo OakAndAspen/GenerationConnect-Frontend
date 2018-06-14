@@ -9,8 +9,10 @@ export default Backbone.View.extend({
     },
 
     render: function () {
+        let requetes = this.collection.sansAcceptees();
+        console.log(requetes);
         this.$el.html(this.template({
-            requetes: this.collection.toJSON()
+            requetes: requetes.toJSON()
         }));
         return this.$el;
     }

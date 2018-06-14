@@ -1,4 +1,5 @@
 import Backbone from "backbone";
+import AppConfig from "config";
 import template from "templates/details/DetailJunior.handlebars";
 
 export default Backbone.View.extend({

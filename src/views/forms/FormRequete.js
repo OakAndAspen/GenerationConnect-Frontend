@@ -1,14 +1,12 @@
 import Backbone from "backbone";
 import template from "templates/forms/FormRequete.handlebars";
-import AppConfig from "../../config";
+import AppConfig from "config";
 
 export default Backbone.View.extend({
 
     initialize: function (attrs, options) {
         this.sujets = attrs.sujets;
         this.template = template;
-
-
     },
 
     render: function () {
@@ -23,9 +21,6 @@ export default Backbone.View.extend({
     },
 
     send: function (event) {
-
-
-
         let type = $('#type').val();
 
         let matiereID = $('input[name="matiereRadio"]:checked').val();

@@ -2,9 +2,8 @@
 <hr/>
 <form>
     <div class="container">
-       <div class="row">
+        <div class="row">
             <div class="col">
-
                 <h2 class="my-3">Matière concernée</h2>
                 {{#each sujets}}
                     <label class="form-check-label" for="sujet">
@@ -12,7 +11,8 @@
                     </label>
                     {{#each this.matieres}}
                         <div class="form-check my-2">
-                            <input class="form-check-input" type="radio" name="matiereRadio" id="sujet{{id}}" value="{{id}}">
+                            <input class="form-check-input" type="radio" name="matiereRadio" id="sujet{{id}}"
+                                   value="{{id}}">
                             <label class="form-check-label" for="sujet">
                                 <h3>{{nom}}</h3> {{description}}
                             </label>
@@ -29,26 +29,35 @@
                     </select>
                 </div>
 
-                <h2 class="my-3">Date et heures</h2>
+                <hr/>
 
-                <label class="form-text mr-3 mb-3" for="dateJour">Date <input class="ml-2" type="date" name="date" id="dateJour"></label>
+                <h2 class="my-3">Date et heure</h2>
+                <div class="form-group form-inline">
+                    <label class="form-text mr-3 mb-3" for="dateJour">Date</label>
+                    <input class="ml-2 form-control" type="date" name="date" id="dateJour"></p>
+                </div>
+                <div class="form-group form-inline">
+                    <label class="form-text mr-3 mb-3" for="dateDebut">Heure de début</label>
+                    <input class="ml-2 form-control" type="time" name="heuredebut" id="heuredebut">
+                </div>
+                <div class="form-group form-inline">
+                    <label class="form-text mr-3 mb-3" for="dateFin">Heure de fin</label>
+                    <input class="ml-2 form-control" type="time" name="heurefin" id="heurefin">
+                </div>
 
-                <label class="form-text mr-3 mb-3" for="dateDebut">Heure de début <input class="ml-2" type="time" name="heuredebut" id="heuredebut"></label>
-                <label class="form-text mr-3 mb-3" for="dateFin">Heure de fin <input class="ml-2" type="time" name="heurefin" id="heurefin"></label>
+                <hr/>
 
+                <h2 class="my-3">Commentaire</h2>
+                <textarea class="form-control mb-5" placeholder="Description de votre demande"
+                          id="commentaire"></textarea>
             </div>
-       </div>
-       <div class="row">
-           <div class="col">
-               <h2 class="my-3">Commentaire</h2>
-               <textarea class="form-control mb-5" placeholder="Description de votre demande" id="commentaire"></textarea>
-           </div>
-       </div>
+        </div>
     </div>
     <button type="button" class="form-control btn mb-3" id="send">Envoyer la demande</button>
 </form>
 
-<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -67,7 +76,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="errorsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="errorsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

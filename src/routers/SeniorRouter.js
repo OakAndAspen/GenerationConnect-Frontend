@@ -38,7 +38,7 @@ export default Backbone.Router.extend({
         return Backbone.Router.prototype.route.call(this, route, name, f);
     },
 
-    dashboard: function() {
+    dashboard: function () {
         let links = [
             {
                 'title': 'Mon profil',
@@ -54,8 +54,7 @@ export default Backbone.Router.extend({
                 'title': 'Faire une requête',
                 'path': 'seniors/demande',
                 'icon': 'fas fa-question-circle'
-            }
-            ,
+            },
             {
                 'title': 'Faire une suggestion',
                 'path': 'seniors/suggestion',
@@ -73,7 +72,7 @@ export default Backbone.Router.extend({
 
     profil: function() {
         let userId = localStorage.getItem('userID');
-        let senior = new Senior({id:userId});
+        let senior = new Senior({id: userId});
         senior.fetch({
             success: function (senior) {
                 $('#pageContent').html(new ProfilSenior({model: senior}).render());
@@ -128,26 +127,6 @@ export default Backbone.Router.extend({
     },
 
     demande: function () {
-        /*let matieresListe = new Matieres([{
-                "id": 1,
-                "nom": "Skype",
-                "description": "Papy telephone maison",
-                "sujet": {
-                    "id": 1,
-                    "nom": "Informatique",
-                    "description": "Sujet #1 Description"
-                }
-            },
-            {
-                "id": 2,
-                "nom": "Cueillette",
-                "description": "Aller cueillir des fraises ou des champignons",
-                "sujet": {
-                    "id": 2,
-                    "nom": "Jardinage",
-                    "description": "Sujet #2 Description"
-                }
-            }]);*/
         let sujetsListe = new Sujets();
         sujetsListe.fetch({
             success: function (sujetsListe) {
@@ -160,7 +139,7 @@ export default Backbone.Router.extend({
         });
     },
 
-    intervention: function(id) {
+    intervention: function (id) {
         let interventions = new Interventions();
         $('#pageContent').html(new ListInterventionsSenior({
             collection: interventions

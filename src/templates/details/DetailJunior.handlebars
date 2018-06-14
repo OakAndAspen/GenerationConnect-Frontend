@@ -16,6 +16,11 @@
            aria-controls="formations"
            aria-selected="false">Formations</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" id="fichiers-tab" data-toggle="tab" href="#fichiers" role="tab"
+           aria-controls="fichiers"
+           aria-selected="false">Fichiers</a>
+    </li>
 </ul>
 
 <!-- Contenu -->
@@ -85,7 +90,7 @@
                 <tr>
                     <td><a href="#admin/interventions/{{id}}">{{id}}</a></td>
                     {{#with requete.soumis_par}}
-                    <td><a href="#admin/senior/{{id}}">{{prenom}} {{nom}}</a></td>
+                        <td><a href="#admin/senior/{{id}}">{{prenom}} {{nom}}</a></td>
                     {{/with}}
                     <th>{{debutprevu}}</th>
                     <th>{{statut}}</th>
@@ -119,5 +124,14 @@
             {{/each}}
             </tbody>
         </table>
+    </div>
+
+    <!-- Onglet "Fichiers" -->
+    <div class="tab-pane my-3" id="fichiers" role="tabpanel" aria-labelledby="fichiers-tab">
+        <ul>
+            {{#each fichiers}}
+                <li><a href="../api/download/{{id}}" target="_blank">{{nom}}</a></li>
+            {{/each}}
+        </ul>
     </div>
 </div>

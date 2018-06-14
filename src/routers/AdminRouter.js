@@ -48,6 +48,7 @@ import DetailRequete from "views/details/DetailRequete";
 // Special
 import PagesWYSIWYG from "views/special/PagesWYSIWYG";
 import AppConfig from "config";
+import Sujets from "../collections/Sujets";
 
 export default Backbone.Router.extend({
 
@@ -221,7 +222,7 @@ export default Backbone.Router.extend({
                         $('#pageContent').html(new DetailRequete({model: model, matching:data}).render());
                     },
                     error: function () {
-                        console.log("Le matching n'a pas pu être récupéré");
+                        $('#pageContent').html(new DetailRequete({model: model, matching:''}).render());
                     }
                 });
             }
@@ -229,7 +230,14 @@ export default Backbone.Router.extend({
     },
 
     demandesNew: function () {
-        $('#pageContent').html(new FormRequete().render());
+        let sujetsListe = new Sujets();
+        sujetsListe.fetch({
+            success: function (sujetsListe) {
+                $('#pageContent').html(new FormRequete({
+                    sujets: sujetsListe,
+                }).render());
+            }
+        });
     },
 
     formations: function () {

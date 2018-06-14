@@ -1,9 +1,6 @@
 <!-- Actions -->
 <div class="row d-flex">
     <div class="ml-auto">
-        <button class="btn">Accepter</button>
-    </div>
-    <div class="ml-1">
         <button class="btn">Annuler la demande</button>
     </div>
 </div>
@@ -50,7 +47,8 @@
         <tr>
             <th>N°</th>
             <th>Junior</th>
-            <th>Temps de trajet</th>
+            <th>Trajet (transports publics)</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -58,7 +56,7 @@
         <tr>
             <td><a href="#admin/juniors/{{user.id}}">{{user.prenom}} {{user.nom}}</a></td>
             <td>{{user.junior.status}}</td>
-            <td>{{route.duration}}</td>
+            <td>{{route.duration}} | {{route.distance}}</td>
             <td><button class="btn choose" data-id="{{user.id}}">Choisir</button></td>
         </tr>
         <tr>
