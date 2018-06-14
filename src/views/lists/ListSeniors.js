@@ -18,7 +18,6 @@ export default Backbone.View.extend({
                 results.remove(this);
             }
         });*/
-        console.log(this.collection.toJSON());
 
         this.$el.html(this.template({
             seniors: this.collection.toJSON()

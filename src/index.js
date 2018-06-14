@@ -4,17 +4,52 @@ import css from "styles/main.scss";
 import "bootstrap";
 
 // Views
-import App from "views/App";
+import Breadcrumbs from "views/components/Breadcrumbs";
+import NavBar from "views/components/NavBar";
+import SeniorRouter from "routers/SeniorRouter";
+import PublicRouter from "routers/PublicRouter";
+import JuniorRouter from "routers/JuniorRouter";
+import AdminRouter from "routers/AdminRouter";
+import Backbone from "backbone";
 
-// -------------- Page load -------------------
-
+// --------- Au chargement de la page -----------
 // Routing
 Backbone.history.start();
 
+// Affichage de la barre de navigation et des breadcrumbs
+let breadcrumbs = new Breadcrumbs();
+$('#pageBreadcrumbs').html(breadcrumbs.render());
+let navBar = new NavBar();
+$('#pageHeader').html(navBar.render());
+
+// S'exécute à chaque changement de page
+Backbone.history.on("all", function (route, router) {
+    navBar.render();
+    breadcrumbs.render();
+});
+
+// Création des routeurs
+let routers = {
+    publicRouter: new PublicRouter(),
+    adminRouter: new AdminRouter(),
+    juniorRouter: new JuniorRouter(),
+    seniorRouter: new SeniorRouter()
+};
+
+// Récupération du hash à charger
 let hash = location.hash.substring(1);
-if(!hash) hash = 'accueil';
+if (!hash) hash = 'accueil';
+redirect(hash);
 
-// Création de la vue "App"
-let app = new App();
-
-app.redirect(hash);
+// ----- Fonctions -----
+function redirect (page) {
+    for (let router in routers) {
+        for (let route in routers[router].routes) {
+            if (route.localeCompare(page) == 0) {
+                routers[router].navigate(page, true);
+                Backbone.history.loadUrl();
+                break;
+            }
+        }
+    }
+}

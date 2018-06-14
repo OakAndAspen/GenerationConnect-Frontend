@@ -23,10 +23,8 @@ export default Backbone.View.extend({
 
     // Soumission du choix du junior au backend
     soumission: function (event) {
-        console.log("Submitting");
         let juniorId = $(event.target).attr("data-id");
         let requeteId = this.model.get("id");
-        console.log("Junior: "+juniorId+" | Requete: "+requeteId);
         $.ajax({
             type: "POST",
             url: AppConfig.apiUrl+"/soumissions",
@@ -36,12 +34,9 @@ export default Backbone.View.extend({
             },
             success: function (data) {
                 console.log("Success");
-                console.log(data);
             },
-            error: function (a, b, c) {
-                console.log(a);
-                console.log(b);
-                console.log(c);
+            error: function () {
+
             }
         });
     }

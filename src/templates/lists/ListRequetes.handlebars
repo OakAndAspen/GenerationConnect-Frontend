@@ -5,17 +5,19 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <th>N°</th>
         <th>Senior</th>
         <th>Statut</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
     {{#each requetes}}
         <tr>
-            <td><a href="#admin/demandes/{{id}}">{{id}}</a></td>
             <td><a href="#admin/seniors/{{soumis_par.id}}">{{soumis_par.prenom}} {{soumis_par.nom}}</a></td>
             <th>{{statut}}</th>
+            <td class="text-right">
+                <a href="#admin/demandes/{{id}}" class="btn" title="Voir le détail"><i class="fas fa-eye"></i> Voir</a>
+            </td>
         </tr>
     {{/each}}
     </tbody>

@@ -9,7 +9,6 @@ export default Backbone.View.extend({
     },
 
     render: function () {
-        console.log(this.collection.toJSON());
         this.$el.html(this.template({
             juniors: this.collection.toJSON()
         }));

@@ -4,7 +4,23 @@
         <h1 class="my-3">Connexion à votre espace personnel</h1>
         <input type="text" class="form-control mb-2" id="email" placeholder="Email">
         <input type="password" class="form-control mb-2" id="password" placeholder="Mot de passe">
-        <button type="button" class="form-control btn" id="login">Connexion</button>
+        <button type="button" class="form-control btn mb-2" id="login">Connexion</button>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="errorsModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Erreur</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Erreur lors de la connexion. Merci de vérifier vos identifiants.</p>
+            </div>
+        </div>
     </div>
 </div>
 

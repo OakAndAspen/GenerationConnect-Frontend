@@ -1,5 +1,4 @@
 import Backbone from "backbone";
-import NavBar from "views/components/NavBar";
 import PublicRouter from "routers/PublicRouter";
 import JuniorRouter from "routers/JuniorRouter";
 import AdminRouter from "routers/AdminRouter";
@@ -15,10 +14,6 @@ export default Backbone.View.extend({
             juniorRouter: new JuniorRouter(),
             seniorRouter: new SeniorRouter()
         };
-
-        // Affichage de la barre de navigation
-        let navBar = new NavBar();
-        $('#pageHeader').html(navBar.render());
     },
 
     events: {
