@@ -1,8 +1,40 @@
-<h1>Fiche du compte administrateur</h1>
-
-<ul>
-    <li>(Photo)</li>
-    <li>Coordonnées</li>
-    <li>Rôle</li>
-    <li>Champ libre commentaires</li>
-</ul>
+<h1>{{prenom}} {{nom}}</h1>
+<div class="row my-3">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>N° de téléphone</label>
+            <input type="text" class="form-control mb-2" placeholder="+41 XX XXX XX XX" value="{{telephone}}">
+        </div>
+        <div class="form-group">
+            <label>Adresse email</label>
+            <input type="text" class="form-control mb-2" placeholder="Adresse mail" value="{{email}}">
+        </div>
+        <div class="form-group">
+            <label>Fonction</label>
+            <select class="form-control">
+                <option>Direction</option>
+                <option>Secrétariat</option>
+                <option>RH</option>
+            </select>
+        </div>
+    </div>
+    {{#with adresse_habitation}}
+        <div class="col-md-6">
+            <div class="card" data-id="{{id}}">
+                <div class="card-header">
+                    Adresse d'habitation courante
+                </div>
+                <div class="card-body">
+                    <label>Adresse</label>
+                    <input type="text" class="form-control mb-2" placeholder="Ligne 1" value="{{ligne1}}">
+                    <input type="text" class="form-control mb-2" placeholder="Ligne 2" value="{{ligne2}}">
+                    <input type="text" class="form-control mb-2" placeholder="Ligne 3" value="{{ligne3}}">
+                    <label>Ville</label>
+                    <input type="text" class="form-control mb-2" placeholder="Ville" value="{{ville}}">
+                    <label>NPA</label>
+                    <input type="text" class="form-control mb-2" placeholder="NPA" value="{{npa}}">
+                </div>
+            </div>
+        </div>
+    {{/with}}
+</div>
