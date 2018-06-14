@@ -37,19 +37,19 @@ export default Backbone.Router.extend({
     },
 
     accueil: function () {
-        $('#pageContent').html(accueilTmpl);
+        $('#pageContent').html(new Page({id:1}).render());
     },
 
     infosJuniors: function () {
-        $('#pageContent').html(juniorsTmpl);
+        $('#pageContent').html(new Page({id:3}).render());
     },
 
     infosSeniors: function () {
-        $('#pageContent').html(seniorsTmpl);
+        $('#pageContent').html(new Page({id:4}).render());
     },
 
     aide: function () {
-        $('#pageContent').html(aideTmpl);
+        $('#pageContent').html(new Page({id:2}).render());
     },
 
     contact: function () {

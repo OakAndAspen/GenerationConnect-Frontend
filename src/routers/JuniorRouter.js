@@ -17,6 +17,7 @@ import DetailInterventionJunior from "views/details/DetailInterventionJunior";
 
 // Templates
 import SchemaTmpl from "templates/pages/schema.handlebars";
+import Page from "../views/components/Page";
 
 export default Backbone.Router.extend({
 
@@ -64,7 +65,7 @@ export default Backbone.Router.extend({
     },
 
     schema: function() {
-        $('#pageContent').html(SchemaTmpl);
+        $('#pageContent').html(new Page({id:5}).render());
     },
 
     profil: function () {
