@@ -1,9 +1,57 @@
-<h1>Fiche de la formation</h1>
+<h1>{{nom}}</h1>
 
-<ul>
-    <li>{{nom}}</li>
-    <li>Description</li>
-    <li>Lieu</li>
-    <li>Date</li>
-    <li>Participants avec <stat></stat>ut (en attente de confirmation, confirmé, etc.)</li>
+<!-- Navigation -->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="infos-tab" data-toggle="tab" href="#infos" role="tab" aria-controls="infos"
+           aria-selected="true">Informations</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="participants-tab" data-toggle="tab" href="#participants" role="tab"
+           aria-controls="participants"
+           aria-selected="false">Participants</a>
+    </li>
 </ul>
+
+<!-- Contenu -->
+<div class="tab-content" id="myTabContent">
+    <!-- Onglet "Informations" -->
+    <div class="tab-pane fade show active my-3" id="infos" role="tabpanel" aria-labelledby="infos-tab">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Nom</label>
+                    <input type="text" class="form-control mb-2" placeholder="Nom de la formation" value="{{nom}}">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control">{{description}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label>Responsable</label>
+                    <select class="form-control">
+                        <option>Marc Dupuis</option>
+                        <option>Véronique Gruber</option>
+                        <option>Otto Maker</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                {{#with plage_horaire}}
+                    <div class="form-group">
+                        <label>Date et heure</label>
+                        <input type="date" class="form-control mb-2" placeholder="jj/mm/aaaa"
+                               value="{{plage_unique.date}}">
+                        <input type="time" class="form-control mb-2" placeholder="hh:mm" value="{{heuredebut}}">
+                        <input type="time" class="form-control mb-2" placeholder="hh:mm" value="{{heurefin}}">
+                    </div>
+                {{/with}}
+            </div>
+        </div>
+    </div>
+
+    <!-- Onglet "Participants" -->
+    <div class="tab-pane fade mt-3" id="participants" role="tabpanel" aria-labelledby="participants-tab">
+        <h1>Liste des participants</h1>
+    </div>
+</div>

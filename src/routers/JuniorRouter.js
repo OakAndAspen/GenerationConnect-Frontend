@@ -5,19 +5,16 @@ import Junior from "models/Junior";
 import Intervention from "models/Intervention";
 import Interventions from "collections/Interventions";
 import Requetes from "collections/Requetes";
-import Juniors from "collections/Juniors";
 
 // Views
 import Dashboard from "views/components/Dashboard";
-import Breadcrumbs from "views/components/Breadcrumbs";
 import JuniorSchema from "views/components/Page";
 import ProfilJunior from "views/special/ProfilJunior";
 import ListInterventionsJunior from "views/lists/ListInterventionsJunior";
 import DetailInterventionJunior from "views/details/DetailInterventionJunior";
 
 // Templates
-import SchemaTmpl from "templates/pages/schema.handlebars";
-import Page from "../views/components/Page";
+import Page from "views/components/Page";
 
 export default Backbone.Router.extend({
 

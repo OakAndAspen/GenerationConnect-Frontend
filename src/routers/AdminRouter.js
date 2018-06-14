@@ -244,8 +244,7 @@ export default Backbone.Router.extend({
         let collection = new Formations();
         collection.fetch({
             success: function () {
-                let list = new ListFormations({collection: collection});
-                $('#pageContent').html(list.render());
+                $('#pageContent').html(new ListFormations({collection: collection}).render());
             }
         });
     },
