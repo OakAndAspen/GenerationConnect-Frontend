@@ -23,10 +23,8 @@ export default Backbone.View.extend({
 
     // Soumission du choix du junior au backend
     soumission: function (event) {
-        console.log("Submitting");
         let juniorId = $(event.target).attr("data-id");
         let requeteId = this.model.get("id");
-        console.log("Junior: "+juniorId+" | Requete: "+requeteId);
         $.ajax({
             type: "POST",
             url: AppConfig.apiUrl+"/soumissions",

@@ -28,26 +28,15 @@ export default Backbone.Router.extend({
         if (!callback) callback = this[name];
         let userType = localStorage.getItem('userType');
         if (!userType || userType != 'senior') {
-            console.log("Tu es un " + userType + "! Tu n'as pas accès à cet endroit du site, petit coquin.");
             return false;
         }
         var f = function () {
-            console.log(location.hash);
             callback.apply(this, arguments);
         };
         return Backbone.Router.prototype.route.call(this, route, name, f);
     },
 
     dashboard: function() {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "seniors",
-                    title: "Tableau de bord"
-                }
-            ]
-        }).render());
-
         let links = [
             {
                 'title': 'Mes interventions',
@@ -76,37 +65,11 @@ export default Backbone.Router.extend({
     },
 
     suggestion: function(){
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "seniors",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "seniors/suggestion",
-                    title: "Faire une suggestion"
-                }
-            ]
-        }).render());
         $('#pageContent').html(new FormSuggestion().render());
     },
 
     profil: function() {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "seniors",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "seniors/profil",
-                    title: "Profil"
-                }
-            ]
-        }).render());
-
         let userId = localStorage.getItem('userID');
-
         let senior = new Senior({id:userId});
         senior.fetch({
             success: function (senior) {
@@ -116,41 +79,13 @@ export default Backbone.Router.extend({
     },
 
     interventions: function() {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "seniors",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "seniors/interventions",
-                    title: "Interventions"
-                }
-            ]
-        }).render());
         let interventions = new Interventions("interventions-senior");
-
         $('#pageContent').html(new ListInterventionsSenior({
             collection: interventions
         }).render());
     },
 
     demande: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "seniors",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "seniors/demande",
-                    title: "Demande"
-                }
-            ]
-        }).render());
-
-
-
         /*let matieresListe = new Matieres([{
                 "id": 1,
                 "nom": "Skype",
@@ -171,8 +106,6 @@ export default Backbone.Router.extend({
                     "description": "Sujet #2 Description"
                 }
             }]);*/
-
-
         let sujetsListe = new Sujets();
         sujetsListe.fetch({
             success: function (sujetsListe) {
@@ -186,23 +119,6 @@ export default Backbone.Router.extend({
     },
 
     intervention: function(id) {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "seniors",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "seniors/interventions",
-                    title: "Interventions"
-                },
-                {
-                    target: "seniors/interventions/"+id,
-                    title: "N° "+id
-                }
-            ]
-        }).render());
-
         let interventions = new Interventions();
         $('#pageContent').html(new ListInterventionsSenior({
             collection: interventions

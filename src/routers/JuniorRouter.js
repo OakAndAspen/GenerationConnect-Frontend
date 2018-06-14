@@ -32,26 +32,15 @@ export default Backbone.Router.extend({
         if (!callback) callback = this[name];
         let userType = localStorage.getItem('userType');
         if (!userType || userType != 'junior') {
-            console.log("Tu es un " + userType + "! Tu n'as pas accès à cet endroit du site, petit coquin.");
             return false;
         }
         var f = function () {
-            console.log(location.hash);
             callback.apply(this, arguments);
         };
         return Backbone.Router.prototype.route.call(this, route, name, f);
     },
 
     dashboard: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "juniors",
-                    title: "Tableau de bord"
-                }
-            ]
-        }).render());
-
         let links = [
             {
                 'title': 'Mes interventions',
@@ -75,40 +64,10 @@ export default Backbone.Router.extend({
     },
 
     schema: function() {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "juniors",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "juniors/schema",
-                    title: "Schéma d'intervention"
-                }
-            ]
-        }).render());
-
-
         $('#pageContent').html(SchemaTmpl);
     },
 
-    profil: function() {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "juniors",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "juniors/profil",
-                    title: "Profil"
-                }
-            ]
-        }).render());
-
-        //--------------------------------------
-
-
+    profil: function () {
         let junior = new Junior({
             "id": 2,
             "prenom": "Gabriel",
@@ -176,21 +135,6 @@ export default Backbone.Router.extend({
     },
 
     interventions: function() {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "juniors",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "juniors/interventions",
-                    title: "Interventions"
-                }
-            ]
-        }).render());
-
-
-
         // INTERVENTIONS
         let interventionslist = new Interventions();
         interventionslist.fetch({
@@ -243,23 +187,6 @@ export default Backbone.Router.extend({
     },
 
     intervention: function(id) {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "juniors",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "juniors/interventions",
-                    title: "Interventions"
-                },
-                {
-                    target: "juniors/interventions/"+id,
-                    title: "N° "+id
-                }
-            ]
-        }).render());
-
         let model = new Intervention({id: id});
         model.fetch({
             success: function (model) {

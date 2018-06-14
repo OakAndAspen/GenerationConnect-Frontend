@@ -31,8 +31,6 @@ export default Backbone.View.extend({
                 motdepasse: password
             },
             success: function (data) {
-                console.log("Successfully connected!");
-                console.log(JSON.stringify(data));
                 localStorage.setItem("userID", data.id);
                 if(data.junior) {
                     localStorage.setItem("userType", "junior");
@@ -51,7 +49,7 @@ export default Backbone.View.extend({
                 location.reload();
             },
             error: function () {
-                console.log("Erreur");
+                console.log("Erreur lors de la connexion");
             }
         });
     }

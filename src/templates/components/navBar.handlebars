@@ -13,14 +13,31 @@
             {{/each}}
         </ul>
         <ul id="controls" class="navbar-nav align-self-end">
+            {{# if logged}}
+                <li class="nav-item">
+                    <a class="nav-link" id="logout" href="#login" title="Déconnexion">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="d-md-none d-lg-inline">Deconnexion</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#{{dashboard}}" title="Mon compte">
+                        <i class="fas fa-user-circle"></i>
+                        <span class="d-md-none d-lg-inline">Mon compte</span>
+                    </a>
+                </li>
+            {{else}}
+                <li class="nav-item">
+                    <a class="nav-link" href="#login" title="Connexion">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span class="d-md-none d-lg-inline">Connexion</span>
+                    </a>
+                </li>
+            {{/if}}
             <li class="nav-item">
-                <a class="nav-link" href="#login">
-                    <i class="fas fa-sign-in-alt"></i> Connexion
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-danger" href="#aide">
-                    <i class="fas fa-question-circle"></i> Aide
+                <a class="nav-link text-danger" href="#aide" title="Aide">
+                    <i class="fas fa-question-circle"></i>
+                    <span class="d-md-none d-lg-inline">Aide</span>
                 </a>
             </li>
         </ul>

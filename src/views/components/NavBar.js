@@ -27,8 +27,32 @@ export default Backbone.View.extend({
 
     render: function () {
         this.$el.html(this.template({
-            links: this.links
+            links: this.links,
+            logged: this.getLogged(),
+            dashboard: this.getDashboard()
         }));
         return this.$el;
+    },
+
+    events: {
+        'click #logout': 'logout'
+    },
+
+    logout: function() {
+        //TODO: logout
+    },
+
+    getLogged: function () {
+        if(localStorage.getItem('userType')) {
+            return localStorage.getItem('userType');
+        } else return null;
+    },
+
+    getDashboard: function () {
+        let userType = localStorage.getItem('userType');
+        if(userType == 'junior') return 'juniors';
+        if(userType == 'senior') return 'seniors';
+        if(userType == 'employe') return 'admin';
+        return null;
     }
 });

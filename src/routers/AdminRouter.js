@@ -78,27 +78,15 @@ export default Backbone.Router.extend({
         if (!callback) callback = this[name];
         let userType = localStorage.getItem('userType');
         if (!userType || userType != 'employe') {
-            console.log("Tu es un " + userType + "! Tu n'as pas accès à cet endroit du site, petit coquin.");
             return false;
         }
         var f = function () {
-            console.log(location.hash);
             callback.apply(this, arguments);
         };
         return Backbone.Router.prototype.route.call(this, route, name, f);
     },
 
     dashboard: function () {
-
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                }
-            ]
-        }).render());
-
         let links = [
             {
                 'title': 'Seniors',
@@ -149,19 +137,6 @@ export default Backbone.Router.extend({
     },
 
     juniors: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/juniors",
-                    title: "Juniors"
-                }
-            ]
-        }).render());
-
         let collection = new Juniors();
         collection.fetch({
             success: function () {
@@ -173,23 +148,6 @@ export default Backbone.Router.extend({
     },
 
     junior: function (id) {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/juniors",
-                    title: "Juniors"
-                },
-                {
-                    target: "admin/juniors/" + id,
-                    title: "N° " + id
-                }
-            ]
-        }).render());
-
         let model = new Junior({id: id});
         model.fetch({
             success: function (model) {
@@ -199,19 +157,6 @@ export default Backbone.Router.extend({
     },
 
     seniors: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/seniors",
-                    title: "Seniors"
-                }
-            ]
-        }).render());
-
         let collection = new Seniors();
         collection.fetch({
             success: function () {
@@ -223,23 +168,6 @@ export default Backbone.Router.extend({
     },
 
     senior: function (id) {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/seniors",
-                    title: "Seniors"
-                },
-                {
-                    target: "admin/seniors/" + id,
-                    title: "N° " + id
-                }
-            ]
-        }).render());
-
         let model = new Senior({id: id});
         model.fetch({
             success: function () {
@@ -249,39 +177,10 @@ export default Backbone.Router.extend({
     },
 
     seniorsNew: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/seniors",
-                    title: "Seniors"
-                },
-                {
-                    target: "admin/seniors/new",
-                    title: "Nouveau Senior"
-                }
-            ]
-        }).render());
         $('#pageContent').html(new FormSenior().render());
     },
 
     interventions: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/interventions",
-                    title: "Interventions"
-                }
-            ]
-        }).render());
-
         let collection = new Interventions();
         collection.fetch({
             success: function () {
@@ -292,23 +191,6 @@ export default Backbone.Router.extend({
     },
 
     intervention: function (id) {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/interventions",
-                    title: "Interventions"
-                },
-                {
-                    target: "admin/interventions/" + id,
-                    title: "N° " + id
-                }
-            ]
-        }).render());
-
         let model = new Intervention({id: id});
         model.fetch({
             success: function () {
@@ -318,19 +200,6 @@ export default Backbone.Router.extend({
     },
 
     demandes: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/demandes",
-                    title: "Demandes"
-                }
-            ]
-        }).render());
-
         let collection = new Requetes();
         collection.fetch({
             success: function () {
@@ -341,23 +210,6 @@ export default Backbone.Router.extend({
     },
 
     demande: function (id) {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/demandes",
-                    title: "Demandes"
-                },
-                {
-                    target: "admin/demandes/"+id,
-                    title: "N° "+id
-                }
-            ]
-        }).render());
-
         let model = new Requete({id: id});
         model.fetch({
             success: function (model) {
@@ -373,39 +225,10 @@ export default Backbone.Router.extend({
     },
 
     demandesNew: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/demandes",
-                    title: "Demandes"
-                },
-                {
-                    target: "admin/demandes/new",
-                    title: "Nouvelle demande"
-                }
-            ]
-        }).render());
         $('#pageContent').html(new FormRequete().render());
     },
 
     formations: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/formations",
-                    title: "Formations"
-                }
-            ]
-        }).render());
-
         let collection = new Formations();
         collection.fetch({
             success: function () {
@@ -416,23 +239,6 @@ export default Backbone.Router.extend({
     },
 
     formation: function (id) {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/formations",
-                    title: "Formations"
-                },
-                {
-                    target: "admin/formations/1",
-                    title: "N° " + id
-                }
-            ]
-        }).render());
-
         let model = new Formation({id: id});
         model.fetch({
             success: function () {
@@ -442,55 +248,14 @@ export default Backbone.Router.extend({
     },
 
     formationsNew: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/formations",
-                    title: "Formations"
-                },
-                {
-                    target: "admin/formations/new",
-                    title: "Nouvelle formation"
-                }
-            ]
-        }).render());
         $('#pageContent').html(new FormFormation().render());
     },
 
     pages: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/pages",
-                    title: "Pages"
-                }
-            ]
-        }).render());
         $('#pageContent').html(new PagesWYSIWYG().render());
     },
 
     suggestions: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/suggestions",
-                    title: "Suggestions"
-                }
-            ]
-        }).render());
-
         let collection = new Suggestions();
         collection.fetch({
             success: function () {
@@ -502,39 +267,10 @@ export default Backbone.Router.extend({
     },
 
     suggestionsNew: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/suggestions",
-                    title: "Suggestions"
-                },
-                {
-                    target: "admin/suggestions/new",
-                    title: "Nouvelle suggestion"
-                }
-            ]
-        }).render());
         $('#pageContent').html(new FormSuggestion().render());
     },
 
     employes: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/comptes",
-                    title: "Comptes admin"
-                }
-            ]
-        }).render());
-
         let collection = new Employes();
         collection.fetch({
             success: function () {
@@ -546,23 +282,6 @@ export default Backbone.Router.extend({
     },
 
     employe: function (id) {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/comptes",
-                    title: "Comptes admin"
-                },
-                {
-                    target: "admin/comptes/1",
-                    title: "N° "+id
-                }
-            ]
-        }).render());
-
         let model = new Employe({id: id});
         model.fetch({
             success: function () {
@@ -572,22 +291,6 @@ export default Backbone.Router.extend({
     },
 
     employesNew: function () {
-        $('#pageBreadcrumbs').html(new Breadcrumbs({
-            links: [
-                {
-                    target: "admin",
-                    title: "Tableau de bord"
-                },
-                {
-                    target: "admin/comptes",
-                    title: "Comptes"
-                },
-                {
-                    target: "admin/comptes/new",
-                    title: "Nouveau compte"
-                }
-            ]
-        }).render());
         $('#pageContent').html(new FormEmploye().render());
     },
 });
