@@ -140,7 +140,6 @@ export default Backbone.Router.extend({
         let collection = new Juniors();
         collection.fetch({
             success: function () {
-                console.log(collection.toJSON());
                 let list = new ListJuniors({collection: collection});
                 $('#pageContent').html(list.render());
             }
@@ -160,7 +159,6 @@ export default Backbone.Router.extend({
         let collection = new Seniors();
         collection.fetch({
             success: function () {
-                console.log(collection.toJSON());
                 let list = new ListSeniors({collection: collection});
                 $('#pageContent').html(list.render());
             }
@@ -259,7 +257,6 @@ export default Backbone.Router.extend({
         let collection = new Suggestions();
         collection.fetch({
             success: function () {
-                console.log(collection.toJSON());
                 let list = new ListSuggestions({collection: collection});
                 $('#pageContent').html(list.render());
             }
@@ -274,7 +271,6 @@ export default Backbone.Router.extend({
         let collection = new Employes();
         collection.fetch({
             success: function () {
-                console.log(collection.toJSON());
                 let list = new ListEmployes({collection: collection});
                 $('#pageContent').html(list.render());
             }

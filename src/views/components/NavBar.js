@@ -1,5 +1,6 @@
 import Backbone from "backbone";
 import template from "templates/components/navBar.handlebars";
+import AppConfig from "../../config";
 
 export default Backbone.View.extend({
 
@@ -39,7 +40,16 @@ export default Backbone.View.extend({
     },
 
     logout: function() {
-        //TODO: logout
+        $.ajax({
+            type: "GET",
+            url: AppConfig.apiUrl + "/logout",
+            success: function (data) {
+                localStorage.removeItem('userID');
+                localStorage.removeItem('userType');
+                location.hash = '#login';
+                location.reload();
+            }
+        });
     },
 
     getLogged: function () {

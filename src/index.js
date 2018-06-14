@@ -24,7 +24,6 @@ $('#pageHeader').html(navBar.render());
 
 // S'exécute à chaque changement de page
 Backbone.history.on("all", function (route, router) {
-    //console.log("My location is "+ location.hash);
     navBar.render();
     breadcrumbs.render();
 });

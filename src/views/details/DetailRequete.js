@@ -34,12 +34,9 @@ export default Backbone.View.extend({
             },
             success: function (data) {
                 console.log("Success");
-                console.log(data);
             },
-            error: function (a, b, c) {
-                console.log(a);
-                console.log(b);
-                console.log(c);
+            error: function () {
+
             }
         });
     }
